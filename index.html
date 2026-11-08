@@ -488,7 +488,7 @@ body.notap .hint{display:none}
 /* ---------- combat: hero left, enemy right, actions between ---------- */
 #hero{position:absolute;bottom:17%;left:6%;height:66%;max-width:34%;object-fit:contain;object-position:bottom;transform-origin:50% 100%;filter:drop-shadow(0 .3cqh .5cqh #000c);z-index:1;animation:breatheH 3.4s ease-in-out infinite}
 @keyframes breatheH{50%{transform:scaleY(1.01)}}
-#heroSpr{position:absolute;bottom:13%;left:-3.9cqh;height:72%;aspect-ratio:1.4;background:url(art/final/hero-sheet.webp) 0 0/500% 100% no-repeat;transform-origin:37% 100%;filter:drop-shadow(0 1.4cqh 2cqh #000c);z-index:1;pointer-events:none;animation:breatheH 3.4s ease-in-out infinite}
+#heroSpr{position:absolute;bottom:13%;left:-3.9cqh;height:72%;aspect-ratio:1.4;background:none;transform-origin:37% 100%;filter:drop-shadow(0 1.4cqh 2cqh #000c);z-index:1;pointer-events:none;animation:breatheH 3.4s ease-in-out infinite}
 #heroSpr.lunge{animation:sprLunge .5s cubic-bezier(.2,.8,.3,1)} @keyframes sprLunge{0%{transform:translateX(0)}35%,60%{transform:translateX(7cqh)}100%{transform:translateX(0)}}
 #heroSpr.brace{animation:brace .6s ease-out} @keyframes brace{0%{transform:translateX(0)}20%{transform:translateX(-1.4cqh)}100%{transform:translateX(0)}}
 #heroSpr.hurt{animation:hurtH .32s}
@@ -950,7 +950,7 @@ body[data-view="hub"] #townGlows{display:block}
 body.fighting .dock,body.chopen .dock,body.drawer-open .dock{opacity:0;pointer-events:none}
 .smed{position:relative;flex:none;width:7cqh;height:7cqh;border-radius:50%;padding:0;border:.3cqh solid var(--gold);background:#120d0a;box-shadow:0 0 1.2cqh #f1c75b44;cursor:pointer;transition:transform .15s,box-shadow .15s}
 .smed:hover,.smed.on,.smed:focus-visible{transform:scale(1.06);box-shadow:0 0 2cqh #f1c75b88;outline:none}
-.smed img{width:100%;height:100%;object-fit:cover;object-position:50% 12%;border-radius:50%}
+.smed #stripFace{width:100%;height:100%;object-fit:cover;object-position:50% 12%;border-radius:50%}
 .smed b{position:absolute;right:-.5cqh;bottom:-.3cqh;background:#5c1210;color:#f3e3c0;font:400 1.5cqh var(--display);border-radius:1cqh;padding:.05cqh .65cqh;border:.15cqh solid #c9a86a88}
 .swho{font-family:var(--display);color:var(--bone);line-height:1.05;min-width:12cqh}
 .swho b{font-weight:400;font-size:2.2cqh;display:block;white-space:nowrap}
@@ -1437,7 +1437,7 @@ button.medal:hover,button.medal:focus-visible{filter:brightness(1.18);outline:no
 /* v71: the user's helm toggle art (on / off) */
 .helmico img{position:absolute;inset:0;width:100%;height:100%;filter:drop-shadow(0 .2cqh .3cqh #000)}
 .helmico{position:relative} .helmico .hoff{display:none} .helmico.off .hon{display:none} .helmico.off .hoff{display:block}
-.lgdollp .helmico{width:5.2cqh;height:5.2cqh}
+.lgdollp .helmico{width:2.6cqh;height:2.6cqh}
 .helmico:hover:not(:disabled) img{filter:drop-shadow(0 0 .8cqh #f1c75b66) drop-shadow(0 .2cqh .3cqh #000)}
 
 /* ===== v72: region card — three clear actions in iron and silver ===== */
@@ -1482,7 +1482,7 @@ button.medal:hover,button.medal:focus-visible{filter:brightness(1.18);outline:no
 .encacts .fbtn.main:hover{text-shadow:0 0 1.4cqh #c8323a,0 .2cqh .4cqh #000}
 
 /* v73: region card sits centre screen; arrows step between regions */
-#mapCard.mapcard{left:50%!important;right:auto!important;top:47%!important;transform:translate(-50%,-50%);animation:mcin .22s ease-out!important;z-index:12}
+#mapCard.mapcard{left:50%!important;right:auto!important;top:47%!important;transform:translate(-50%,-50%);animation:mcin .22s ease-out!important;z-index:40!important}
 #mapCard.mapcard::after{display:none!important}
 @keyframes mcin{from{opacity:0;transform:translate(-50%,-48%)}}
 .mcarrow{position:absolute;top:50%;width:7cqh;height:7cqh;margin-top:-3.5cqh;border-radius:50%;display:grid;place-items:center;cursor:pointer;
@@ -1496,10 +1496,154 @@ button.medal:hover,button.medal:focus-visible{filter:brightness(1.18);outline:no
 .mcsec.town .mctxt p{margin-bottom:.8cqh}
 
 /* v74: back button lives in the dock beside the portrait */
-.dock .navback{position:static!important;top:auto!important;bottom:auto!important;left:auto!important;font-size:2.2cqh;gap:.9cqh}
-.dock .navback .nbs{width:4.6cqh;height:4.6cqh}
-.dock .navback small{font-size:1.3cqh}
-.dock .navback[hidden],.dock .navback[hidden]+.nbsep{display:none}
+#navBack.navback{position:absolute!important;bottom:auto!important}
+#navBack .nbs{width:4.8cqh;height:4.8cqh}
+
+/* v78: places are the click targets; names sit across the middle of each, no seals */
+.pin.poi{transform:translate(-50%,-50%);padding:0;border:0;background:none;border-radius:50%;display:grid;place-items:center;cursor:pointer;gap:0}
+.pin.poi::after{content:"";position:absolute;inset:4%;border-radius:50%;pointer-events:none;opacity:0;
+  background:radial-gradient(closest-side,#f1e6cf22,transparent 75%);box-shadow:0 0 0 .2cqh #f1e6cf00;transition:opacity .25s}
+.pin.poi:hover::after,.pin.poi:focus-visible::after{opacity:1}
+.pin.poi:focus-visible{outline:none}
+.pname{position:relative;display:flex;flex-direction:column;align-items:center;gap:.3cqh;padding:.8cqh 2.4cqh 1cqh;pointer-events:none;white-space:nowrap;
+  font:400 3.6cqh/1 var(--display);color:#f3ecdf;text-shadow:0 0 .6cqh #000,0 0 1.4cqh #000,0 .2cqh .3cqh #000;
+  background:radial-gradient(closest-side,#0c0908cc,#0c090888 60%,transparent);transition:transform .2s,color .2s}
+.pname small{font:400 1.7cqh var(--fellsc);letter-spacing:.14em;text-transform:uppercase;color:#cbbfa6}
+.pin.poi:hover .pname{transform:scale(1.06);color:#fff}
+.pin.poi.here .pname small{color:var(--gold)}
+.pin.poi.locked .pname{color:#b5aa9b} .pin.poi.locked .pname small{color:#e98a8f}
+.pin.poi[aria-pressed="true"] .pname{color:var(--gold)}
+.pin.poi .pboss{position:static;margin-bottom:.2cqh}
+/* click: a ring of light ripples out from the place and the name presses in */
+.pin.poi.hit::before{content:"";position:absolute;left:50%;top:50%;width:40%;aspect-ratio:1;border-radius:50%;transform:translate(-50%,-50%);pointer-events:none;
+  border:.3cqh solid #f1e6cf;box-shadow:0 0 1.6cqh #f1e6cf88,inset 0 0 1.2cqh #f1e6cf55;animation:poiRing .55s ease-out forwards}
+.pin.poi.locked.hit::before{border-color:#e98a8f;box-shadow:0 0 1.6cqh #e98a8f88}
+.pin.poi.hit .pname{animation:poiPress .3s ease-out}
+@keyframes poiRing{from{opacity:1;width:20%}to{opacity:0;width:130%}}
+@keyframes poiPress{40%{transform:scale(.92)}100%{transform:scale(1)}}
+
+/* v79: each place is its own image layer and moves with its name; no click ring */
+.pin.poi{border-radius:0}
+.pin.poi::after,.pin.poi.hit::before{display:none!important}
+.poiimg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;transition:transform .2s,filter .2s;transform-origin:50% 55%}
+.pin.poi .pname{z-index:1}
+.pin.poi:hover .poiimg,.pin.poi:focus-visible .poiimg{transform:scale(1.06);filter:brightness(1.12)}
+.pin.poi.hit .poiimg{animation:poiPress .3s ease-out}
+.pin.poi{pointer-events:none} .pin.poi .poiimg{pointer-events:auto;cursor:pointer}
+
+/* v80: required materials link to where they are found */
+.matlink{background:none;border:0;padding:0 .2cqh;font:inherit;color:inherit;cursor:pointer;border-bottom:.14cqh dashed currentColor;transition:color .15s}
+.matlink.short{color:#e98a8f}
+.matlink:hover:not(:disabled){color:#fff3d6}
+.matlink i{font-style:normal;font-size:.8em;margin-left:.3cqh;opacity:.7}
+.matlink:disabled{border-bottom:0;cursor:default}
+.cnote{font-size:1.75cqh;font-style:italic;color:#a99c80;line-height:1.4;padding:.4cqh 0 .8cqh}
+
+/* v84: some foes were painted to fill their frame; bring them down to the knight's scale */
+body.fighting #foe[data-id="ghoul"]{height:62%!important}
+body.fighting #foe[data-id="pyrewight"]{height:68%!important}
+
+/* v86: victory shows XP gained and level progress; buttons size to their words */
+.rxp{display:flex;align-items:baseline;justify-content:center;gap:1cqh;margin-bottom:1cqh}
+.rxp b{font:400 6cqh var(--display);color:var(--gold);line-height:1;text-shadow:0 0 2cqh #f1c75b44}
+.rxp span{font:400 2cqh var(--fellsc);letter-spacing:.2em;color:#d9cfbd}
+.rlv{display:flex;align-items:center;gap:1.6cqh;max-width:64cqh;margin:0 auto;font-size:1.9cqh;color:#a99c80;white-space:nowrap}
+.rlv i{flex:1;height:1.1cqh;background:#0b0908;box-shadow:0 0 0 .14cqh #0d0a08,0 0 0 .3cqh var(--silver-lo);overflow:hidden}
+.rlv u{display:block;height:100%;transform-origin:left;background:linear-gradient(#f1c75b,#a07a28)}
+.racts2 .fbtn{width:auto!important;min-width:24cqh;padding:0 4.6cqh;white-space:nowrap}
+
+.rrec{display:flex;justify-content:center;gap:5cqh;margin:-.4cqh auto 1cqh}
+.rrec span{display:flex;flex-direction:column;align-items:center}
+.rrec b{font:400 3.6cqh var(--display);font-weight:400;color:#f1ebdf;line-height:1.1}
+.rrec small{font:400 1.45cqh var(--fellsc);letter-spacing:.18em;text-transform:uppercase;color:#a99c80}
+
+/* v90: new foes sized against the knight */
+body.fighting #foe[data-id="boghound"],body.fighting #foe[data-id="emberhound"]{height:52%!important}
+body.fighting #foe[data-id="ribcrawler"]{height:54%!important}
+body.fighting #foe[data-id="lizardman"],body.fighting #foe[data-id="pilgrim"],body.fighting #foe[data-id="penitent"],body.fighting #foe[data-id="ashwitch"]{height:68%!important}
+body.fighting #foe[data-id="squire"]{height:66%!important}
+body.fighting #foe[data-id="golem"]{height:80%!important}
+.mcpics:not(.mats){flex-wrap:wrap;width:13cqh;gap:.5cqh}
+.mcpics:not(.mats) .mcfoe{width:6cqh;height:6cqh}
+.mcpics:not(.mats):has(.mcfoe:only-child) .mcfoe{width:7cqh;height:7cqh}
+.mchunt{width:7cqh;height:7cqh;object-fit:contain;filter:drop-shadow(0 .3cqh .4cqh #000)}
+
+/* v91: blade oils */
+.oilswatch{width:2.6cqh;height:2.6cqh;border-radius:50%;box-shadow:0 0 0 .2cqh #0c0908,0 0 .8cqh currentColor;justify-self:center}
+.fpop .it.oilrow{grid-template-columns:4.4cqh 1fr auto}
+.fpop .it.oilrow small,.encoils small{display:block;font:400 1.4cqh var(--fellsc);letter-spacing:.12em;text-transform:uppercase;color:#a99c80}
+.fpop .it.eq{background:#ffffff10}
+.encoils{display:flex;flex-direction:column;gap:.2cqh}
+.encoils .it{display:grid;grid-template-columns:3.4cqh 1fr auto;align-items:center;gap:1cqh;padding:.4cqh .6cqh;background:none;border:.12cqh solid transparent;color:var(--bone);font:inherit;font-size:1.9cqh;text-align:left;cursor:pointer}
+.encoils .it:disabled{opacity:.4;cursor:default} .encoils .it:hover:not(:disabled){background:#ffffff0d}
+.encoils .it.eq{border-color:var(--gold);background:#f1c75b14}
+.encoils .it i{font-style:normal} .encoils b{font-weight:400} .encoils .up{color:#a7e08a} .encoils .dn{color:#ff8a8f}
+.oilchip{font:400 1.4cqh var(--fellsc);letter-spacing:.1em;text-transform:uppercase;border:.14cqh solid;padding:.1cqh .7cqh;margin-left:.6cqh;vertical-align:middle}
+body[data-oil="ash"] #hero .dglow{--oc:#ff8a3d}
+body[data-oil="blight"] #hero .dglow{--oc:#8fd14f}
+body[data-oil="blood"] #hero .dglow{--oc:#d8454d}
+body[data-oil="void"] #hero .dglow{--oc:#a678e8}
+body[data-oil="bone"] #hero .dglow{--oc:#e9e1cf}
+.enc dt:has(+dd .encoils){align-self:start;padding-top:1cqh}
+
+#hero .dglow{display:none;pointer-events:none}
+body[data-oil]:not([data-oil=""]) #hero .dglow{display:block;opacity:.9;mix-blend-mode:screen;
+  filter:brightness(0) drop-shadow(0 0 2px var(--oc)) drop-shadow(0 0 5px var(--oc));
+  -webkit-mask-image:linear-gradient(to top,transparent 0 var(--guard),#000 calc(var(--guard) + 4%));mask-image:linear-gradient(to top,transparent 0 var(--guard),#000 calc(var(--guard) + 4%))}
+
+/* v94: fight transition — the dark closes like a fog of ash, the foe is named, then it parts */
+.fint{position:absolute;inset:0;z-index:60;display:grid;place-items:center;pointer-events:all;
+  background:radial-gradient(ellipse at 50% 50%,#0c0908f2 0%,#050304 70%);animation:fintIn .6s cubic-bezier(.4,0,.2,1) both}
+.fint::before{content:"";position:absolute;inset:-10%;background:radial-gradient(ellipse at 50% 50%,transparent 20%,#000 75%);opacity:.9}
+.fint.boss{background:radial-gradient(ellipse at 50% 50%,#2a0a0cf2 0%,#050304 70%)}
+.fint.out{animation:fintOut .65s cubic-bezier(.4,0,.2,1) forwards}
+@keyframes fintIn{from{opacity:0;-webkit-mask-image:radial-gradient(circle at 50% 50%,transparent 60%,#000 61%);mask-image:radial-gradient(circle at 50% 50%,transparent 60%,#000 61%);-webkit-mask-size:300% 300%;mask-size:300% 300%;-webkit-mask-position:center;mask-position:center}to{opacity:1}}
+@keyframes fintOut{from{opacity:1;filter:blur(0)}to{opacity:0;filter:blur(1.2cqh)}}
+.fintx{position:relative;text-align:center;color:#f1ebdf;animation:fintTx 1.25s ease-out both}
+.fintx small{display:block;font:400 1.9cqh var(--fellsc);letter-spacing:.34em;text-transform:uppercase;color:var(--silver)}
+.fint.boss .fintx small{color:#e98a8f}
+.fintx b{display:block;margin-top:.6cqh;font:400 7cqh var(--display);font-weight:400;text-shadow:0 0 2.4cqh #000}
+.fint.boss .fintx b{color:#ffd9d9;text-shadow:0 0 3cqh #c8323a99,0 0 1cqh #000}
+.fintx i{display:block;height:.18cqh;margin:1.6cqh auto 0;width:0;background:linear-gradient(90deg,transparent,var(--silver),transparent);animation:fintLine .8s .25s ease-out forwards}
+.fint.boss .fintx i{background:linear-gradient(90deg,transparent,#c8323a,transparent)}
+@keyframes fintTx{0%{opacity:0;transform:translateY(1cqh);letter-spacing:.2em}35%{opacity:1;transform:none;letter-spacing:0}100%{opacity:1}}
+@keyframes fintLine{to{width:42cqh}}
+/* the foe steps out of the dark */
+body.fighting #foe.enter{animation:foeIn .9s .35s cubic-bezier(.2,.8,.2,1) both,breatheE 3.2s 1.25s ease-in-out infinite!important}
+@keyframes foeIn{from{opacity:0;transform:translateX(6cqh);filter:brightness(0)}60%{filter:brightness(.6)}to{opacity:1;transform:none;filter:none}}
+@media (prefers-reduced-motion:reduce){.fint,.fint.out,.fintx,body.fighting #foe.enter{animation-duration:.01s!important}}
+.fintx em{display:inline;font:inherit;font-style:normal;color:#cbbfa6}
+.fint.boss .fintx em{color:#e9a9a9}
+
+/* v98: dock portrait in the thorned iron ring */
+.dock{overflow:visible;border-color:#8e887f66!important}
+.smed{width:7.4cqh;height:7.4cqh;margin:-.4cqh 1.8cqh -.4cqh 1.8cqh;border:0;background:radial-gradient(circle at 50% 35%,#3a2a1e,#0e0907);box-shadow:none;transition:filter .15s}
+.smed:hover,.smed.on,.smed:focus-visible{transform:none;box-shadow:none;filter:brightness(1.15)}
+.smed .sring{position:absolute;left:50%;top:50%;width:178%;height:178%;transform:translate(-50%,-50%);pointer-events:none;filter:drop-shadow(0 .4cqh .7cqh #000c)}
+.smed b{right:-1.3cqh;bottom:-1.1cqh;z-index:2;min-width:2.6cqh;height:2.6cqh;padding:0 .4cqh;display:grid;place-items:center;border-radius:50%;background:radial-gradient(circle at 50% 35%,#2a2420,#0b0807);color:var(--bone);font:400 1.5cqh var(--display);border:.18cqh solid var(--silver-lo);box-shadow:0 0 0 .15cqh #000,0 .3cqh .5cqh #000c}
+.smed .sclip{position:absolute;inset:0;border-radius:50%;overflow:hidden}
+body:not(.portraitIcon) .smed #stripFace{position:absolute;width:260%;height:auto;max-width:none;left:52%;top:-6%;transform:translateX(-50%);border-radius:0;object-fit:initial}
+/* v98: faces centred in every enemy portrait */
+.fcrop{position:relative;overflow:hidden;display:block}
+.fcrop>img,.medal img.ffit{position:absolute!important;max-width:none!important;transform:none!important;object-fit:fill!important}
+
+/* v99: temper strike reveal — radial vignette opens on each hammer blow */
+@property --fr{syntax:'<percentage>';inherits:false;initial-value:0%}
+#forgeFX{position:fixed;inset:0;z-index:2147483000;pointer-events:none;opacity:0;background:#000;display:none}#forgeFX.hit{display:block}
+#forgeFX img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:47% 61%;transform-origin:47% 61%;--fr:0%;
+  -webkit-mask-image:radial-gradient(circle at 47% 61%,#000 var(--fr),transparent calc(var(--fr) + 22%));mask-image:radial-gradient(circle at 47% 61%,#000 var(--fr),transparent calc(var(--fr) + 22%))}
+#forgeFX .ff{position:absolute;left:47%;top:61%;width:1px;height:1px}
+#forgeFX .ff i{position:absolute;left:0;top:0;width:.5vh;height:.5vh;border-radius:50%;background:#ffe2a0;box-shadow:0 0 .8cqh .3cqh #ff8a2a;opacity:0}
+#forgeFX::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at 47% 61%,#fff6dccc,#ffb04a55 12%,transparent 34%);opacity:0}
+#forgeFX.hit{animation:ffShow 1.15s linear}
+#forgeFX.hit img{animation:ffOpen 1.15s cubic-bezier(.2,.9,.25,1)}
+#forgeFX.hit::after{animation:ffFlash .45s ease-out}
+#forgeFX.hit .ff i{animation:ffSpark var(--d,.8s) cubic-bezier(.15,.8,.3,1) var(--w,0s)}
+@keyframes ffShow{0%{opacity:1}78%{opacity:1}100%{opacity:0}}
+@keyframes ffOpen{0%{--fr:0%;transform:scale(1.08)}16%{--fr:40%;transform:scale(1)}100%{--fr:70%;transform:scale(1.02)}}
+@keyframes ffFlash{0%{opacity:1}100%{opacity:0}}
+@keyframes ffSpark{0%{opacity:1;transform:translate(0,0) scale(1.2)}70%{opacity:.9}100%{opacity:0;transform:translate(var(--x),var(--y)) scale(.3)}}
+
 </style>
 
 <div id="ambient" aria-hidden="true"></div>
@@ -1580,7 +1724,7 @@ button.medal:hover,button.medal:focus-visible{filter:brightness(1.18);outline:no
   </div>
 
   <!-- CRAFT -->
-  <div class="view" id="v-craft" hidden>
+  <div class="view" id="v-craft" hidden><div id="forgeFX" aria-hidden="true"><img src="art/final/forge-strike.webp" alt="" onerror="this.remove()"><div class="ff"></div></div>
     <div class="band"></div>
     <div class="stations" id="cTabs">
       <button class="station forge" data-s="smithing" aria-label="Forge"><span class="glow"></span><span class="motes"></span><span class="stag">Forge <b id="cl-smithing">1</b></span></button>
@@ -1617,7 +1761,7 @@ button.medal:hover,button.medal:focus-visible{filter:brightness(1.18);outline:no
     <div class="fcross" id="fMenu">
       <img class="fstar" src="art/final/ui-star.webp" alt="">
       <button class="fbtn top" id="fAttack"><span>Attack</span></button>
-      <button class="fbtn left" id="fWeap"><span>Weapons</span></button>
+      <button class="fbtn left" id="fWeap"><span>Oils</span></button>
       <button class="fbtn right" id="fItem"><span>Items</span></button>
       <button class="fbtn bot" id="fFlee"><span>Flee</span></button>
     </div>
@@ -1638,9 +1782,10 @@ button.medal:hover,button.medal:focus-visible{filter:brightness(1.18);outline:no
   <svg width="0" height="0" style="position:absolute"><filter id="inky"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="3"/><feDisplacementMap in="SourceGraphic" scale="1.3"/></filter></svg>
   <button id="dGather" hidden></button>
 
+  <button class="navback" id="navBack" hidden><span class="nbs">‹</span><span class="nbt"><b id="navBackTo"></b><small id="navBackSub"></small></span></button>
   <div class="dock" id="dock">
-    <button class="navback" id="navBack" hidden><span class="nbs">‹</span><span class="nbt"><b id="navBackTo"></b><small id="navBackSub"></small></span></button><span class="ssep nbsep"></span>
-    <button class="smed" id="stripMed" aria-label="Character"><img id="stripFace" alt=""><b id="railLv">1</b></button>
+    
+    <button class="smed" id="stripMed" aria-label="Character"><span class="sclip"><img id="stripFace" alt=""></span><img class="sring" src="art/final/ui-ring.webp" alt=""><b id="railLv">1</b></button>
     <div class="swho"><b id="stripName"></b><small id="stripSub"></small></div><span class="ssep"></span>
     <div class="sbars">
       <div><div class="slbl"><span>Health</span><span id="stripHpN"></span></div><div class="sb hp"><i id="stripHp"></i></div></div>
@@ -1696,7 +1841,7 @@ button.medal:hover,button.medal:focus-visible{filter:brightness(1.18);outline:no
     <div class="facepick" id="facePick" hidden>
       <div class="fpdoll"><div class="doll pdoll2" id="faceDoll"><div class="dstage"><img class="dl dface" alt="" hidden><img class="dl dbody" alt=""><img class="dl dshield" alt="" hidden><img class="dl dweap" alt="" hidden><img class="dl dhands" alt="" hidden><img class="dl dhelm" alt="" hidden></div></div></div>
       <div class="fpside"><label class="fpname"><small>Name</small><input id="nameIn" maxlength="18" autocomplete="off" spellcheck="false" placeholder="Nameless"></label><div class="fpgrid" id="faceGrid"></div>
-        <div class="fpacts"><button class="inkbtn" id="faceBack">Back</button><button class="sealbtn main ib" id="faceGo"><span class="uicon"><img class="uii" src="art/final/ui-engage.webp" alt=""></span>Take up the oath</button></div></div>
+        <div class="fpacts"><button class="inkbtn" id="faceBack">Back</button><button class="sealbtn main ib" id="faceGo"><span class="uicon"><img class="uii" src="art/final/ui-engage.webp" alt=""></span>Rise unsworn</button></div></div>
     </div>
   </div>
   <div id="journal" hidden></div><button id="journalClose" hidden></button><button id="homeBtn" hidden></button>
@@ -1892,7 +2037,10 @@ const EL = {
 };
 const INK = { ash:'#a24a12', blight:'#45701a', blood:'#8a161b', void:'#55287e', bone:'#6b5634' };
 const elTag = e => e ? `<span class="el" style="color:${INK[e]}">${EL[e].name}</span>` : '';
-function elMult(we, ee){ if (!we || !ee) return 1; if (EL[we].beats === ee) return 1.5; if (EL[ee].beats === we) return .75; return 1; }
+function elMult(we, ee){ if (!we || !ee) return 1; if (EL[we].beats === ee) return 1.5; if (we === ee) return .25; return 1; }
+const OIL_NAME = { ash:'Ember Oil', blight:'Rot Resin', blood:'Bloodblack Oil', void:'Hollow Pitch', bone:'Marrow Wax' };
+const oilEl = () => (typeof F !== 'undefined' && F && F.oil) || null;
+const oilTag = el => el ? `<b style="color:${EL[el].color}">${EL[el].name}</b>` : '';
 
 /* ================= world ================= */
 const REGIONS = [
@@ -1900,27 +2048,27 @@ const REGIONS = [
     pal:{ sky:['#0c1220','#1c2638'], moon:'#c9d3e3', glow:'#9fb4d6', fog:'#6f86a8', g1:'#161d2a', g2:'#0f141d', spire:'#1a2232', water:'#142233',
           fsky:['#0e1420','#2a1c28'], fmoon:'#b8484e', fglow:'#c8323a', fg1:'#1a1820', fg2:'#120f16', fspire:'#221a24' },
     gather:{ mining:['Grave-iron','Bloodstone'], foraging:['Nightshade','Moonpetal'], hunting:['Fen hare','Pale venison'] },
-    enemies:['ghoul','warden'] },
+    enemies:['ghoul','lizardman','pilgrim','boghound','warden'] },
   { id:'marches', tier:2, name:'The Dusk Marches', mood:'Decline', color:'#c9893f', req:{ combat:5, boss:'warden' }, skillReq:5, xpMult:2.2,
     pal:{ sky:['#1a1226','#4a2e2a'], moon:'#e0a050', glow:'#e0a050', fog:'#9a6a8a', g1:'#2a1a22', g2:'#170f15', spire:'#2c1c26', water:'#2a1c2a',
           fsky:['#1c1022','#5a3424'], fmoon:'#e09a48', fglow:'#e08a40', fg1:'#2a1820', fg2:'#170d13', fspire:'#30192a' },
     gather:{ mining:['Duskiron','Duskopal'], foraging:['Witherbloom','Violet lotus'], hunting:['Boar meat','Duskelk venison'] },
-    enemies:['revenant','abbess'] },
+    enemies:['revenant','crow','deserter','ringer','abbess'] },
   { id:'reddening', tier:3, name:'The Reddening', mood:'Dread', color:'#c8323a', req:{ combat:10, boss:'abbess' }, skillReq:10, xpMult:4,
     pal:{ sky:['#1a0a12','#3a0f17'], moon:'#c8323a', glow:'#c8323a', fog:'#a83a40', g1:'#22101a', g2:'#170b12', spire:'#2a1219', water:'#2a0e14',
           fsky:['#1a0a12','#3a0f17'], fmoon:'#c8323a', fglow:'#c8323a', fg1:'#22101a', fg2:'#170b12', fspire:'#2a1219' },
     gather:{ mining:['Bloodsteel','Heartstone'], foraging:['Crimson thorn','Sanguine lily'], hunting:['Elk haunch','Wraith hart'] },
-    enemies:['thrall','king'] },
+    enemies:['thrall','leech','ribcrawler','penitent','king'] },
   { id:'ashen', tier:4, name:'The Ashen Reach', mood:'Ruin', color:'#e0773a', req:{ combat:15, boss:'king' }, skillReq:15, xpMult:6.5,
     pal:{ sky:['#141012','#3a2418'], moon:'#e0773a', glow:'#e0773a', fog:'#8a7a70', g1:'#1e1816', g2:'#141010', spire:'#261c18', water:'#221a16',
           fsky:['#141012','#3a2418'], fmoon:'#e0773a', fglow:'#e0773a', fg1:'#1e1816', fg2:'#141010', fspire:'#261c18' },
     gather:{ mining:['Cinderiron','Emberglass'], foraging:['Ashroot','Ember lily'], hunting:['Ash goat','Cinder stag'] },
-    enemies:['pyrewight','marshal'] },
+    enemies:['pyrewight','emberhound','ashwitch','golem','marshal'] },
   { id:'hollow', tier:5, name:'The Hollow Crown', mood:'Reckoning', color:'#7f95d6', req:{ combat:20, boss:'marshal' }, skillReq:20, xpMult:10,
     pal:{ sky:['#070a14','#141c33'], moon:'#c9d3f0', glow:'#7f95d6', fog:'#5a6a95', g1:'#0f1322', g2:'#090c16', spire:'#141a2c', water:'#0e1426',
           fsky:['#070a14','#141c33'], fmoon:'#a8b6e6', fglow:'#7f95d6', fg1:'#0f1322', fg2:'#090c16', fspire:'#141a2c' },
     gather:{ mining:['Oathsteel','Voidglass'], foraging:['Grave lotus','Black rose'], hunting:['Barrow stag','Hollow hart'] },
-    enemies:['forsworn','firstoath'] },
+    enemies:['forsworn','wraith','squire','ghast','firstoath'] },
 ];
 const regionById = id => REGIONS.find(r => r.id === id);
 const BOSS_MATS = ['Rotheart','Hollow shard','Kingsmarrow','Ember heart','Crown shard'];
@@ -1928,6 +2076,51 @@ const ALL_MATS = REGIONS.flatMap(r => Object.values(r.gather).flat()).concat(BOS
 const RARE_MATS = new Set(REGIONS.flatMap(r => Object.values(r.gather).map(g => g[1])).concat(BOSS_MATS));
 
 const ENEMIES = {
+  lizardman:{ name:'Mire Lizardman', el:'blood', hp:110, armor:1, xp:75, region:'fen',
+             attacks:[{name: "Cleave", tell: "The lizardman raises its bone cleaver…", speed: 1.0, dmg: 11}, {name: "Tail whip", tell: "Its tail snaps round!", speed: 1.7, dmg: 8}],
+             loot:[["Grave-iron", 1, 2, 1], ["Nightshade", 1, 2, 0.6]] },
+  pilgrim:{ name:'Drowned Pilgrim', el:'void', hp:120, armor:0, xp:70, region:'fen',
+             attacks:[{name: "Sodden grasp", tell: "The pilgrim reaches out, dripping…", speed: 0.9, dmg: 12}, {name: "Bell toll", tell: "Its rusted bell rings!", speed: 1.5, dmg: 9}],
+             loot:[["Grave-iron", 1, 2, 1], ["Nightshade", 1, 2, 0.6]] },
+  boghound:{ name:'Bog Hound', el:'bone', hp:80, armor:0, xp:65, region:'fen',
+             attacks:[{name: "Bite", tell: "The hound bares its jaws…", speed: 1.2, dmg: 10}, {name: "Pounce", tell: "It springs!", speed: 1.9, dmg: 9}],
+             loot:[["Grave-iron", 1, 2, 1], ["Nightshade", 1, 2, 0.6]] },
+  crow:{ name:'Gallows Crow', el:'blight', hp:150, armor:2, xp:190, region:'marches',
+             attacks:[{name: "Wing beat", tell: "The crow spreads its wings wide…", speed: 1.0, dmg: 19}, {name: "Peck", tell: "The beak darts in!", speed: 2.0, dmg: 15}],
+             loot:[["Duskiron", 1, 2, 1], ["Witherbloom", 1, 2, 0.6]] },
+  deserter:{ name:'Deserter', el:'blood', hp:190, armor:4, xp:200, region:'marches',
+             attacks:[{name: "Axe chop", tell: "The deserter heaves his axe up…", speed: 0.95, dmg: 22}, {name: "Shove", tell: "He lunges in desperation!", speed: 1.7, dmg: 16}],
+             loot:[["Duskiron", 1, 2, 1], ["Witherbloom", 1, 2, 0.6]] },
+  ringer:{ name:'Bell-Ringer', el:'bone', hp:170, armor:3, xp:195, region:'marches',
+             attacks:[{name: "Bell swing", tell: "The bell swings back on its chain…", speed: 0.9, dmg: 23}, {name: "Toll", tell: "A deafening toll!", speed: 1.6, dmg: 17}],
+             loot:[["Duskiron", 1, 2, 1], ["Witherbloom", 1, 2, 0.6]] },
+  leech:{ name:'Leech Priest', el:'blood', hp:260, armor:6, xp:420, region:'reddening', drain:0.25,
+             attacks:[{name: "Censer", tell: "The priest lifts his dripping censer…", speed: 1.0, dmg: 28}, {name: "Leech throw", tell: "He flings a leech!", speed: 1.8, dmg: 22}],
+             loot:[["Bloodsteel", 1, 2, 1], ["Crimson thorn", 1, 2, 0.6], ["Elk haunch", 1, 1, 0.35]] },
+  ribcrawler:{ name:'Rib-Crawler', el:'void', hp:230, armor:8, xp:400, region:'reddening',
+             attacks:[{name: "Leg stab", tell: "Bony legs rear up…", speed: 1.1, dmg: 27}, {name: "Skitter", tell: "It skitters in fast!", speed: 2.0, dmg: 22}],
+             loot:[["Bloodsteel", 1, 2, 1], ["Crimson thorn", 1, 2, 0.6]] },
+  penitent:{ name:'Flayed Penitent', el:'ash', hp:250, armor:5, xp:410, region:'reddening',
+             attacks:[{name: "Scourge", tell: "The penitent draws back his scourge…", speed: 1.0, dmg: 30}, {name: "Frenzy", tell: "He lashes wildly!", speed: 1.9, dmg: 23}],
+             loot:[["Bloodsteel", 1, 2, 1], ["Crimson thorn", 1, 2, 0.6]] },
+  emberhound:{ name:'Ember Hound', el:'ash', hp:300, armor:8, xp:640, region:'ashen',
+             attacks:[{name: "Maul", tell: "The hound crouches, smouldering…", speed: 1.15, dmg: 34}, {name: "Ember lunge", tell: "It leaps trailing sparks!", speed: 2.0, dmg: 28}],
+             loot:[["Cinderiron", 1, 2, 1], ["Ashroot", 1, 2, 0.6]] },
+  ashwitch:{ name:'Ash Witch', el:'blight', hp:320, armor:7, xp:660, region:'ashen',
+             attacks:[{name: "Censer smoke", tell: "The witch swings her censer slowly…", speed: 0.9, dmg: 38}, {name: "Hex", tell: "A green flash!", speed: 1.8, dmg: 27}],
+             loot:[["Cinderiron", 1, 2, 1], ["Ashroot", 1, 2, 0.6], ["Ash goat", 1, 1, 0.35]] },
+  golem:{ name:'Slag Golem', el:'bone', hp:420, armor:16, xp:700, region:'ashen',
+             attacks:[{name: "Slam", tell: "The golem raises both fists…", speed: 0.75, dmg: 44}, {name: "Grind", tell: "It lurches forward!", speed: 1.4, dmg: 32}],
+             loot:[["Cinderiron", 1, 2, 1], ["Ashroot", 1, 2, 0.6]] },
+  wraith:{ name:'Hollow Wraith', el:'blood', hp:520, armor:12, xp:1050, region:'hollow', drain:0.3,
+             attacks:[{name: "Feed", tell: "The wraith glides closer, reaching…", speed: 1.05, dmg: 48}, {name: "Shriek", tell: "A shriek of hunger!", speed: 2.0, dmg: 38}],
+             loot:[["Oathsteel", 1, 2, 1], ["Grave lotus", 1, 2, 0.6], ["Barrow stag", 1, 1, 0.35]] },
+  squire:{ name:'Hollow Squire', el:'bone', hp:440, armor:15, xp:920, region:'hollow',
+             attacks:[{name: "Thrust", tell: "The squire sets its notched sword…", speed: 1.2, dmg: 42}, {name: "Buckler bash", tell: "It rams with the buckler!", speed: 1.9, dmg: 33}],
+             loot:[["Oathsteel", 1, 2, 1], ["Grave lotus", 1, 2, 0.6]] },
+  ghast:{ name:'Rime Ghast', el:'blight', hp:460, armor:12, xp:960, region:'hollow',
+             attacks:[{name: "Frost claw", tell: "Ice cracks along its claws…", speed: 1.0, dmg: 44}, {name: "Frozen breath", tell: "A gust of frozen breath!", speed: 1.8, dmg: 36}],
+             loot:[["Oathsteel", 1, 2, 1], ["Grave lotus", 1, 2, 0.6]] },
   ghoul:   { name:'Fen Ghoul', el:'blight', hp:90, armor:0, xp:60, region:'fen',
              attacks:[{ name:'Claw', tell:'The ghoul drags its claws back…', speed:1.0, dmg:10 },{ name:'Lunge', tell:'The ghoul lunges!', speed:1.6, dmg:8 }],
              loot:[['Grave-iron',1,2,1],['Nightshade',1,2,.6]] },
@@ -1977,23 +2170,23 @@ const wSrc = id => ART + 'weapon-' + id + '.webp';
 const wImg = (id, cls = 'wthumb') => `<img class="${cls}" src="${wSrc(id)}" alt="" loading="lazy" onerror="this.classList.add('missing')">`;
 const RECIPES = {
   smithing:[
-    T(1,'Grave-iron tools',1,20,{'Grave-iron':6}),
     A('a1',1,"Recruit's Mail",1,25,{'Grave-iron':4},2),
     W('ls2',2,'Duskiron Longsword',5,90,{'Duskiron':4},'sword',16),
     A('a2',2,'Brigandine',5,70,{'Duskiron':7},4),
-    T(2,'Duskiron tools',5,60,{'Duskiron':8}),
     W('ls3',3,'Bloodsteel Longsword',10,170,{'Bloodsteel':5},'sword',26),
     A('a3',3,"Knight's Plate",10,140,{'Bloodsteel':8},7),
-    T(3,'Bloodsteel tools',10,120,{'Bloodsteel':10}),
     W('ls4',4,'Cinderiron Longsword',15,280,{'Cinderiron':6},'sword',38),
     A('a4',4,'Dread Marcher Plate',15,240,{'Cinderiron':9},10),
-    T(4,'Cinderiron tools',15,200,{'Cinderiron':12}),
     W('ls5',5,'Oathbreaker',20,420,{'Oathsteel':6,'Voidglass':1},'sword',52),
     A('a5',5,"Oathless Lord's Plate",20,380,{'Oathsteel':10,'Voidglass':2},14),
-    T(5,'Oathsteel tools',20,320,{'Oathsteel':14}),
   ],
   alchemy:[
     { id:'mend', tier:1, name:'Mending Draught', lv:1, xp:20, cost:{'Nightshade':2}, kind:'use', heal:30 },
+    { id:'oil_ash', tier:1, name:'Ember Oil', lv:1, xp:15, cost:{'Grave-iron':1,'Nightshade':1}, kind:'use', oil:'ash' },
+    { id:'oil_blight', tier:1, name:'Rot Resin', lv:2, xp:15, cost:{'Nightshade':2}, kind:'use', oil:'blight' },
+    { id:'oil_blood', tier:1, name:'Bloodblack Oil', lv:3, xp:18, cost:{'Fen hare':1,'Nightshade':1}, kind:'use', oil:'blood' },
+    { id:'oil_void', tier:1, name:'Hollow Pitch', lv:4, xp:18, cost:{'Grave-iron':2,'Nightshade':1}, kind:'use', oil:'void' },
+    { id:'oil_bone', tier:1, name:'Marrow Wax', lv:5, xp:20, cost:{'Fen hare':2}, kind:'use', oil:'bone' },
     { id:'bward', tier:1, name:'Blightward Tonic', lv:2, xp:30, cost:{'Nightshade':3,'Grave-iron':1}, kind:'use', ward:'blight' },
     { id:'elix', tier:1, name:'Moonpetal Elixir', lv:4, xp:80, cost:{'Nightshade':2,'Moonpetal':1}, kind:'use', windowUp:.15, rare:true },
     { id:'wdraught', tier:2, name:'Witherbloom Draught', lv:6, xp:60, cost:{'Witherbloom':2}, kind:'use', heal:50 },
@@ -2033,7 +2226,7 @@ function recipeText(r){
   if (r.kind === 'helm') return `Helm · blocks ${r.armor} damage per hit`;
   if (r.kind === 'armor') return `Armour · blocks ${r.armor} damage per hit · helm included`;
   if (r.kind === 'tool') return toolTier() >= r.tier ? 'Crafted. Tools are kept for good and used at every camp, so each is forged only once' : `Gathering tools · ${TOOL_POW[r.tier]} work per click (now ${TOOL_POW[toolTier()]})`;
-  const b = []; if (r.heal) b.push(`Heals ${r.heal}`); if (r.ward) b.push(`Take 30% less ${EL[r.ward].name} damage this fight`); if (r.windowUp) b.push(`Better crit odds this fight`); if (r.freeParry) b.push('your next block is certain');
+  const b = []; if (r.oil) b.push(`Blade oil · ×1.5 damage to ${EL[EL[r.oil].beats].name} foes for one fight, ×0.25 to ${EL[r.oil].name} foes`); if (r.heal) b.push(`Heals ${r.heal}`); if (r.ward) b.push(`Take 30% less ${EL[r.ward].name} damage this fight`); if (r.windowUp) b.push(`Better crit odds this fight`); if (r.freeParry) b.push('your next block is certain');
   return b.join(', ');
 }
 const GATHER_UI = {
@@ -2212,7 +2405,7 @@ const ring = opts => autoRing(opts);
 
 /* ================= views ================= */
 let view = 'hub';
-function go(v, arg){
+function go(v, arg){ if (v !== 'fight') document.body.dataset.oil = '';
   stopGather(); clearRings(); $('pops').innerHTML = ''; document.querySelectorAll('.banner').forEach(b => { if (v !== 'hub') b.remove(); });
   view = v;
   ['hub','gather','craft','fight','map','inn'].forEach(k => $('v-' + k).hidden = k !== v);
@@ -2281,10 +2474,10 @@ function bestFor(kind){ const all = stacks().filter(st => st.kind === kind && (k
   return all.sort((a, b) => kind === 'weapon' ? b.top.dmg - a.top.dmg : kind === 'armor' ? b.top.armor - a.top.armor : 0)[0]; }
 
 let invFilt = 'all';
-const INV_TABS = [['all','All'],['weapon','Weapons'],['apparel','Apparel'],['use','Supplies'],['mat','Materials'],['skills','Skills']];
+const INV_TABS = [['all','All'],['weapon','Weapons'],['apparel','Armor'],['use','Supplies'],['mat','Materials'],['skills','Skills']];
 const SK_ORDER = ['combat', 'smithing', 'alchemy', 'cooking', 'mining', 'foraging', 'hunting'];
 const SK_SHORT = { combat:'Combat', mining:'Mining', foraging:'Forage', hunting:'Hunt', smithing:'Smith', alchemy:'Alchemy', cooking:'Cook' };
-const SK_DESC = { combat:'Raises health and how often you crit. Gates which weapons you can wield.', smithing:'Forge longswords, armour and gathering tools at the Workshop forge.', alchemy:'Brew draughts, wards and elixirs at the apothecary.', cooking:'Cook meals that heal and steel you at the hearth.', mining:'Work ore veins and seams in the camps.', foraging:'Gather herbs and blooms in the camps.', hunting:'Trap and hunt game in the camps.' };
+const SK_DESC = { combat:'Raises health and how often you crit. Gates which weapons you can wield.', smithing:'Forge longswords and armour at the Workshop forge.', alchemy:'Brew draughts, wards and elixirs at the apothecary.', cooking:'Cook meals that heal and steel you at the hearth.', mining:'Work ore veins and seams in the camps.', foraging:'Gather herbs and blooms in the camps.', hunting:'Trap and hunt game in the camps.' };
 const stStat = st => st.kind === 'weapon' ? st.top.dmg : st.kind === 'armor' ? st.top.armor : st.kind === 'use' ? (st.top.heal || '—') : '—';
 const stKindLbl = st => ({ weapon:'Damage', armor:'Armour', shield:'Block', use:st.top && st.top.heal ? 'Heals' : 'Effect', mat:'Material' })[st.kind];
 function invMatch(st){ return invFilt === 'all' || st.kind === invFilt || (invFilt === 'apparel' && (st.kind === 'armor' || st.kind === 'shield')); }
@@ -2356,13 +2549,13 @@ function statPop(who, where){
   let html = '';
   if (who === 'you'){
     const w = weapon(), ar = armorItem(), hp = inFight ? Math.max(0, Math.round(F.php)) : curHp(), mh = inFight ? F.max : maxHp(), T = WTYPES[w.wtype];
-    const fx = inFight ? [F.burn ? 'Foe burning' : '', F.decay ? 'Foe armour broken' : '', F.ward ? EL[F.ward].name + ' ward' : '', F.windowUp ? 'Elixir' : '', F.freeParry ? 'Guard ready' : ''].filter(Boolean) : [];
+    const fx = inFight ? [F.oil ? OIL_NAME[F.oil] + ' on the blade' : '', F.burn ? 'Foe burning' : '', F.decay ? 'Foe armour broken' : '', F.ward ? EL[F.ward].name + ' ward' : '', F.windowUp ? 'Elixir' : '', F.freeParry ? 'Guard ready' : ''].filter(Boolean) : [];
     html = `<div class="sphead"><b>${heroName()}</b><small>Level ${lv('combat')}</small></div>
-      <div class="spgrid">${statRow('Health', `${hp} / ${mh}`)}${statRow('Damage', w.dmg + (T.strikes > 1 ? ' ×' + T.strikes : ''))}${statRow('Armour', ar ? ar.armor : 0)}${statRow('Block', shieldOn() ? 'Shield' : 'Weapon')}</div>
-      <div class="splist"><p><small>Weapon</small>${itemLabel(w)} · ${T.label}${w.el ? ` · <b style="color:${EL[w.el].color}">${EL[w.el].name}</b>` : ''}${T.pierce ? ' · ignores armour' : ''}</p>
+      <div class="spgrid">${statRow('Health', `${hp} / ${mh}`)}${statRow('Damage', w.dmg + (T.strikes > 1 ? ' ×' + T.strikes : ''))}${statRow('Armour', ar ? ar.armor : 0)}${statRow('Block', shieldOn() ? 'Shield' : 'Weapon')}${statRow('Battles won', battlesWon())}${statRow('Great enemies slain', greatSlain())}</div>
+      <div class="splist"><p><small>Weapon</small>${itemLabel(w)} · ${T.label}${T.pierce ? ' · ignores armour' : ''}</p>
       <p><small>Armour</small>${ar ? itemLabel(ar) : 'None'}</p>
       <p><small>Skills</small>${['smithing','alchemy','cooking','mining','foraging','hunting'].map(k => `${SK_SHORT[k]} ${lv(k)}`).join(' · ')}</p>
-      ${fx.length ? `<p><small>In effect</small>${fx.join(' · ')}</p>` : ''}${RUN.streak ? `<p><small>Win streak</small>${RUN.streak} · +${Math.round((runMult() - 1) * 100)}% XP and spoils</p>` : ''}</div>`;
+      ${fx.length ? `<p><small>In effect</small>${fx.join(' · ')}</p>` : ''}</div>`;
   } else {
     if (!inFight) return; const e = F.e, wk = Object.keys(EL).find(k => EL[k].beats === e.el), strong = EL[e.el].beats;
     html = `<div class="sphead"><b>${e.name}</b><small>Level ${enemyLv(e)}${e.boss ? ' · Boss' : ''}</small></div>
@@ -2441,7 +2634,7 @@ function renderHub(){
     const open = regionOpen(rg), key = 'hunt-' + rg.id;
     if (!(key in FOLD)) FOLD[key] = rg.id === S.region;
     const list = open ? rg.enemies.map(id => {
-      const e = ENEMIES[id], w = weapon(), m = elMult(w.el, e.el);
+      const e = ENEMIES[id], w = weapon(), m = 1;
       const hint = m > 1 ? ' · <span style="color:#a7e08a">your weapon bites here</span>' : m < 1 ? ' · <span style="color:#e98a8f">it resists your weapon</span>' : '';
       return `<button class="entry dest${e.boss ? ' boss' : ''}" data-hunt="${id}" data-rg="${rg.id}">${e.boss ? '<span class="seal bossseal"><span>✠</span></span>' : ''}<span class="t">${e.name.replace('The ', '')}</span><span class="s">${elTag(e.el)} · ${e.hp} hp · weak to ${elTag(Object.keys(EL).find(k => EL[k].beats === e.el))}${hint}${S.kills[id] ? ` · slain ${S.kills[id]}×` : ''}</span></button>`;
     }).join('') : `<span class="detail">Sealed. Needs ${reqText(rg)}.</span>`;
@@ -2496,7 +2689,9 @@ const spotMat = (r, s) => r.gather[s.skill][s.i];
 const spotReq = (r, s) => r.skillReq + (s.extra || 0);
 const spotOpen = (r, s) => S.test || lv(s.skill) >= spotReq(r, s);
 const haulNeed = (r, s) => Math.round((s.k === 'seam' ? 14 : 5) * (1 + (r.tier - 1) * .5));
-const toolTier = () => S.toolTier || 0;
+// no tools to forge any more: work per click grows with the region you're in
+const toolTier = () => Math.max(0, region().tier - 1);
+function settleOldStock(){ if (!S.camp) return; REGIONS.forEach(r => { const c = S.camp[r.id]; if (c && c.stock && Object.keys(c.stock).length){ Object.entries(c.stock).forEach(([m, n]) => n && addMat(m, n)); c.stock = {}; } }); }
 function campOf(id){ S.camp = S.camp || {}; const n = Date.now(); return S.camp[id] = S.camp[id] || { t:n, seen:n, stock:{}, gain:{}, hire:{}, prog:{}, hprog:{}, whet:0, cart:0, lantern:0 }; }
 const campCap = c => 150 * Math.pow(2, c.cart);
 const stockTotal = c => Object.values(c.stock).reduce((a, b) => a + b, 0);
@@ -2507,22 +2702,22 @@ const hireCost = (c, s) => Math.round((s.k === 'seam' ? 3 : 12) * Math.pow(1.17,
 const clickPow = s => TOOL_POW[toolTier()] * (1 + .25 * campOf(region().id).whet) * (1 + (lv(s.skill) - 1) * .02);
 const UPGRADES = [
   { k:'whet',    name:'Whetstones',     max:5, desc:c => `Clicks +25% (now +${c.whet * 25}%)`,           cost:(r, c) => [r.gather.mining[0], 25 * Math.pow(2, c.whet)] },
-  { k:'cart',    name:'Larger cart',    max:4, desc:c => `Stockpile ${campCap(c)} → ${campCap(c) * 2}`,  cost:(r, c) => [r.gather.mining[0], 50 * Math.pow(2, c.cart)] },
   { k:'lantern', name:'Hooded lantern', max:3, desc:c => 'Glints come 25% more often',                 cost:(r, c) => [r.gather.mining[1], 2 * (c.lantern + 1)] },
 ];
-// hirelings' work since the last tick, for every region (also covers time away)
+// hirelings' work since the last tick, for every region (also covers time away, up to a cap)
+const AWAY_CAP_H = 8, awayCap = r => 150 * r.tier; // most a region's hirelings bring in before you come back to look
 function accrue(){
   const now = Date.now();
   REGIONS.forEach(r => {
-    if (!S.camp || !S.camp[r.id]) return; const c = S.camp[r.id], dt = Math.min(7 * 864e5, now - c.t) / 1000; c.t = now;
+    if (!S.camp || !S.camp[r.id]) return; const c = S.camp[r.id], dt = Math.min(AWAY_CAP_H * 36e5, now - c.t) / 1000; c.t = now;
     if (dt <= 0) return;
     const got = SPOTS.map(s => {
       const rate = spotRate(c, s); if (!rate || !spotOpen(r, s)) return 0;
       const work = (c.hprog[s.k] || 0) + rate * dt, need = haulNeed(r, s), n = Math.floor(work / need); c.hprog[s.k] = work - n * need; return n;
     });
-    // a full cart takes no more: share the room left between the spots
-    const want = got.reduce((a, b) => a + b, 0), room = Math.max(0, campCap(c) - stockTotal(c)), k = want > room ? room / want : 1;
-    SPOTS.forEach((s, i) => { const n = Math.floor(got[i] * k); if (!n) return; const m = spotMat(r, s); c.stock[m] = (c.stock[m] || 0) + n; c.gain[m] = (c.gain[m] || 0) + n; });
+    // hirelings bring their haul straight to your pack
+    const want = got.reduce((a, b) => a + b, 0), room = Math.max(0, awayCap(r) - Object.values(c.gain).reduce((a, b) => a + b, 0)), k = want > room ? room / want : 1;
+    SPOTS.forEach((s, i) => { const n = Math.floor(got[i] * k); if (!n) return; const m = spotMat(r, s); addMat(m, n); c.gain[m] = (c.gain[m] || 0) + n; S.xp[s.skill] = (S.xp[s.skill] || 0) + Math.round(n * 2 * r.xpMult); });
   });
 }
 function bankCamp(c, r){
@@ -2583,11 +2778,9 @@ function renderCamp(){
   const have = m => S.mats[m] || 0;
   const row = (img, name, sub, cost, can, attr, cls = '') => `<button class="cup${can ? ' hot' : ''} ${cls}" ${attr} ${can ? '' : 'aria-disabled="true"'}><img src="${img}" alt=""><span><b>${name}</b><small>${sub}</small></span><span class="cost">${cost}</span></button>`;
   const tierNext = toolTier() + 1, toolR = RECIPES.smithing.find(x => x.kind === 'tool' && x.tier === tierNext);
-  const sh = `<div class="cstl"><span>Stockpile</span><span>${tot} / ${cap}</span></div><div class="csb"><i style="transform:scaleX(${Math.min(1, tot / cap)})"></i></div>
-    <div class="cstm">${Object.entries(c.stock).filter(e => e[1]).map(([m, n]) => `<span>${n} ${m}</span>`).join('') || '<span>Empty</span>'}</div>
-    <button class="inkbtn cbank" id="campBank" ${tot ? '' : 'disabled'}>Bank it</button>`;
+  const sh = `<div class="cnote">Hirelings bring what they gather straight to your pack. While you are away they carry up to ${awayCap(r)} before they wait for you to return.</div>`;
   let h = `<div class="chead"><h4>${r.name.replace('The ', '')} camp</h4><div class="crate">${rateTxt}</div></div><div class="cstock" id="campStock"></div>
-    ` + (toolTier() >= r.tier ? '' : '<h5>Tools</h5>' + row(`${ART}ui-mine.webp`, toolTier() ? RECIPES.smithing.find(x => x.kind === 'tool' && x.tier === toolTier()).name : 'Bare hands', `${TOOL_POW[toolTier()]} work per click` + (toolR ? ` · next: ${toolR.name} (${TOOL_POW[tierNext]})` : ' · finest made'), toolR ? 'Forge at the<br>Workshop' : '—', !!toolR && canAfford(toolR) && lv('smithing') >= reqLv(toolR), 'data-cg="tool"', 'ui')) + `<h5>Hirelings</h5>`;
+    ` + (true ? '' : '<h5>Tools</h5>' + row(`${ART}ui-mine.webp`, toolTier() ? RECIPES.smithing.find(x => x.kind === 'tool' && x.tier === toolTier()).name : 'Bare hands', `${TOOL_POW[toolTier()]} work per click` + (toolR ? ` · next: ${toolR.name} (${TOOL_POW[tierNext]})` : ' · finest made'), toolR ? 'Forge at the<br>Workshop' : '—', !!toolR && canAfford(toolR) && lv('smithing') >= reqLv(toolR), 'data-cg="tool"', 'ui')) + `<h5>Hirelings</h5>`;
   SPOTS.forEach(s => {
     const m = spotMat(r, s), n = c.hire[s.k] || 0, cost = hireCost(c, s), open = spotOpen(r, s), ms = nextMilestone(n);
     h += open ? row(`${ART}item-${slug(m)}.webp`, s.hire, `+${(HIRE_RATE * hireMult(n + 1) / haulNeed(r, s) * 60).toFixed(1)} ${m}/min · owned ${n}${ms ? ` · ${ms} doubles` : ''}`, `${cost} ${m}`, have(m) >= cost, `data-hire="${s.k}"`)
@@ -2601,7 +2794,6 @@ function renderCamp(){
   if ($('campStock') && $('campStock').dataset.h === sh && $('campPanel').dataset.h === h) return;
   if ($('campPanel').dataset.h !== h){ $('campPanel').innerHTML = h; $('campPanel').dataset.h = h; $('campPanel').querySelectorAll('img').forEach(i => i.onerror = () => { i.onerror = null; i.src = fbIcon('ore'); }); }
   $('campStock').innerHTML = sh; $('campStock').dataset.h = sh;
-  $('campBank').onclick = () => { const n = bankCamp(c, r); say('gLog', `Banked ${n} from the stockpile.`); sfx('pickup'); save(); renderCamp(); };
   $('campPanel').querySelectorAll('[data-hire]').forEach(b => b.onclick = () => { const s = SPOTS.find(x => x.k === b.dataset.hire), m = spotMat(r, s), cost = hireCost(c, s); if (have(m) < cost) return; accrue(); S.mats[m] -= cost; c.hire[s.k] = (c.hire[s.k] || 0) + 1; sfx('pickup'); say('gLog', `A ${s.hire.toLowerCase()} joins the camp.`); save(); renderCamp(); });
   $('campPanel').querySelectorAll('[data-up]').forEach(b => b.onclick = () => { const u = UPGRADES.find(x => x.k === b.dataset.up), [m, n] = u.cost(r, c); if (c[u.k] >= u.max || have(m) < n) return; S.mats[m] -= n; c[u.k]++; sfx('anvil'); save(); renderCamp(); });
   { const tb = $('campPanel').querySelector('[data-cg=tool]'); if (tb) tb.onclick = () => { if (!toolR) return; go('craft'); }; }
@@ -2625,7 +2817,7 @@ function scheduleAmbush(){
   clearTimeout(ambushT); if (view !== 'gather') return;
   ambushT = setTimeout(() => {
     const r = region(), c = campOf(r.id); accrue();
-    if (view === 'gather' && $('encounter').hidden && $('campAmbush').hidden && stockTotal(c) >= campCap(c) * .5 && Math.random() < .4) showAmbush(); else scheduleAmbush();
+    scheduleAmbush(); // the stockpile is gone, so there is nothing to raid
   }, 30000);
 }
 function showAmbush(){
@@ -2646,25 +2838,26 @@ function welcomeBack(){
   const g = Object.entries(c.gain).filter(e => e[1]);
   if (away > 60000 && g.length){
     const h = Math.floor(away / 3.6e6), mn = Math.floor(away / 6e4) % 60;
-    $('campAway').innerHTML = `<h3>While you were gone</h3><small>${h ? h + ' h ' : ''}${mn} m · your hirelings worked ${r.name.replace('The ', 'the ')}</small><ul>${g.map(([m, n]) => `<li><img src="${ART}item-${slug(m)}.webp" alt="" onerror="this.onerror=null;this.src='${fbIcon(MAT_KIND(m))}'"><b>+${n}</b> ${m}</li>`).join('')}</ul>${stockTotal(c) >= campCap(c) ? '<small>The stockpile is full. A bigger cart holds more.</small>' : ''}<div class="row"><button class="cbtn r" id="awayBank">Bank it</button><button class="cbtn" id="awayLater">Leave it in camp</button></div>`;
+    $('campAway').innerHTML = `<h3>While you were gone</h3><small>${h ? h + ' h ' : ''}${mn} m · your hirelings worked ${r.name.replace('The ', 'the ')}</small><ul>${g.map(([m, n]) => `<li><img src="${ART}item-${slug(m)}.webp" alt="" onerror="this.onerror=null;this.src='${fbIcon(MAT_KIND(m))}'"><b>+${n}</b> ${m}</li>`).join('')}</ul><small>Added to your pack.${g.reduce((a, e) => a + e[1], 0) >= awayCap(r) - 3 ? ` That is all they carry (${awayCap(r)}) until you come back.` : ''}</small><div class="row"><button class="cbtn r" id="awayBank">Good</button></div>`;
     $('campAway').hidden = false;
-    $('awayBank').onclick = () => { $('campAway').hidden = true; bankCamp(c, r); sfx('pickup'); save(); renderCamp(); };
-    $('awayLater').onclick = () => { $('campAway').hidden = true; };
+    c.gain = {}; save(); sfx('pickup');
+    $('awayBank').onclick = () => { $('campAway').hidden = true; renderCamp(); };
   }
 }
 function enterCamp(){
   say('gLog', 'Click a spot to work it. Hirelings keep working while you are away.');
-  campBuilt = ''; skillHud('mining'); welcomeBack(); renderCamp(); scheduleGlint(); scheduleAmbush();
+  campBuilt = ''; skillHud('mining'); settleOldStock(); welcomeBack(); renderCamp(); scheduleGlint(); scheduleAmbush();
   clearInterval(campTick); campTick = setInterval(() => { if (view === 'gather') renderCamp(); else { clearInterval(campTick); campCampSeen(); } }, 1000);
   requestAnimationFrame(placeCamp);
 }
 function campCampSeen(){ const c = S.camp && S.camp[region().id]; if (c){ c.seen = Date.now(); save(); } }
 window.__camp = { showAmbush, spawnGlint };   // test hook
+window.__dbg = { ENEMIES, go: (...a) => go(...a), forgeStrike: p => forgeStrike(p), fight: id => { S.region = ENEMIES[id].region || S.region; go("fight", id); } };
 // legacy entry points used elsewhere
 function renderGather(){ renderCamp(); }
 function stopGather(){ clearTimeout(glintT); clearTimeout(ambushT); document.querySelectorAll('.cglint').forEach(g => g.remove()); }
-$('gFight').onclick = () => { stopGather(); encounter(randomFoe(S.region), S.region); };
-$('gBoss').onclick = () => { stopGather(); encounter(bossOf(S.region), S.region); };
+$('gFight').onclick = () => { stopGather(); enterFight(randomFoe(S.region), S.region); };
+$('gBoss').onclick = () => { stopGather(); enterFight(bossOf(S.region), S.region); };
 
 /* ================= CRAFT ================= */
 let cSkill = 'smithing', cTier = 1, picked = 'blade', cBusy = false;
@@ -2709,7 +2902,7 @@ function renderCraft(){
     $('cMeter').innerHTML = `<span class="lmlbl">${SKILL_NAMES[cSkill]}</span><span class="lmnum">${l}</span><span class="lmbar"><i style="transform:scaleX(${f.toFixed(3)})"></i></span><span class="lmxp">${l < 99 ? (x - lo) + ' / ' + (hi - lo) + ' xp' : 'max'}</span>`; }
   if (String(picked).startsWith('~') && cSkill === 'smithing' && S.items.find(i => i.uid === +picked.slice(1))) return renderTemper(+picked.slice(1));
   const r = recipe(); picked = r.id; cTier = r.tier;
-  $('cMats').innerHTML = 'Needs ' + Object.entries(r.cost).map(([m, n]) => `<span class="${(S.mats[m] || 0) < n ? 'short' : ''}">${n} ${m} <small>(${S.mats[m] || 0})</small></span>`).join(' · ');
+  $('cMats').innerHTML = 'Needs ' + Object.entries(r.cost).map(([m, n]) => matLink(m, n)).join(' · ');
   const locked = l < reqLv(r), owned = S.items.filter(i => i.rid === r.id).length;
   $('cName').textContent = r.name; $('cName').className = r.rare ? 'rare' : '';
   $('cStats').innerHTML = craftStats(r).map(([k, v]) => `<span><small>${k}</small><b>${v}</b></span>`).join('');
@@ -2765,7 +2958,7 @@ function makeItem(r, q){
   if (r.kind === 'weapon'){ it.wtype = r.wtype; it.dmg = Math.round(r.dmg * m); if (r.el) it.el = r.el; }
   if (r.kind === 'helm' || r.kind === 'armor') it.armor = r.armor;
   if (r.heal) it.heal = Math.round(r.heal * m);
-  if (r.ward) it.ward = r.ward; if (r.windowUp) it.windowUp = +(r.windowUp * m).toFixed(2); if (r.freeParry) it.freeParry = true;
+  if (r.oil) it.oil = r.oil; if (r.ward) it.ward = r.ward; if (r.windowUp) it.windowUp = +(r.windowUp * m).toFixed(2); if (r.freeParry) it.freeParry = true;
   S.items.push(it);
   return it;
 }
@@ -2809,11 +3002,36 @@ function toolForged(r, it){
   m.hidden = false;
   $('fcOk').onclick = () => { m.hidden = true; sfx('click'); say('cLog', it.notice); save(); renderCraft(); };
 }
+function forgeStrike(perfect){
+  const f = $('forgeFX'); if (!f) return; if (f.parentNode !== document.body) document.body.appendChild(f); const ff = f.querySelector('.ff'); let h = '';
+  for (let i = 0; i < (perfect ? 46 : 30); i++){ const a = Math.random() * Math.PI * 2, d = 12 + Math.random() * (perfect ? 46 : 32);
+    h += `<i style="--x:${Math.cos(a) * d}vh;--y:${Math.sin(a) * d * .8 - 4}vh;--d:${.5 + Math.random() * .7}s;--w:${Math.random() * .08}s"></i>`; }
+  ff.innerHTML = h; f.classList.remove('hit', 'weak'); void f.offsetWidth; f.classList.add('hit'); if (!perfect) f.classList.add('weak');
+  clearTimeout(forgeStrike.t); forgeStrike.t = setTimeout(() => f.classList.remove('hit', 'weak'), 1200);
+}
 function stationBurst(){ const b = document.querySelector(`.station[data-s=${cSkill}]`); if (!b) return; b.classList.remove('burst'); void b.offsetWidth; b.classList.add('burst'); }
 function spark(){ const s = $('spark'); s.classList.remove('on'); void s.getBBox(); s.classList.add('on'); }
+// where a material comes from: a camp spot first, otherwise a foe's drop
+function matSource(m){
+  for (const r of REGIONS) for (const [sk, list] of Object.entries(r.gather)) if (list.includes(m)) return { r, how:'gather', sk };
+  for (const r of REGIONS) for (const id of r.enemies) if ((ENEMIES[id].loot || []).some(l => l[0] === m)) return { r, how:ENEMIES[id].boss ? 'boss' : 'hunt', id };
+  return null;
+}
+function matLink(m, n){
+  const src = matSource(m), have = S.mats[m] || 0, short = have < n;
+  const tip = !src ? '' : src.how === 'gather' ? `Gather in ${src.r.name.replace('The ', '')}` : src.how === 'boss' ? `Dropped by ${ENEMIES[src.id].name} in ${src.r.name.replace('The ', '')}` : `Dropped by foes in ${src.r.name.replace('The ', '')}`;
+  return `<button class="matlink${short ? ' short' : ''}" data-mat="${m}" title="${tip}"${src ? '' : ' disabled'}>${n} ${m} <small>(${have})</small>${src ? '<i>↗</i>' : ''}</button>`;
+}
+function goToSource(m){
+  const src = matSource(m); if (!src) return;
+  closeDrawer(); sfx('page');
+  if (src.how === 'gather' && regionOpen(src.r)){ S.region = src.r.id; save(); mapSel = null; go('gather'); say('gLog', `${m} is gathered here.`); return; }
+  mapSel = src.r.id; go('map');
+}
+document.addEventListener('click', e => { const b = e.target.closest('.matlink'); if (b && !b.disabled) goToSource(b.dataset.mat); });
 function renderTemper(uid){
   const it = S.items.find(i => i.uid === uid), c = temperCost(it), next = it.q === 'Fine' ? 'Masterwork' : 'Fine';
-  $('cMats').innerHTML = 'Needs ' + Object.entries(c).map(([m, n]) => `<span class="${(S.mats[m] || 0) < n ? 'short' : ''}">${n} ${m} <small>(${S.mats[m] || 0})</small></span>`).join(' · ');
+  $('cMats').innerHTML = 'Needs ' + Object.entries(c).map(([m, n]) => matLink(m, n)).join(' · ');
   $('cPrev').innerHTML = wImg(it.rid, 'wbig'); $('cPrev').hidden = false;
   $('cName').textContent = `${itemLabel(it)} → ${next}`; $('cName').className = 'rare';
   $('cStats').innerHTML = [['Damage', `${it.dmg} → ${Math.round(baseDmg(it) * (next === 'Fine' ? 1.25 : 1.6))}`], ['Quality', next]].map(([k, v]) => `<span><small>${k}</small><b>${v}</b></span>`).join('');
@@ -2828,7 +3046,7 @@ async function temperGo(uid){
   for (const [i, at] of [[.84,.56],[.9,.6],[.86,.66]].entries()){
     say('cLog', `Tempering · ring ${i + 1} of 3`);
     const x = await ring({ pt:bgPt(at[0], at[1]), dur:1100, goodTol:Math.min(.6, .3 * sc), perfTol:Math.min(.25, .11 * sc), ringColor:'var(--shade)', autoGood:S.assist });
-    if (x !== 'miss'){ spark(); stationBurst(); sfx('anvil'); } await wait(340);
+    if (x !== 'miss'){ forgeStrike(x === 'perfect'); spark(); stationBurst(); sfx('anvil'); } await wait(x === 'miss' ? 340 : 900);
   }
   const q = QUALITY.find(x => x.name === (it.q === 'Fine' ? 'Masterwork' : 'Fine'));
   it.q = q.name; it.cls = q.cls; it.dmg = Math.round(baseDmg(it) * q.mult);
@@ -2865,7 +3083,7 @@ const bossOf = rg => regionById(rg).enemies.find(id => ENEMIES[id].boss);
 const winsIn = rg => (S.wins || {})[rg] || 0;
 const bossReady = rg => S.test || (S.kills[bossOf(rg)] || 0) > 0 || winsIn(rg) >= BOSS_WINS[rg];
 const randomFoe = rg => { const pool = regionById(rg).enemies.filter(id => !ENEMIES[id].boss); return pool[Math.floor(Math.random() * pool.length)]; };
-let RUN = { streak:0 };
+let RUN = { streak:0 }, PEND_OIL = null;
 let ENC = null;
 function encounter(id, rg){
   const e = ENEMIES[id], w = weapon(), m = elMult(w.el, e.el), weak = Object.keys(EL).find(k => EL[k].beats === e.el), hp = curHp(), mh = maxHp();
@@ -2875,26 +3093,52 @@ function encounter(id, rg){
   $('encName').textContent = e.name.replace('The ', ''); $('encName').classList.toggle('boss', !!e.boss);
   $('encSub').innerHTML = e.boss ? 'It will not let you leave twice.' : ['Something moves in the mist.', 'It has your scent.', 'It blocks the path ahead.'][Math.floor(Math.random() * 3)];
   $('encStats').innerHTML = `<dt>Health</dt><dd>${e.hp}${e.armor ? ` · armour ${e.armor}` : ''}</dd><dt>Nature</dt><dd>${elTag(e.el)} · weak to ${elTag(weak)}</dd>` +
-    `<dt>Your blade</dt><dd>${itemLabel(w)} · ${m > 1 ? '<span class="good">bites deep here</span>' : m < 1 ? '<span class="bad">it resists you</span>' : 'an even match'}</dd>` +
+    `<dt>Blade oil</dt><dd><div class="encoils">${oilRows(e, null)}</div></dd>` +
     `<dt>You</dt><dd><span class="${hp < mh * .4 ? 'bad' : ''}">${hp} / ${mh} health</span></dd>`;
-  $('encNote').innerHTML = hp < mh * .4 ? 'You are badly hurt. Rest at the Inn first.' : RUN.streak ? `Win streak ${RUN.streak} · rewards ×${runMult().toFixed(1)}` : '';
+  $('encNote').innerHTML = hp < mh * .4 ? 'You are badly hurt. Rest at the Inn first.' : '';
+  PEND_OIL = null;
+  $('encStats').querySelectorAll('[data-oil]').forEach(b => b.onclick = () => { const on = PEND_OIL === b.dataset.oil; PEND_OIL = on ? null : b.dataset.oil; $('encStats').querySelectorAll('[data-oil]').forEach(x => x.classList.toggle('eq', x.dataset.oil === PEND_OIL)); sfx('click'); });
   $('encounter').hidden = false; sfx('page'); setTimeout(() => $('encGo').focus(), 50);
 }
-function closeEnc(){ $('encounter').hidden = true; ENC = null; }
+// into a fight: the dark closes in, the foe is named, the dark parts on the field
+let FINT = false;
+function enterFight(id, rg){
+  if (FINT) return; FINT = true;
+  const e = ENEMIES[id], R = regionById(rg), d = document.createElement('div');
+  d.className = 'fint' + (e.boss ? ' boss' : '');
+  const verb = e.boss ? 'awaits your challenge' : ['appears', 'hunts you down'][Math.floor(Math.random() * 2)];
+  d.innerHTML = `<div class="fintx">${e.boss ? '<small>A great enemy appears</small>' : ''}<b>${e.name.replace('The ', '')} <em>${verb}</em></b><i></i></div>`;
+  $('frame').appendChild(d); sfx(e.boss ? 'foe_wind' : 'page');
+  setTimeout(() => { S.region = rg; save(); mapSel = null; PEND_OIL = null; closePanel(); go('fight', id); const f = $('foe'); f.classList.remove('enter'); void f.offsetWidth; f.classList.add('enter'); }, 650);
+  setTimeout(() => d.classList.add('out'), 1250);
+  setTimeout(() => { d.remove(); FINT = false; }, 1900);
+}
+function closeEnc(){ $('encounter').hidden = true; ENC = null; PEND_OIL = null; }
 $('encBack').onclick = closeEnc;
 $('encounter').addEventListener('pointerdown', e => { if (e.target === $('encounter')) closeEnc(); });
-$('encGo').onclick = () => { if (!ENC) return; const { id, rg } = ENC; closeEnc(); S.region = rg; save(); if (ENEMIES[id].boss) RUN.streak = 0; mapSel = null; go('fight', id); };
+$('encGo').onclick = () => { if (!ENC) return; const { id, rg } = ENC; const po = PEND_OIL; closeEnc(); if (po){ const it = ownedOils()[po] && ownedOils()[po][0]; if (it){ S.items = S.items.filter(x => x !== it); PEND_OIL = po; } } S.region = rg; save(); if (ENEMIES[id].boss) RUN.streak = 0; mapSel = null; go('fight', id); };
 document.addEventListener('keydown', e => { if (e.key === 'Escape' && !$('encounter').hidden) closeEnc(); });
 document.addEventListener('keydown', e => { if (view !== 'map' || !mapSel || !$('encounter').hidden) return; if (e.key === 'ArrowLeft') document.querySelector('.mcarrow.prev')?.click(); if (e.key === 'ArrowRight') document.querySelector('.mcarrow.next')?.click(); });
-const runMult = () => 1 + Math.min(RUN.streak, 5) * .1;
+const runMult = () => 1; // streak bonus retired
+const battlesWon = () => Object.values(S.kills || {}).reduce((a, b) => a + b, 0);
+const greatSlain = () => Object.entries(S.kills || {}).reduce((a, [id, n]) => a + (ENEMIES[id] && ENEMIES[id].boss ? n : 0), 0);
 const curHp = () => Math.max(1, Math.min(maxHp(), S.hp == null ? maxHp() : S.hp));
+const FOE_FACE = {"lizardman": [0.29, 0.07, 0.5, 1.513], "pilgrim": [0.494, 0.101, 0.549, 1.835], "boghound": [0.18, 0.38, 0.45, 1.325], "crow": [0.448, 0.101, 0.539, 1.802], "deserter": [0.532, 0.1, 0.474, 1.582], "ringer": [0.502, 0.101, 0.468, 1.565], "leech": [0.547, 0.1, 0.454, 1.517], "ribcrawler": [0.2, 0.4, 0.42, 1.3], "penitent": [0.46, 0.102, 0.46, 1.541], "emberhound": [0.16, 0.46, 0.42, 1.29], "ashwitch": [0.335, 0.103, 0.425, 1.427], "golem": [0.47, 0.1, 0.46, 1.527], "wraith": [0.492, 0.101, 0.496, 1.656], "squire": [0.532, 0.101, 0.509, 1.701], "ghast": [0.391, 0.1, 0.48, 1.6], "ghoul": [0.404, 0.101, 0.375, 1.253], "warden": [0.496, 0.101, 0.382, 1.279], "revenant": [0.523, 0.101, 0.446, 1.493], "abbess": [0.576, 0.102, 0.494, 1.653], "thrall": [0.48, 0.101, 0.391, 1.309], "king": [0.5, 0.11, 0.42, 1.495], "pyrewight": [0.414, 0.1, 0.448, 1.495], "marshal": [0.426, 0.1, 0.451, 1.506], "forsworn": [0.521, 0.1, 0.528, 1.761], "firstoath": [0.5, 0.1, 0.476, 1.587]};
+function fitFace(img, id){
+  const f = FOE_FACE[id]; if (!f){ img.classList.remove('ffit'); img.removeAttribute('style'); return; }
+  const [cx, cy, sz, asp] = f, w = 100 / sz;
+  img.classList.add('ffit'); img.style.cssText = `width:${w}%;height:${w * asp}%;left:${50 - cx * w}%;top:${50 - cy * w * asp}%`;
+}
+const faceThumb = (id, cls) => { const f = FOE_FACE[id]; if (!f) return `<img class="${cls}" src="${ART}enemy-${id}.webp" alt="">`; const [cx, cy, sz, asp] = f, w = 100 / sz; return `<span class="${cls} fcrop"><img src="${ART}enemy-${id}.webp" alt="" style="width:${w}%;height:${w * asp}%;left:${50 - cx * w}%;top:${50 - cy * w * asp}%"></span>`; };
 function startFight(id){
   const e = { id, ...ENEMIES[id] }, w = weapon();
   F = { e, ehp:e.hp, php:curHp(), max:maxHp(), burn:0, decay:false, streak:0, perfs:0, parries:0, ward:null, windowUp:0, freeParry:false, busy:false };
-  paintEnemy(e); $('foe').src = ART + 'enemy-' + id + '.webp'; $('foe').alt = e.name; $('foePortrait').src = $('foe').src;
+  paintEnemy(e); $('foe').dataset.id = id; $('foe').src = ART + 'enemy-' + id + '.webp'; $('foe').alt = e.name; $('foePortrait').src = $('foe').src; fitFace($('foePortrait'), id);
   refreshHero(); $('fItems').hidden = true; renderFight();
-  const m = elMult(w.el, e.el);
-  say('fLog', `${e.name} blocks the path. <em>Strike it.</em>` + (m > 1 ? ` Your ${EL[w.el].name} cuts deep here.` : m < 1 ? ` It resists your ${EL[w.el].name}.` : ''));
+  F.oil = PEND_OIL || null; PEND_OIL = null; document.body.dataset.oil = F.oil || '';
+  const m = elMult(F.oil, e.el);
+  renderFight();
+  say('fLog', `${e.name} blocks the path.` + (F.oil ? ` ${OIL_NAME[F.oil]} ${m > 1 ? '<em>cuts deep here.</em>' : m < 1 ? 'barely bites.' : 'coats your blade.'}` : ' <em>Strike it.</em>'));
   fMenu(true);
 }
 const HERO_FALLBACK = 'data:image/svg+xml,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 200"><g transform="translate(120 0) scale(-1 1)"><path d="M20 190 L28 120 L10 112 L18 70 L40 56 L46 30 L60 8 L74 30 L80 56 L102 70 L110 112 L92 120 L100 190 L74 190 L66 140 L54 140 L46 190z" fill="#17110c" stroke="#c9b085" stroke-width="2.5" stroke-linejoin="round"/><circle cx="16" cy="104" r="18" fill="#2a1d12" stroke="#c9b085" stroke-width="2.5"/></g><path d="M18 110 L4 30" stroke="#c9b085" stroke-width="4" stroke-linecap="round"/></svg>');
@@ -2924,7 +3168,7 @@ function dressDoll(box, g, w, withShield, look = {}){
   face.hidden = !paper; if (paper){ face.src = `${ART}face-m-${look.face || 'knight'}.webp`; face.style.transform = at; }
   helmL.hidden = !(paper && tier && look.helm !== false); if (!helmL.hidden){ helmL.src = `${ART}helm-m-t${tier}.webp`; helmL.style.transform = at; }
   const H = WHOLD[w.wtype], G = WGEO[w.rid];
-  weap.hidden = hands.hidden = !(H && G);
+  weap.hidden = hands.hidden = !(H && G); { const gl = q('.dglow'); if (gl && !(H && G)) gl.hidden = true; }
   if (H && G){
     const S = G.w, px = G.p[0] * S, py = G.p[1] * S, tx = G.t[0] * S, ty = G.t[1] * S, L = Math.hypot(tx - px, ty - py);
     let hx, hy, th;
@@ -2935,6 +3179,10 @@ function dressDoll(box, g, w, withShield, look = {}){
     weap.src = wSrc(w.rid); weap.style.width = S + 'px'; weap.style.height = S + 'px';
     weap.style.transformOrigin = '0 0';
     weap.style.transform = `translate(${DOX + hx}px,${DOY + hy}px) rotate(${rot}rad) scale(${sc}) translate(${-gx}px,${-gy}px)`;
+    // a copy of the sword masked to the blade only, for the oil glow
+    { let gl = q('.dglow'); if (!gl){ gl = document.createElement('img'); gl.className = 'dl dglow'; gl.alt = ''; weap.after(gl); }
+      gl.src = weap.src; gl.style.width = weap.style.width; gl.style.height = weap.style.height; gl.style.transformOrigin = '0 0'; gl.style.transform = weap.style.transform;
+      const gpos = (G.p[1] + (G.t[1] - G.p[1]) * (G.ge || G.g || .26)), guard = Math.round(100 * (1 - gpos)) + 9; gl.style.setProperty('--guard', guard + '%'); gl.hidden = false; }
     hands.src = tier ? `${ART}armor-m-t${tier}-hands.webp` : `${ART}doll-${g}-${st}-hands.webp`; hands.style.transform = at;
   }
   shield.hidden = !(withShield && !two);
@@ -2967,15 +3215,15 @@ function renderPlates(){
   const e = F.e, w = weapon();
   $('eName').innerHTML = `<small>Lv ${enemyLv(e)}</small>${e.name.replace('The ', '')}`;
   $('eFill').style.transform = `scaleX(${Math.max(0, F.ehp / e.hp)})`; $('eNum').textContent = Math.max(0, Math.round(F.ehp));
-  { const wk = Object.keys(EL).find(k => EL[k].beats === e.el), m = elMult(w.el, e.el);
+  { const wk = Object.keys(EL).find(k => EL[k].beats === e.el), m = elMult(oilEl(), e.el);
     $('eSub').innerHTML = `weak to <b style="color:${EL[wk].color}">${EL[wk].name}</b>${e.boss ? ' · <b>boss</b>' : ''}${m > 1 ? ' · <b style="color:#a7e08a">your blade bites</b>' : m < 1 ? ' · <b style="color:#ff8a8f">it resists you</b>' : ''}`; }
-  $('youLv').textContent = 'Lv ' + lv('combat');
+  $('youLv').innerHTML = 'Lv ' + lv('combat') + (F && F.oil ? ` <span class="oilchip" style="color:${EL[F.oil].color};border-color:${EL[F.oil].color}88">${OIL_NAME[F.oil]}</span>` : '');
 }
 function renderFight(){
   const e = F.e;
   setHud(`${e.boss ? '' : ''}${e.name.replace('The ', '')} <span class="chip" style="color:${EL[e.el].color};border-color:${EL[e.el].color}66">${EL[e.el].name}</span>`, F.ehp / e.hp, Math.max(0, Math.round(F.ehp)), 'hp');
   $('pFill').style.transform = `scaleX(${Math.max(0, F.php / F.max)})`; $('pNum').textContent = Math.max(0, Math.round(F.php));
-  const w = weapon(), h = helm(), m = elMult(w.el, e.el);
+  const w = weapon(), h = helm(), m = elMult(oilEl(), e.el);
   $('fGear').innerHTML = wImg(w.rid, 'wfight') + `<b>${itemLabel(w)}</b> · ${WTYPES[w.wtype].label} · ${w.dmg} dmg${w.el ? ` · <b style="color:${EL[w.el].color}">${EL[w.el].name}</b>` : ''}${m !== 1 ? ` <span class="${m > 1 ? '' : 'short'}" style="${m > 1 ? 'color:#3d6b1f' : ''}">×${m}</span>` : ''}` + (armorItem() ? ` · <b>${itemLabel(armorItem())}</b> −${armorItem().armor}` : '');
   $('fStreak').textContent = F.streak; $('fPerfs').textContent = F.perfs;
   renderPlates();
@@ -2990,7 +3238,7 @@ const armorNow = () => F.decay ? 0 : F.e.armor;
 
 $('fAttack').onclick = async () => {
   if (F.busy) return; F.busy = true; fMenu(false); $('fItems').hidden = true;
-  const w = weapon(), T = WTYPES[w.wtype], k = fScale(), em = elMult(w.el, F.e.el); let total = 0;
+  const w = weapon(), T = WTYPES[w.wtype], k = fScale(), em = elMult(oilEl(), F.e.el); let total = 0;
   const spots = [[.5,.42],[.46,.24],[.55,.58],[.42,.5],[.58,.34]];
   for (let i = 0; i < T.strikes; i++){
     say('fLog', T.strikes > 1 ? `Strike ${i + 1} of ${T.strikes}` : 'Strike!'); $('fHint').className = 'hint live';
@@ -3004,9 +3252,9 @@ $('fAttack').onclick = async () => {
     else { const h = $('hero'); h.classList.remove('lunge'); void h.offsetWidth; h.classList.add('lunge'); await wait(160); }
     F.ehp -= dmg; total += dmg; hitFx(r === 'perfect'); sfx('hit_' + w.wtype); if (r === 'perfect') sfx('crit'); popOn('foe', dmg, r === 'perfect' ? 'big' : '', (i - (T.strikes - 1) / 2) * 6); popOn('foe', r === 'perfect' ? 'Critical' : r === 'good' ? 'Solid' : 'Glancing', 'tag ' + (r === 'perfect' ? 'crit' : r === 'good' ? 'solid' : 'miss'), 0, 6);
     if (SPR_OK){ frameT = setTimeout(() => { setFrame(3); idleIn(240); }, 200); }
-    if (w.el === 'blood' && !(F.e.el === 'void')){ const h = Math.min(F.max - F.php, Math.round(dmg * .3)); if (h > 0){ F.php += h; popOn('hero', '+' + h, 'heal', 0, 8); } }
-    if (w.el === 'ash' && r !== 'miss') F.burn = Math.max(F.burn, r === 'perfect' ? 3 : 2);
-    if (w.el === 'blight' && r !== 'miss' && !F.decay && F.e.armor){ F.decay = true; popOn('foe', 'Decay', 'tag burn', 0, -8); }
+    if (oilEl() === 'blood' && !(F.e.el === 'void')){ const h = Math.min(F.max - F.php, Math.round(dmg * .3)); if (h > 0){ F.php += h; popOn('hero', '+' + h, 'heal', 0, 8); } }
+    if (oilEl() === 'ash' && r !== 'miss') F.burn = Math.max(F.burn, r === 'perfect' ? 3 : 2);
+    if (oilEl() === 'blight' && r !== 'miss' && !F.decay && F.e.armor){ F.decay = true; popOn('foe', 'Decay', 'tag burn', 0, -8); }
     renderFight();
     if (F.ehp <= 0) break;
     if (T.strikes > 1 && r === 'miss'){ say('fLog', 'The chain breaks.'); await wait(450); break; }
@@ -3019,7 +3267,7 @@ $('fAttack').onclick = async () => {
 // the foe itself is the attack button
 $('fItem').onclick = () => {
   if (F.busy) return;
-  const uses = S.items.filter(i => i.kind === 'use');
+  const uses = S.items.filter(i => i.kind === 'use' && !i.oil);
   const groups = {}; uses.forEach(i => { const key = itemLabel(i); (groups[key] = groups[key] || []).push(i); });
   const keys = Object.keys(groups);
   const wasOpen = !$('fItems').hidden; closeFPops(); if (wasOpen) return;
@@ -3038,14 +3286,17 @@ async function useItem(uid){
   if (it.freeParry){ F.freeParry = true; bits.push('your next block is certain'); }
   say('fLog', `${itemLabel(it)}: ${bits.join(', ')}.`); save(); renderFight(); await wait(800); enemyTurn();
 }
-// weapons: swap blades mid-fight (free), shows which one bites this foe
+// oils: coat the blade for this fight (free action); shows which one bites this foe
+function ownedOils(){ const g = {}; S.items.filter(i => i.oil).forEach(i => (g[i.oil] = g[i.oil] || []).push(i)); return g; }
+function oilRows(e, cur){ const g = ownedOils(); return Object.keys(OIL_NAME).map(el => { const n = (g[el] || []).length, m = elMult(el, e.el);
+  return `<button class="it oilrow${cur === el ? ' eq' : ''}" data-oil="${el}"${n && cur !== el ? '' : ' disabled'}><span class="oilswatch" style="background:${EL[el].color}"></span><span>${OIL_NAME[el]}${cur === el ? ' <i>on blade</i>' : ''}<small>${EL[el].name}</small></span><span>${m > 1 ? '<b class="up">×1.5</b>' : m < 1 ? '<b class="dn">×0.25</b>' : '<b>×1</b>'} · ${n}</span></button>`; }).join(''); }
 $('fWeap').onclick = () => {
   if (F.busy) return; const wasOpen = !$('fWeaps').hidden; closeFPops(); if (wasOpen) return;
-  const own = stacks().filter(st => st.kind === 'weapon'), e = F.e, wk = Object.keys(EL).find(k => EL[k].beats === e.el);
-  $('fWeaps').innerHTML = `<h4>Weapons</h4><p class="fpnote">${e.name} is weak to <b style="color:${EL[wk].color}">${EL[wk].name}</b></p>` + own.map(st => { const it = st.items.find(i => canWield(i)) || st.top, ok = canWield(it), m = elMult(it.el, e.el);
-    return `<button class="it${st.equipped ? ' eq' : ''}" data-w="${it.uid}"${ok ? '' : ' disabled'}>${iconImg(st, 'iticon')}<span>${st.name}${st.equipped ? ' <i>wielded</i>' : ''}</span><span>${ok ? it.dmg + (m > 1 ? ' <b class="up">×' + m + '</b>' : m < 1 ? ' <b class="dn">×' + m + '</b>' : '') : 'Lv ' + wieldLv(it)}</span></button>`; }).join('');
+  const e = F.e, wk = Object.keys(EL).find(k => EL[k].beats === e.el);
+  $('fWeaps').innerHTML = `<h4>Blade oils</h4><p class="fpnote">${e.name} is ${oilTag(e.el)}, weak to ${oilTag(wk)}. One oil lasts this fight.</p>` + oilRows(e, F.oil) + (Object.keys(ownedOils()).length ? '' : '<span class="detail">No oils yet. Brew them at the Apothecary.</span>');
   $('fWeaps').hidden = false; $('fWeap').classList.add('on');
-  $('fWeaps').querySelectorAll('[data-w]').forEach(b => b.onclick = () => { S.equip.weapon = +b.dataset.w; save(); refreshHero(); renderFight(); closeFPops(); sfx('block'); say('fLog', `You take up the ${itemLabel(weapon())}.`); });
+  $('fWeaps').querySelectorAll('[data-oil]').forEach(b => b.onclick = () => { const el = b.dataset.oil, it = ownedOils()[el][0]; S.items = S.items.filter(x => x !== it); F.oil = el; document.body.dataset.oil = el; save(); renderFight(); closeFPops(); sfx('brew');
+    const m = elMult(el, e.el); say('fLog', `You coat your blade in ${OIL_NAME[el]}.` + (m > 1 ? ' <em>It will bite deep.</em>' : m < 1 ? ' It barely bites this foe.' : '')); });
 };
 document.addEventListener('pointerdown', e => { if (view === 'fight' && !e.target.closest('.fpop,#fItem,#fWeap')) closeFPops(); });
 $('youMedal').onclick = e => { e.stopPropagation(); statPop('you', 'fight'); };
@@ -3055,7 +3306,7 @@ $('fFlee').onclick = () => { if (F.busy) return; S.hp = Math.max(1, F.php); RUN.
 async function enemyTurn(){
   const e = F.e, w = weapon();
   if (F.burn > 0){ const b = 4 * REGIONS.find(r => r.id === e.region).tier; F.burn--; F.ehp -= b; popOn('foe', b, 'burn'); hitFx(false); say('fLog', `${e.name} burns.`); renderFight(); await wait(650); if (F.ehp <= 0) return fightEnd(true); }
-  const a = e.attacks[Math.floor(Math.random() * e.attacks.length)], enraged = F.ehp < e.hp * .4 && w.el !== 'void';
+  const a = e.attacks[Math.floor(Math.random() * e.attacks.length)], enraged = F.ehp < e.hp * .4 && oilEl() !== 'void';
   say('fLog', a.tell + (enraged ? ' <em>It is enraged.</em>' : '')); $('foe').classList.add('wind'); sfx('foe_wind'); await wait(900);
   say('fLog', 'Block!'); $('fHint').className = 'hint live block';
   const B0 = WTYPES[w.wtype].block, k = fScale(), bare = (w.wtype === 'sword' || w.wtype === 'mace') && !shieldOn();
@@ -3070,14 +3321,14 @@ async function enemyTurn(){
   const base = a.dmg * (enraged ? 1.2 : 1);
   if (false){
     F.parries++; F.streak++; F.perfs++;
-    const c = Math.max(1, Math.round(w.dmg * elMult(w.el, e.el) - armorNow()));
+    const c = Math.max(1, Math.round(w.dmg * elMult(oilEl(), e.el) - armorNow()));
     F.ehp -= c; hitFx(true); popOn('hero', 'Parried', 'tag parry', 0, 6); setTimeout(() => popOn('foe', c, 'big'), 200); say('fLog', `Parried. You counter for <em>${c}</em>.`);
   } else {
     F.streak = 0; const h = armorItem();
     const take = Math.max(1, Math.round(base * (r === 'good' ? B.take : 1) * (F.ward === e.el ? .7 : 1)) - (h ? h.armor : 0));
     F.php -= take; hurtFx(); popOn('hero', '-' + take, 'hurt'); popOn('hero', r === 'good' ? 'Blocked' : 'Hit', 'tag ' + (r === 'good' ? 'block' : 'miss'), 0, 6);
     let msg = r === 'good' ? `Blocked. You take ${take}.` : `${a.name} lands. You take ${take}.`;
-    if (e.drain && w.el !== 'void'){ const heal = Math.round(take * e.drain); F.ehp = Math.min(e.hp, F.ehp + heal); popOn('foe', '+' + heal, 'heal', 0, 8); msg += ` She drinks ${heal}.`; }
+    if (e.drain && oilEl() !== 'void'){ const heal = Math.round(take * e.drain); F.ehp = Math.min(e.hp, F.ehp + heal); popOn('foe', '+' + heal, 'heal', 0, 8); msg += ` She drinks ${heal}.`; }
     say('fLog', msg);
   }
   renderFight(); await wait(800);
@@ -3117,21 +3368,23 @@ async function fightEnd(won){
 }
 function showResult(won, title, sub, lines, rg, e, loot = [], xp = 0){
   const boss = bossOf(rg), canBoss = won && !e.boss && bossReady(rg), hp = curHp(), mh = maxHp();
-  const chips = (xp ? [`<span class="rchip xp"><b>+${xp}</b><small>Combat XP</small></span>`] : []).concat(loot.map(([mat, n]) => `<span class="rchip">${iconImg({ kind:'mat', name:mat }, 'rico')}<b>${n}</b><small>${mat}</small></span>`));
+  const chips = (loot.map(([mat, n]) => `<span class="rchip">${iconImg({ kind:'mat', name:mat }, 'rico')}<b>${n}</b><small>${mat}</small></span>`));
   $('result').innerHTML = `<div class="rpanel ${won ? 'won' : 'lost'}"><img class="rstar" src="art/final/ui-star.webp" alt="">
     <div class="rkick">${won ? 'Victory' : 'Defeat'}</div><h2>${title}</h2>
     ${won ? `<div class="rsec"><div class="rlbl">Spoils</div><div class="rchips">${chips.join('') || '<span class="rnone">Nothing worth taking.</span>'}</div></div>` : `<p class="rsub">${sub}</p>`}
     ${lines.length ? `<div class="rnews">${lines.map(l => `<p>${l}</p>`).join('')}</div>` : ''}
-    ${won ? `<div class="rsec"><div class="rlbl">Health</div><div class="rhp2"><div class="inkbar you"><i style="transform:scaleX(${(hp / mh).toFixed(3)})"></i></div><b>${hp}<small> / ${mh}</small></b></div>
-      <p class="rhint">Your wounds carry into the next fight. Rest at the Inn to heal.${RUN.streak ? `<br><span>Win streak ${RUN.streak}</span> · the next fight gives +${Math.round((runMult() - 1) * 100)}% XP and spoils.` : ''}</p></div>` : ''}
-    <div class="racts2">${won ? `<button class="fbtn" id="rLeave"><span>Return to camp</span></button>${canBoss ? `<button class="fbtn boss" id="rBoss"><span>Face ${ENEMIES[boss].name.replace('The ', '')}</span></button>` : ''}<button class="fbtn main" id="rOn"><span>Fight again</span></button>`
-      : `<button class="fbtn main" id="rHome"><span>Wake in Morrowmere</span></button>`}</div></div>`;
+    ${won ? `<div class="rsec"><div class="rlbl">Experience</div><div class="rxp"><b>+${xp}</b><span>XP</span></div>
+      ${(() => { const l = lv('combat'), x = S.xp.combat, lo = XP[l], hi = XP[Math.min(99, l + 1)], f = l < 99 ? (x - lo) / (hi - lo) : 1;
+        return `<div class="rlv"><span>Level ${l}</span><i><u style="transform:scaleX(${f.toFixed(3)})"></u></i><span>${l < 99 ? (hi - x) + ' XP to level ' + (l + 1) : 'Max level'}</span></div>`; })()}
+      </div>` : ''}
+    <div class="racts2">${won ? `<button class="fbtn" id="rLeave"><span>Return to town</span></button>${canBoss ? `<button class="fbtn boss" id="rBoss"><span>Challenge ${ENEMIES[boss].name.replace('The ', '')}</span></button>` : ''}<button class="fbtn main" id="rOn"><span>Fight again</span></button>`
+      : `<button class="fbtn main" id="rHome"><span>Wake up in town</span></button>`}</div></div>`;
   $('result').hidden = false;
   const close = () => { $('result').hidden = true; };
   if (won){
-    $('rLeave').onclick = () => { close(); RUN.streak = 0; go('gather'); };
-    $('rOn').onclick = () => { close(); go('fight', randomFoe(rg)); };
-    if (canBoss) $('rBoss').onclick = () => { close(); go('fight', boss); };
+    $('rLeave').onclick = () => { close(); RUN.streak = 0; go('hub'); };
+    $('rOn').onclick = () => { close(); enterFight(randomFoe(rg), rg); };
+    if (canBoss) $('rBoss').onclick = () => { close(); enterFight(boss, rg); };
   } else $('rHome').onclick = () => { close(); go('hub'); };
 }
 
@@ -3145,7 +3398,8 @@ document.addEventListener('click', e => { const sb = e.target.closest('.sealbtn,
 document.addEventListener('click', e => { const h = e.target.closest('.foldh'); if (!h) return; const f = h.closest('.fold'), k = f.dataset.fold; FOLD[k] = !f.classList.contains('open'); f.classList.toggle('open', FOLD[k]); h.setAttribute('aria-expanded', FOLD[k]); });
 
 /* ================= MAP screen ================= */
-const PINS = { town:[21, 62], fen:[66, 58], marches:[72, 31], reddening:[86, 12], ashen:[46, 14], hollow:[24, 12] };
+// [centre x, centre y, width, height] of each place on the map, in % of the map
+const PINS = { town:[18.53, 73.24, 23.26, 35.81], fen:[51.27, 69.21, 23.47, 28.26], marches:[81.83, 58.27, 22.53, 29.04], reddening:[79.03, 23.37, 20.28, 24.61], ashen:[50.15, 22.46, 19.62, 21.74], hollow:[22.13, 29.62, 20.57, 25.91] };
 const BOSS_OFF = { fen:[-12, 6], marches:[-12, 4], reddening:[-12, 9], ashen:[-12, 6], hollow:[-12, 6] };
 let mapSel = null;
 const ICON = {
@@ -3156,15 +3410,17 @@ const ICON = {
   road:'<path d="M12 22V3"/><path d="M12 5h7l2 2-2 2h-7"/><path d="M12 12H5l-2 2 2 2h7"/>',
   craft:'<path d="M4 8h12c0 3 2 4 4 4H14l1 4h2v2H7v-2h2l1-4H8C6 12 4 10 4 8z"/>' };
 const svgI = k => `<svg viewBox="0 0 24 24" aria-hidden="true">${ICON[k]}</svg>`;
+const poiStyle = k => { const [x, y, w, h] = PINS[k]; return `left:${x}%;top:${y}%;width:${w}%;height:${h}%`; };
 function renderMap(){
   const pts = ['town', ...REGIONS.map(r => r.id)].map(k => PINS[k]);
   if (0) $('mapRoute').innerHTML = pts.slice(1).map((p, i) => { const a = pts[i], mx = (a[0] + p[0]) / 2 + (i % 2 ? 4 : -3), my = (a[1] + p[1]) / 2 + (i % 2 ? 6 : 5);
     return `<path class="${i === 0 || regionOpen(REGIONS[i]) ? '' : 'sealed'}" d="M${a[0]} ${a[1]} Q${mx} ${my} ${p[0]} ${p[1]}"/>`; }).join('');
-  $('pins').innerHTML = `<button class="pin" data-pin="town" style="left:${PINS.town[0]}%;top:${PINS.town[1]}%" aria-pressed="${mapSel === 'town'}"><span class="seal bronze">${svgI('town')}</span>Morrowmere<small>the hub</small></button>` +
+  $('pins').innerHTML = `<button class="pin poi" data-pin="town" style="${poiStyle('town')}" aria-pressed="${mapSel === 'town'}"><img class="poiimg" src="${ART}poi-town.webp" alt=""><span class="pname">Morrowmere<small>the hub</small></span></button>` +
     REGIONS.map(r => { const open = regionOpen(r), here = r.id === S.region;
-      return `<button class="pin${open ? '' : ' locked'}${here ? ' here' : ''}" data-pin="${r.id}" style="left:${PINS[r.id][0]}%;top:${PINS[r.id][1]}%" aria-pressed="${mapSel === r.id}"><span class="seal${open ? (here ? '' : ' bronze') : ' black'}">${open ? `<span>${['I','II','III','IV','V'][r.tier - 1]}</span>` : svgI('lock')}</span>${open && bossReady(r.id) && !S.kills[bossOf(r.id)] ? '<em class="pboss" title="Boss ready">✠</em>' : ''}${r.name.replace('The ', '')}<small>${open ? (here ? 'you are here' : r.mood) : 'sealed'}</small></button>`; }).join('');
+      return `<button class="pin poi${open ? '' : ' locked'}${here ? ' here' : ''}" data-pin="${r.id}" style="${poiStyle(r.id)}" aria-pressed="${mapSel === r.id}"><img class="poiimg" src="${ART}poi-${r.id}.webp" alt=""><span class="pname">${open && bossReady(r.id) && !S.kills[bossOf(r.id)] ? '<em class="pboss" title="Boss ready">✠</em>' : ''}${r.name.replace('The ', '')}<small>${open ? (here ? 'you are here' : r.mood) : '⛓ sealed'}</small></span></button>`; }).join('');
   $('pins').querySelectorAll('[data-pin]').forEach(b => b.onclick = () => {
-    mapSel = mapSel === b.dataset.pin ? null : b.dataset.pin; renderMap();
+    const id = b.dataset.pin; b.classList.remove('hit'); void b.offsetWidth; b.classList.add('hit'); sfx('page');
+    setTimeout(() => { mapSel = mapSel === id ? null : id; renderMap(); }, 260);
   });
   // quest line
   const next = REGIONS.find(q => !regionOpen(q));
@@ -3185,23 +3441,23 @@ function renderMap(){
     const r = regionById(mapSel), open = regionOpen(r), here = r.id === S.region && open;
     const foes = r.enemies.filter(id => !ENEMIES[id].boss), mats = Object.values(r.gather).map(g => g[0]);
     const bid = bossOf(r.id), be = ENEMIES[bid], ready = open && bossReady(r.id), slain = S.kills[bid] > 0, w = Math.min(winsIn(r.id), BOSS_WINS[r.id]), left = BOSS_WINS[r.id] - w;
-    const thumb = id => `<img class="mcfoe" src="${ART}enemy-${id}.webp" alt="">`;
+    const thumb = id => faceThumb(id, 'mcfoe');
     c.innerHTML = `<button class="mcx" aria-label="Close">✕</button>
       <div class="mchead"><h3 style="color:${r.color}">${r.name.replace('The ', '')}</h3><div class="mcsub">Region ${RN[r.tier - 1]} · ${r.mood}</div>
         <div class="mcchips">${here ? '<span class="here">You are here</span>' : ''}${r.xpMult > 1 ? `<span>×${r.xpMult} XP</span>` : ''}${open ? '' : '<span class="lock">Sealed</span>'}</div></div>
       ${open ? '' : `<div class="mcseal">Sealed. Needs ${reqText(r)}.</div>`}
-      <div class="mcsec${open ? '' : ' off'}"><div class="mcpics">${foes.map(thumb).join('')}</div><div class="mctxt"><div class="mclbl">Hunt</div><p>${foes.map(id => ENEMIES[id].name.replace('The ', '')).join(', ')}</p><small>Fight a foe of this region. Wins draw out its boss.</small></div>
+      <div class="mcsec${open ? '' : ' off'}"><div class="mcpics"><img class="mchunt" src="${ART}ui-engage.webp" alt=""></div><div class="mctxt"><div class="mclbl">Hunt</div><p>Whatever roams ${r.name.replace('The ', 'the ')}</p><small>${foes.length} kinds of foe roam here. Wins draw out its boss.</small></div>
         ${open ? '<button class="fbtn mcbtn main" id="mcHunt"><span>Hunt</span></button>' : ''}</div>
       <div class="mcsec${open ? '' : ' off'}"><div class="mcpics mats">${mats.map(m => iconImg({ kind:'mat', name:m }, 'mcmat')).join('')}</div><div class="mctxt"><div class="mclbl">Gather</div><p>${mats.join(', ')}</p><small>Make camp and work the land. Hirelings keep working while you are away.</small></div>
         ${open ? '<button class="fbtn mcbtn" id="mcCamp"><span>Make camp</span></button>' : ''}</div>
       <div class="mcsec boss${open ? '' : ' off'}${ready ? ' ready' : ''}"><div class="mcpics">${thumb(bid)}</div><div class="mctxt"><div class="mclbl">Boss</div><p class="bn">${be.name.replace('The ', '')}</p>
-        <small>${!open ? 'Waits beyond the seal.' : slain ? 'Slain. You can face it again.' : ready ? 'It has been drawn out. Face it when ready.' : `Win ${left} more fight${left > 1 ? 's' : ''} here to draw it out.`}</small>
+        <small>${!open ? 'Waits beyond the seal.' : slain ? 'Slain. You can challenge it again.' : ready ? 'It has been drawn out. Challenge it when ready.' : `Win ${left} more fight${left > 1 ? 's' : ''} here to draw it out.`}</small>
         ${open && !ready ? `<i class="mcprog"><u style="transform:scaleX(${(w / BOSS_WINS[r.id]).toFixed(3)})"></u></i>` : ''}</div>
-        ${open ? `<button class="fbtn mcbtn boss" id="mcBoss"${ready ? '' : ' disabled'}><span>${ready ? 'Face it' : `${w} / ${BOSS_WINS[r.id]}`}</span></button>` : ''}</div>`;
+        ${open ? `<button class="fbtn mcbtn boss" id="mcBoss"${ready ? '' : ' disabled'}><span>${ready ? 'Challenge' : `${w} / ${BOSS_WINS[r.id]}`}</span></button>` : ''}</div>`;
     if (open){
-      $('mcHunt').onclick = () => encounter(randomFoe(r.id), r.id);
+      $('mcHunt').onclick = () => enterFight(randomFoe(r.id), r.id);
       $('mcCamp').onclick = () => { S.region = r.id; save(); mapSel = null; go('gather'); };
-      $('mcBoss').onclick = () => { if (ready) encounter(bid, r.id); };
+      $('mcBoss').onclick = () => { if (ready) enterFight(bid, r.id); };
     }
   }
   // step through the regions without closing the card
@@ -3245,7 +3501,11 @@ $('stripMed').onclick = e => { e.stopPropagation(); statPop('you', 'dock'); };
 $('railBag').onclick = () => { if (view === 'fight') return; if (!$('panel').hidden && panelSec === 'pack') closePanel(); else openPanel('pack'); };
 const BACK = { map:['hub', 'Morrowmere', 'back to town'], craft:['hub', 'Morrowmere', 'back to town'], inn:['hub', 'Morrowmere', 'back to town'], gather:['map', 'The Map', 'back'] };
 $('navBack').onclick = () => { const b = BACK[view]; if (!b) return; if (b[0] === 'map') mapSel = null; go(b[0]); };
-function renderNav(){ const b = BACK[view]; $('navBack').hidden = !b; if (b){ $('navBackTo').textContent = b[1]; $('navBackSub').textContent = b[2]; } }
+function renderNav(){ const b = BACK[view]; $('navBack').hidden = !b; if (b){ $('navBackTo').textContent = b[1]; $('navBackSub').textContent = b[2]; } requestAnimationFrame(placeBack); }
+// sit on the thirds line of the gap between the screen edge and the bottom bar, level with the bar
+function placeBack(){ const nb = $('navBack'), d = $('dock'); if (nb.hidden) return; const st = nb.offsetParent.getBoundingClientRect(), dr = d.getBoundingClientRect(), w = nb.offsetWidth;
+  const cx = (dr.left - st.left) * 2 / 3; nb.style.setProperty('left', Math.max(8, cx - w / 2) + 'px', 'important'); nb.style.setProperty('top', (dr.top - st.top + dr.height / 2 - nb.offsetHeight / 2) + 'px', 'important'); }
+addEventListener('resize', () => requestAnimationFrame(placeBack));
 function renderStrip(){
   const g = S.hero || 'm', hp = curHp(), mh = maxHp(), w = weapon();
   $('stripFace').src = g === 'm' ? `${ART}face-m-${S.face || 'knight'}-icon.webp` : `${ART}doll-f-1h.webp`;
@@ -3324,7 +3584,7 @@ $('fsBtn').onclick = () => {
 document.addEventListener('fullscreenchange', () => $('fsBtn').textContent = document.fullscreenElement ? 'Exit fullscreen' : 'Fullscreen');
 if (!document.documentElement.requestFullscreen) $('fsBtn').hidden = true;
 
-['hub','workshop','hero-sheet','fen-gather','fen-fight'].forEach(n => { const i = new Image(); i.src = ART + n + '.webp'; });
+['hub','workshop','fen-gather','fen-fight'].forEach(n => { const i = new Image(); i.src = ART + n + '.webp'; });
 function openPick(){ closePanel(); $('knightPick').hidden = false; $('facePick').hidden = true; document.querySelector('#knightPick .pickrow').hidden = false; document.querySelectorAll('.pickc').forEach(b => b.setAttribute('aria-pressed', b.dataset.hero === S.hero)); }
 let pickFace = 'knight', pickHero = 'm';
 const heroName = () => (S.name || '').trim() || 'Nameless';
