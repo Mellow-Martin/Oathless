@@ -1655,12 +1655,34 @@ body:not(.portraitIcon) .smed #stripFace{position:absolute;width:260%;height:aut
 #fFlee{left:-9cqh!important;top:.6cqh!important;width:18cqh!important;height:5.8cqh!important;--cap:3.8cqh}
 #fMenu::before,#fMenu::after{content:'';position:absolute;pointer-events:none;z-index:-1}
 #fMenu::before{width:.22cqh;height:26cqh;left:-.11cqh;top:-19cqh;background:linear-gradient(180deg,transparent,#8e887f 15%,#e6e2da 50%,#8e887f 85%,transparent);box-shadow:0 0 .8cqh #000}
-#fMenu::after{width:46cqh;height:.22cqh;left:-23cqh;top:-8.6cqh;background:linear-gradient(90deg,transparent,#8e887f 18%,#e6e2da 50%,#8e887f 82%,transparent);box-shadow:0 0 .8cqh #000}
+#fMenu::after{display:none}
+#fMenu{top:calc(82.65% - 3.45cqh)!important} /* v134: Flee centred on the bottom divider */
 #fMenu:has(.fbtn:disabled)::before,#fMenu:has(.fbtn:disabled)::after{opacity:.5}
 #fItems.fpop{max-height:56%!important;overflow:auto;width:34%!important;bottom:42.5%!important}
 #fItems .fpsec{margin:1.4cqh 0 .4cqh;padding-top:1cqh;border-top:.15cqh solid #8e887f40;font:400 1.6cqh var(--fellsc);letter-spacing:.18em;text-transform:uppercase;color:#a49d92;text-align:left}
 #fItems h4:first-child + .fpsec{border-top:0;margin-top:.2cqh;padding-top:0}
 #fItems .fpcur{margin:.2cqh 0 .6cqh;font-size:1.9cqh;color:var(--bone)} #fItems .fpcur b{font-weight:400;color:var(--oc)}
+
+/* v107: enemy attack frames — wind-up and follow-through drawn over the idle sprite */
+#foeAtk{position:absolute;z-index:1;pointer-events:none;filter:drop-shadow(0 1.4cqh 2cqh #000c);transform-origin:50% 100%}
+#foeAtk.hit{animation:atkHit .5s cubic-bezier(.2,.9,.3,1)}
+@keyframes atkHit{0%{transform:translateX(0) scale(1)}30%{transform:translateX(-4cqh) scale(1.04)}100%{transform:translateX(-1cqh) scale(1)}}
+#foeAtk.wind{animation:atkWind .9s ease-out}
+@keyframes atkWind{0%{transform:translateX(0)}100%{transform:translateX(1.2cqh)}}
+body.foeposed #foe{visibility:hidden!important}
+
+/* v148: female knight greyed out until her art set is made */
+.pickc.soon{cursor:default;pointer-events:none}
+.pickc.soon .pdoll,.pickc.soon img{filter:grayscale(1) brightness(.45) drop-shadow(0 1.4cqh 2cqh #000)!important}
+.pickc.soon b{color:#7d7064} .pickc.soon small{color:#7d7064;font-style:italic}
+
+/* v138: hero attack poses — stacking for the posed doll (sword behind the head on the wind-up) */
+/* face sits under the painted body (its collar overlaps the neck); wind-up sword passes behind head and body, strike sword in front */
+#hero.pose-wind .dweap{z-index:1} #hero.pose-wind .dglow{z-index:2} #hero.pose-wind .dpshadow{z-index:3} #hero.pose-wind .dface{z-index:4} #hero.pose-wind .dpsback{z-index:5} #hero.pose-wind .dbody{z-index:6} #hero.pose-wind .dshield{z-index:7}
+#hero.pose-hit .dpshadow{z-index:1} #hero.pose-hit .dface{z-index:2} #hero.pose-hit .dpsback{z-index:3} #hero.pose-hit .dbody{z-index:4} #hero.pose-hit .dshield{z-index:5} #hero.pose-hit .dweap{z-index:6} #hero.pose-hit .dglow{z-index:7}
+#hero.posed .dpglove{z-index:8} #hero.posed .dhelm{z-index:9}
+.dpglove{pointer-events:none}
+
 </style>
 
 <div id="ambient" aria-hidden="true"></div>
@@ -1675,7 +1697,7 @@ body:not(.portraitIcon) .smed #stripFace{position:absolute;width:260%;height:aut
     </div>
     <div id="hero" class="doll" role="img" aria-label="Your knight" hidden><div class="dstage"><img class="dl dface" alt="" hidden><img class="dl dbody" alt=""><img class="dl dshield" alt="" hidden><img class="dl dweap" alt="" hidden><img class="dl dhands" alt="" hidden><img class="dl dhelm" alt="" hidden></div></div>
     <div id="heroSpr" role="img" aria-label="Your knight" hidden></div>
-    <img id="foe" alt="" hidden>
+    <img id="foe" alt="" hidden><img id="foeAtk" alt="" hidden>
     <img id="node" alt="" hidden>
     <svg class="scene" viewBox="0 0 640 300" aria-hidden="true">
       <defs>
@@ -1850,7 +1872,7 @@ body:not(.portraitIcon) .smed #stripFace{position:absolute;width:260%;height:aut
     <h2>Choose your knight</h2>
     <div class="pickrow">
       <button class="pickc" data-hero="m"><div class="doll pdoll" data-g="m"><div class="dstage"><img class="dl dface" alt="" hidden><img class="dl dbody" alt=""><img class="dl dshield" alt="" hidden><img class="dl dweap" alt="" hidden><img class="dl dhands" alt="" hidden><img class="dl dhelm" alt="" hidden></div></div><small>Stoic. Unbending.</small></button>
-      <button class="pickc" data-hero="f"><div class="doll pdoll" data-g="f"><div class="dstage"><img class="dl dface" alt="" hidden><img class="dl dbody" alt=""><img class="dl dshield" alt="" hidden><img class="dl dweap" alt="" hidden><img class="dl dhands" alt="" hidden><img class="dl dhelm" alt="" hidden></div></div><small>Steady. Unyielding.</small></button>
+      <button class="pickc soon" data-hero="f" disabled aria-disabled="true" title="Coming later"><div class="doll pdoll" data-g="f"><div class="dstage"><img class="dl dface" alt="" hidden><img class="dl dbody" alt=""><img class="dl dshield" alt="" hidden><img class="dl dweap" alt="" hidden><img class="dl dhands" alt="" hidden><img class="dl dhelm" alt="" hidden></div></div><small>Coming later</small></button>
     </div>
     <div class="facepick" id="facePick" hidden>
       <div class="fpdoll"><div class="doll pdoll2" id="faceDoll"><div class="dstage"><img class="dl dface" alt="" hidden><img class="dl dbody" alt=""><img class="dl dshield" alt="" hidden><img class="dl dweap" alt="" hidden><img class="dl dhands" alt="" hidden><img class="dl dhelm" alt="" hidden></div></div></div>
@@ -2171,8 +2193,6 @@ const ENEMIES = {
 const WTYPES = {
   sword:   { label:'Sword', strikes:1, speed:1.1,  good:.22, perf:.07,  perfMult:2, block:{ good:.30, perf:.10,  take:.35 } },
   fist:    { label:'Unarmed',        strikes:2, speed:1.2,  good:.20, perf:.06,  perfMult:2, block:{ good:.14, perf:.05, take:.7 } },
-  great:   { label:'Greatsword',     strikes:1, speed:.62,  good:.15, perf:.04,  perfMult:3, block:{ good:.15, perf:.045, take:.6 } },
-  mace:    { label:'Mace', strikes:1, speed:.9,   good:.21, perf:.065, perfMult:2, pierce:true, block:{ good:.28, perf:.09, take:.4 } },
 };
 const QUALITY = [{ min:0, name:'Crude', cls:'', mult:1 }, { min:3, name:'Fine', cls:'fine', mult:1.25 }, { min:5, name:'Masterwork', cls:'master', mult:1.6 }];
 
@@ -2298,7 +2318,7 @@ const lv = k => levelOf(S.xp[k]);
 const FISTS = { uid:0, rid:'fists', name:'Bare fists', kind:'weapon', wtype:'fist', dmg:4 };
 const weapon = () => S.equip.weapon === 0 ? FISTS : (S.items.find(i => i.uid === S.equip.weapon) || S.items.find(i => i.kind === 'weapon') || FISTS);
 const helm = () => S.items.find(i => i.uid === S.equip.helm);
-const TWO_HANDED = new Set(['great']);
+const TWO_HANDED = new Set();
 const armorItem = () => S.items.find(i => i.uid === S.equip.armor && i.kind === 'armor');
 const armorTier = () => { const a = armorItem(); return a ? +a.rid.slice(1) : 0; };
 const shieldItem = () => S.items.find(i => i.uid === S.equip.shield);
@@ -2727,7 +2747,9 @@ function accrue(){
     if (dt <= 0) return;
     const got = SPOTS.map(s => {
       const rate = spotRate(c, s); if (!rate || !spotOpen(r, s)) return 0;
-      const work = (c.hprog[s.k] || 0) + rate * dt, need = haulNeed(r, s), n = Math.floor(work / need); c.hprog[s.k] = work - n * need; return n;
+      // v145: hirelings work the same ring you click, so it visibly fills while you idle (older saves fold their separate progress in)
+      if (c.hprog && c.hprog[s.k]){ c.prog[s.k] = (c.prog[s.k] || 0) + c.hprog[s.k]; c.hprog[s.k] = 0; }
+      const work = (c.prog[s.k] || 0) + rate * dt, need = haulNeed(r, s), n = Math.floor(work / need); c.prog[s.k] = work - n * need; return n;
     });
     // hirelings bring their haul straight to your pack
     const want = got.reduce((a, b) => a + b, 0), room = Math.max(0, awayCap(r) - Object.values(c.gain).reduce((a, b) => a + b, 0)), k = want > room ? room / want : 1;
@@ -2773,6 +2795,23 @@ function clickSpot(k, e){
     save();
   }
   skillHud(s.skill); renderCamp();
+}
+// v145: rings fill smoothly between ticks while hirelings work
+let campAnim = 0;
+function campRingLoop(){
+  cancelAnimationFrame(campAnim);
+  const step = () => {
+    if (view !== 'gather' || !S.camp) return;
+    const r = region(), c = S.camp[r.id];
+    if (c) SPOTS.forEach(s => {
+      const rate = spotRate(c, s); if (!rate || !spotOpen(r, s)) return;
+      const b = $('campSpots').querySelector(`[data-k=${s.k}]`); if (!b) return;
+      const need = haulNeed(r, s), live = ((c.prog[s.k] || 0) + rate * Math.max(0, Date.now() - c.t) / 1000) % need;
+      b.style.setProperty('--p', (live / need * 100).toFixed(2));
+    });
+    campAnim = requestAnimationFrame(step);
+  };
+  campAnim = requestAnimationFrame(step);
 }
 function renderCamp(){
   const r = region(), c = campOf(r.id);
@@ -2861,12 +2900,12 @@ function welcomeBack(){
 function enterCamp(){
   say('gLog', 'Click a spot to work it. Hirelings keep working while you are away.');
   campBuilt = ''; skillHud('mining'); settleOldStock(); welcomeBack(); renderCamp(); scheduleGlint(); scheduleAmbush();
-  clearInterval(campTick); campTick = setInterval(() => { if (view === 'gather') renderCamp(); else { clearInterval(campTick); campCampSeen(); } }, 1000);
+  clearInterval(campTick); campTick = setInterval(() => { if (view === 'gather') renderCamp(); else { clearInterval(campTick); campCampSeen(); } }, 1000); campRingLoop();
   requestAnimationFrame(placeCamp);
 }
 function campCampSeen(){ const c = S.camp && S.camp[region().id]; if (c){ c.seen = Date.now(); save(); } }
 window.__camp = { showAmbush, spawnGlint };   // test hook
-window.__dbg = { get S(){ return S; }, ENEMIES, go: (...a) => go(...a), forgeStrike: p => forgeStrike(p), fight: id => { S.region = ENEMIES[id].region || S.region; go("fight", id); } };
+window.__dbg = { get S(){ return S; }, ENEMIES, go: (...a) => go(...a), forgeStrike: p => forgeStrike(p), heroSwing: (...a) => heroSwing(...a), fight: id => { S.region = ENEMIES[id].region || S.region; go("fight", id); } };
 // legacy entry points used elsewhere
 function renderGather(){ renderCamp(); }
 function stopGather(){ clearTimeout(glintT); clearTimeout(ambushT); document.querySelectorAll('.cglint').forEach(g => g.remove()); }
@@ -3137,7 +3176,7 @@ const runMult = () => 1; // streak bonus retired
 const battlesWon = () => Object.values(S.kills || {}).reduce((a, b) => a + b, 0);
 const greatSlain = () => Object.entries(S.kills || {}).reduce((a, [id, n]) => a + (ENEMIES[id] && ENEMIES[id].boss ? n : 0), 0);
 const curHp = () => Math.max(1, Math.min(maxHp(), S.hp == null ? maxHp() : S.hp));
-const FOE_FACE = {"lizardman": [0.29, 0.07, 0.5, 1.513], "pilgrim": [0.494, 0.101, 0.549, 1.835], "boghound": [0.18, 0.38, 0.45, 1.325], "crow": [0.448, 0.101, 0.539, 1.802], "deserter": [0.532, 0.1, 0.474, 1.582], "ringer": [0.502, 0.101, 0.468, 1.565], "leech": [0.547, 0.1, 0.454, 1.517], "ribcrawler": [0.2, 0.4, 0.42, 1.3], "penitent": [0.46, 0.102, 0.46, 1.541], "emberhound": [0.16, 0.46, 0.42, 1.29], "ashwitch": [0.335, 0.103, 0.425, 1.427], "golem": [0.47, 0.1, 0.46, 1.527], "wraith": [0.492, 0.101, 0.496, 1.656], "squire": [0.532, 0.101, 0.509, 1.701], "ghast": [0.391, 0.1, 0.48, 1.6], "ghoul": [0.404, 0.101, 0.375, 1.253], "warden": [0.496, 0.101, 0.382, 1.279], "revenant": [0.523, 0.101, 0.446, 1.493], "abbess": [0.576, 0.102, 0.494, 1.653], "thrall": [0.48, 0.101, 0.391, 1.309], "king": [0.5, 0.11, 0.42, 1.495], "pyrewight": [0.414, 0.1, 0.448, 1.495], "marshal": [0.426, 0.1, 0.451, 1.506], "forsworn": [0.521, 0.1, 0.528, 1.761], "firstoath": [0.5, 0.1, 0.476, 1.587]};
+const FOE_FACE = {"lizardman": [0.257, 0.07, 0.442, 1.339], "pilgrim": [0.494, 0.101, 0.549, 1.835], "boghound": [0.18, 0.38, 0.45, 1.325], "crow": [0.448, 0.101, 0.539, 1.802], "deserter": [0.532, 0.1, 0.474, 1.582], "ringer": [0.502, 0.101, 0.468, 1.565], "leech": [0.547, 0.1, 0.454, 1.517], "ribcrawler": [0.2, 0.4, 0.42, 1.3], "penitent": [0.46, 0.102, 0.46, 1.541], "emberhound": [0.16, 0.46, 0.42, 1.29], "ashwitch": [0.335, 0.103, 0.425, 1.427], "golem": [0.47, 0.1, 0.46, 1.527], "wraith": [0.492, 0.101, 0.496, 1.656], "squire": [0.532, 0.101, 0.509, 1.701], "ghast": [0.391, 0.1, 0.48, 1.6], "ghoul": [0.404, 0.101, 0.375, 1.253], "warden": [0.496, 0.101, 0.382, 1.279], "revenant": [0.523, 0.101, 0.446, 1.493], "abbess": [0.576, 0.102, 0.494, 1.653], "thrall": [0.48, 0.101, 0.391, 1.309], "king": [0.5, 0.11, 0.42, 1.495], "pyrewight": [0.414, 0.1, 0.448, 1.495], "marshal": [0.426, 0.1, 0.451, 1.506], "forsworn": [0.521, 0.1, 0.528, 1.761], "firstoath": [0.5, 0.1, 0.476, 1.587]};
 function fitFace(img, id){
   const f = FOE_FACE[id]; if (!f){ img.classList.remove('ffit'); img.removeAttribute('style'); return; }
   const [cx, cy, sz, asp] = f, w = 100 / sz;
@@ -3149,7 +3188,7 @@ function startFight(id){
   F = { e, ehp:e.hp, php:curHp(), max:maxHp(), burn:0, decay:false, streak:0, perfs:0, parries:0, ward:null, windowUp:0, freeParry:false, busy:false };
   paintEnemy(e); $('foe').dataset.id = id; $('foe').src = ART + 'enemy-' + id + '.webp'; $('foe').alt = e.name; $('foePortrait').src = $('foe').src; fitFace($('foePortrait'), id);
   refreshHero(); $('fItems').hidden = true; renderFight();
-  F.oil = PEND_OIL || null; F.oilN = F.oil ? OIL_HITS : 0; PEND_OIL = null; document.body.dataset.oil = F.oil || '';
+  foeFrame(null); preloadFoeAtk(id); F.oil = PEND_OIL || null; F.oilN = F.oil ? OIL_HITS : 0; PEND_OIL = null; document.body.dataset.oil = F.oil || '';
   const m = elMult(F.oil, e.el);
   renderFight();
   say('fLog', `${e.name} blocks the path.` + (F.oil ? ` ${OIL_NAME[F.oil]} ${m > 1 ? '<em>cuts deep here.</em>' : m < 1 ? 'barely bites.' : 'coats your blade.'}` : ' <em>Strike it.</em>'));
@@ -3171,7 +3210,7 @@ function placeGround(){
 const DOLL = { m:{ guardAt:{"0": [336.8, 654.1], "1": [336.8, 654.1], "2": [343.7, 650.2], "3": [343.7, 650.2], "4": [343.7, 650.2], "5": [343.7, 650.2]}, hand1:[292, 680], fist2:[[456, 470], [498, 548]] }, f:{ hand1:[259, 661], fist2:[[466, 456], [437, 533]] } };
 const DCW = 1100, DCH = 1500, DOX = 126, DOY = 236;
 const WGEO = {"rusted": {"p": [0.039, 0.957], "t": [0.969, 0.027], "w": 512}, "blade": {"p": [0.039, 0.957], "t": [0.969, 0.027], "w": 512}, "dblade": {"p": [0.037, 0.963], "t": [0.967, 0.027], "w": 512}, "bblade": {"p": [0.039, 0.959], "t": [0.965, 0.027], "w": 512}, "mace": {"p": [0.043, 0.939], "t": [0.967, 0.027], "w": 512}, "dmace": {"p": [0.047, 0.949], "t": [0.943, 0.033], "w": 512}, "bmace": {"p": [0.037, 0.955], "t": [0.922, 0.068], "w": 512}, "great": {"p": [0.044, 0.938], "t": [0.958, 0.036], "w": 384}, "dgreat": {"p": [0.044, 0.943], "t": [0.958, 0.036], "w": 384}, "bgreat": {"p": [0.044, 0.948], "t": [0.956, 0.036], "w": 384}, "ls1": {"p": [0.033, 0.963], "t": [0.967, 0.027], "w": 512, "g": 0.2, "ge": 0.264, "hold": [180.0, 755.0, -28.1, 711.5]}, "ls2": {"p": [0.031, 0.961], "t": [0.967, 0.027], "w": 512, "g": 0.2, "ge": 0.253, "hold": [177.0, 754.0, -27.8, 725.7]}, "ls3": {"p": [0.031, 0.963], "t": [0.967, 0.027], "w": 512, "g": 0.22, "ge": 0.258, "hold": [177.0, 755.0, -27.9, 731.4]}, "ls4": {"p": [0.045, 0.936], "t": [0.957, 0.027], "w": 512, "g": 0.2, "ge": 0.268, "hold": [167.5, 757.5, -27.2, 752.2]}, "ls5": {"p": [0.035, 0.955], "t": [0.969, 0.027], "w": 512, "g": 0.25, "ge": 0.277, "hold": [170.0, 757.5, -27.7, 738.2]}}; // p = pommel end, t = tip, g = centre of the handle (fraction from pommel to tip)
-const WHOLD = { sword:{ len:660, t:.1, ang:-30 }, mace:{ len:500, t:.12, ang:-50 }, great:{ len:980, t:.17 } };
+const WHOLD = { sword:{ len:660, t:.1, ang:-30 } };
 const FACES = [['knight','The Knight'],['recruit','The Recruit'],['veteran','The Veteran'],['warden','The Warden'],['cutthroat','The Cutthroat'],['haunted','The Haunted'],['italian','The Italian'],['elder','The Elder'],['legionary','The Legionary']];
 // layers live in a 1100x1500 stage that is scaled to the box, so the canvas maths stays in source pixels
 function dressDoll(box, g, w, withShield, look = {}){
@@ -3206,10 +3245,49 @@ function dressDoll(box, g, w, withShield, look = {}){
 function fitDoll(box){ const k = box.clientWidth / DCW; box.querySelector('.dstage').style.transform = `scale(${k})`; }
 const dollRO = new ResizeObserver(es => es.forEach(e => fitDoll(e.target)));
 document.querySelectorAll('.doll').forEach(d => dollRO.observe(d));
+/* v138: hero attack poses — painted wind-up and strike per armour set; the equipped sword is fitted into each pose's green placeholder */
+const HPOSE = { t0:{"wind": {"o": [-139, -41], "p": [782.1, 196.7], "t": [-27.2, 29.0], "dy": 26, "sh": [-17, -6], "fm": [1.0233, -0.01975, 0.01975, 1.0233, -10.11, 4.23]}, "hit": {"o": [-143, -19], "p": [12.8, 575.0], "t": [743.9, 1004.1], "dy": 76, "sh": [5, -27], "fm": [1.09983, 0.09658, -0.09658, 1.09983, -23.79, -58.22]}}, t1:{"wind": {"o": [-138, -41], "p": [783.1, 196.4], "t": [-26.0, 29.2], "dy": 26, "sh": [-17, -6], "fm": [1.01396, -0.01418, 0.01418, 1.01396, -12.22, -4.62]}, "hit": {"o": [-143, -19], "p": [13.0, 575.0], "t": [743.1, 1003.8], "dy": 76, "sh": [5, -27], "fm": [1.09408, 0.0924, -0.0924, 1.09408, -29.84, -63.65]}}, t2:{"wind": {"o": [-138, -41], "p": [783.1, 196.4], "t": [-26.0, 29.2], "dy": 25, "sh": [-17, -6], "fm": [1.01452, -0.01567, 0.01567, 1.01452, -4.84, 3.89]}, "hit": {"o": [-143, -19], "p": [13.1, 574.9], "t": [743.1, 1003.9], "dy": 76, "sh": [5, -27], "fm": [1.10365, 0.10835, -0.10835, 1.10365, -24.09, -64.48]}}, t3:{"wind": {"o": [-139, -41], "p": [782.1, 196.4], "t": [-27.0, 29.2], "dy": 26, "sh": [-17, -6], "fm": [1.02361, -0.01902, 0.01902, 1.02361, -10.69, 3.85]}, "hit": {"o": [-143, -19], "p": [13.0, 575.0], "t": [743.1, 1003.9], "dy": 75, "sh": [5, -27], "fm": [1.09477, 0.10689, -0.10689, 1.09477, -19.82, -61.73]}}, t4:{"wind": {"o": [-139, -41], "p": [782.0, 196.8], "t": [-27.2, 29.1], "dy": -15, "sh": [-17, -6], "fm": [1.03454, -0.03257, 0.03257, 1.03454, -17.55, 7.96]}, "hit": {"o": [-144, -20], "p": [12.6, 572.9], "t": [742.1, 1002.9], "dy": 78, "sh": [5, -27], "fm": [1.09979, 0.10025, -0.10025, 1.09979, -24.49, -61.12]}}, t5:{"wind": {"o": [-139, -41], "p": [781.9, 196.3], "t": [-26.3, 29.3], "dy": 25, "sh": [-17, -6], "fm": [1.02781, -0.02056, 0.02056, 1.02781, -12.53, 4.02]}, "hit": {"o": [-144, -20], "p": [11.9, 574.1], "t": [742.2, 1002.7], "dy": 76, "sh": [5, -27], "fm": [1.10188, 0.10175, -0.10175, 1.10188, -24.83, -61.98]}} };
+function heroPose(kind){
+  const h = $('hero'), q = c => h.querySelector(c), body = q('.dbody'), weap = q('.dweap'), glow = q('.dglow'), hands = q('.dhands'), face = q('.dface'), helm = q('.dhelm'), shield = q('.dshield');
+  const w = weapon(), G = WGEO[w.rid], tier = armorTier(), P = (HPOSE['t' + tier] || {})[kind];
+  let gl = q('.dpglove'); if (!gl){ gl = document.createElement('img'); gl.className = 'dl dpglove'; gl.alt = ''; gl.hidden = true; h.querySelector('.dstage').appendChild(gl); }
+  let sbk = q('.dpsback'); if (!sbk){ sbk = document.createElement('img'); sbk.className = 'dl dpsback'; sbk.alt = ''; sbk.hidden = true; sbk.src = `${ART}doll-m-shield-back.webp`; h.querySelector('.dstage').appendChild(sbk); }
+  let shd = q('.dpshadow'); if (!shd){ shd = document.createElement('img'); shd.className = 'dl dpshadow'; shd.alt = ''; shd.hidden = true; h.querySelector('.dstage').appendChild(shd); }
+  if (!body.dataset.idle) return;
+  const all = [body, weap, glow, face, helm, shield];
+  if (!kind || !P || !G || (S.hero || 'm') !== 'm' || w.wtype !== 'sword'){
+    // back to the idle doll
+    all.forEach(e => { if (e && e.dataset.idleT !== undefined){ e.style.transform = e.dataset.idleT; delete e.dataset.idleT; } });
+    if (body.dataset.idleSrc){ body.src = body.dataset.idleSrc; delete body.dataset.idleSrc; }
+    if (face && face.dataset.idleSrc){ face.src = face.dataset.idleSrc; delete face.dataset.idleSrc; } h.classList.remove('posed', 'pose-wind', 'pose-hit'); shd.hidden = true; sbk.hidden = true; gl.hidden = true; if (hands) hands.style.visibility = '';
+    return;
+  }
+  all.forEach(e => { if (e && e.dataset.idleT === undefined) e.dataset.idleT = e.style.transform; });
+  if (!body.dataset.idleSrc) body.dataset.idleSrc = body.src;
+  const dy = P.dy, at = (x, y) => `translate(${DOX + x}px,${DOY + y}px)`;
+  body.src = `${ART}hero-m-t${tier}-${kind}.webp`; body.style.transform = at(P.o[0], P.o[1] + dy);
+  gl.src = `${ART}hero-m-t${tier}-${kind}-glove.webp`; gl.style.transform = at(P.o[0], P.o[1] + dy); gl.hidden = false;
+  shd.src = `${ART}hero-m-t${tier}-${kind}-shadow.webp`; shd.style.transform = at(P.o[0], P.o[1] + dy); shd.hidden = false;
+  // head-only face (collar removed), fitted to the painted neck: scale + tilt + shift found per pose
+  const fmx = `${at(0, dy)} matrix(${P.fm.join(',')})`;
+  if (!face.dataset.idleSrc) face.dataset.idleSrc = face.src;
+  face.src = face.dataset.idleSrc.replace(/\.webp$/, '-head.webp'); face.style.transform = fmx; if (helm) helm.style.transform = fmx;
+  if (shield) shield.style.transform = at(P.sh[0], P.sh[1] + dy);
+  // dark backing behind the shield's grip notch (the idle arm used to fill it); the pose's own fist shows in front of it
+  sbk.hidden = !shield || shield.hidden; sbk.style.transform = at(P.sh[0], P.sh[1] + dy);
+  if (hands) hands.style.visibility = 'hidden';
+  // fit the sword art pommel→tip onto the placeholder pommel→tip
+  const S0 = G.w, px = G.p[0] * S0, py = G.p[1] * S0, tx = G.t[0] * S0, ty = G.t[1] * S0;
+  const vx = P.t[0] - P.p[0], vy = P.t[1] - P.p[1], sc = Math.hypot(vx, vy) / Math.hypot(tx - px, ty - py), rot = Math.atan2(vy, vx) - Math.atan2(ty - py, tx - px);
+  const wt = `translate(${DOX + P.p[0]}px,${DOY + P.p[1] + dy}px) rotate(${rot}rad) scale(${sc}) translate(${-px}px,${-py}px)`;
+  weap.style.transform = wt; if (glow) glow.style.transform = wt;
+  h.classList.add('posed'); h.classList.toggle('pose-wind', kind === 'wind'); h.classList.toggle('pose-hit', kind === 'hit');
+}
+function preloadHeroPose(){ const t = armorTier(); if (!HPOSE['t' + t]) return; new Image().src = `${ART}face-m-${S.face || 'knight'}-head.webp`; new Image().src = `${ART}doll-m-shield-back.webp`; ['wind','hit'].forEach(k => ['', '-glove', '-shadow'].forEach(x => { new Image().src = `${ART}hero-m-t${t}-${k}${x}.webp`; })); }
 function refreshHero(){
   const g = S.hero || 'm', w = weapon(), sh = shieldOn(), look = { face:S.face, tier:armorTier(), helm:S.showHelm }, key = [g, w.rid, sh, look.face, look.tier, look.helm].join('|'), h = $('hero');
   if (h.dataset.want === key) return;
-  h.dataset.want = key; dressDoll(h, g, w, sh, look);
+  h.dataset.want = key; heroPose(null); dressDoll(h, g, w, sh, look); h.querySelector('.dbody').dataset.idle = '1'; preloadHeroPose();
   renderStrip(); $('youPortrait').src = g === 'm' ? (look.tier && look.helm ? `${ART}item-helm-t${look.tier}.webp` : `${ART}face-m-${look.face || 'knight'}-icon.webp`) : `${ART}doll-${g}-1h.webp`;
   document.body.classList.toggle('portraitIcon', g === 'm'); requestAnimationFrame(placeGround);
 }
@@ -3246,6 +3324,10 @@ function renderFight(){
 function fMenu(on){ ['fAttack','fItem','fFlee'].forEach(id => $(id).disabled = !on); if (!on) closeFPops(); }
 function closeFPops(){ $('fItems').hidden = true; $('fItem').classList.remove('on'); }
 const fScale = () => scaleFor(lv('combat')) + F.windowUp;
+async function heroSwing(sp, r){
+  const h = $('hero'); h.classList.remove('lunge'); void h.offsetWidth; h.classList.add('lunge');
+  await wait(160);
+}
 function hitFx(big){ const e = $('foe'); e.classList.remove('hit'); void e.offsetWidth; e.classList.add('hit'); if (big && !reduce){ const s = $('stage'); s.classList.remove('shake'); void s.offsetWidth; s.classList.add('shake'); } }
 function hurtFx(){ if (SPR_OK) sprAnim('hurt'); { const h = $('hero'); h.classList.remove('hurt'); void h.offsetWidth; h.classList.add('hurt'); } const f = $('flash'); f.classList.remove('on'); void f.offsetWidth; f.classList.add('on'); if (!reduce){ const s = $('stage'); s.classList.remove('shake'); void s.offsetWidth; s.classList.add('shake'); } }
 const armorNow = () => F.decay ? 0 : F.e.armor;
@@ -3256,15 +3338,16 @@ $('fAttack').onclick = async () => {
   const spots = [[.5,.42],[.46,.24],[.55,.58],[.42,.5],[.58,.34]];
   for (let i = 0; i < T.strikes; i++){
     say('fLog', T.strikes > 1 ? `Strike ${i + 1} of ${T.strikes}` : 'Strike!'); $('fHint').className = 'hint live';
-    const sp = spots[(i + Math.floor(Math.random() * 5)) % 5]; const r = await ring({ pt:foePt(sp[0], sp[1]), dur:1200 / T.speed, goodTol:Math.min(.6, T.good * 1.4 * k), perfTol:Math.min(.25, T.perf * 1.6 * k), autoGood:S.assist });
+    const sp = spots[(i + Math.floor(Math.random() * 5)) % 5]; heroPose('wind'); const r = await ring({ pt:foePt(sp[0], sp[1]), dur:1200 / T.speed, goodTol:Math.min(.6, T.good * 1.4 * k), perfTol:Math.min(.25, T.perf * 1.6 * k), autoGood:S.assist });
     const mult = r === 'perfect' ? T.perfMult : r === 'good' ? 1.5 : 1;
     if (r === 'perfect'){ F.streak++; F.perfs++; } else F.streak = 0;
     let dmg = w.dmg * mult * (r === 'perfect' ? 1 + Math.min(F.streak - 1, 5) * .1 : 1) * em;
     dmg = Math.max(1, Math.round(dmg - (T.pierce ? 0 : armorNow())));
     sfx('swing_' + w.wtype);
     if (SPR_OK){ setFrame(1); await wait(reduce ? 90 : 170); setFrame(2); sprAnim('lunge'); }
-    else { const h = $('hero'); h.classList.remove('lunge'); void h.offsetWidth; h.classList.add('lunge'); await wait(160); }
-    F.ehp -= dmg; total += dmg; hitFx(r === 'perfect'); sfx('hit_' + w.wtype); if (r === 'perfect') sfx('crit'); popOn('foe', dmg, r === 'perfect' ? 'big' : '', (i - (T.strikes - 1) / 2) * 6); popOn('foe', r === 'perfect' ? 'Critical' : r === 'good' ? 'Solid' : 'Glancing', 'tag ' + (r === 'perfect' ? 'crit' : r === 'good' ? 'solid' : 'miss'), 0, 6);
+    else if ($('hero').classList.contains('posed')){ heroPose('hit'); await wait(70); hitFx(r === 'perfect'); clearTimeout(F.poseT); F.poseT = setTimeout(() => heroPose(null), 420); }
+    else { await heroSwing(sp, r); hitFx(r === 'perfect'); }
+    F.ehp -= dmg; total += dmg; if (SPR_OK) hitFx(r === 'perfect'); sfx('hit_' + w.wtype); if (r === 'perfect') sfx('crit'); popOn('foe', dmg, r === 'perfect' ? 'big' : '', (i - (T.strikes - 1) / 2) * 6); popOn('foe', r === 'perfect' ? 'Critical' : r === 'good' ? 'Solid' : 'Glancing', 'tag ' + (r === 'perfect' ? 'crit' : r === 'good' ? 'solid' : 'miss'), 0, 6);
     if (SPR_OK){ frameT = setTimeout(() => { setFrame(3); idleIn(240); }, 200); }
     if (oilEl() === 'blood' && !(F.e.el === 'void')){ const h = Math.min(F.max - F.php, Math.round(dmg * .3)); if (h > 0){ F.php += h; popOn('hero', '+' + h, 'heal', 0, 8); } }
     if (oilEl() === 'ash' && r !== 'miss') F.burn = Math.max(F.burn, r === 'perfect' ? 3 : 2);
@@ -3319,19 +3402,35 @@ $('youMedal').onclick = e => { e.stopPropagation(); statPop('you', 'fight'); };
 $('foeMedal').onclick = e => { e.stopPropagation(); statPop('foe', 'fight'); };
 $('fFlee').onclick = () => { if (F.busy) return; S.hp = Math.max(1, F.php); RUN.streak = 0; const a = ambushOutcome(false); save(); go('gather'); if (a) say('gLog', `You flee. ${a}.`); };
 
+const FOE_ATK = {"golem": {"wind": 1.089, "hit": 0.887}, "emberhound": {"hit": [0.86, 0.63, 0.557], "wind": [0.831, 0.465, 0.557]}, "ghoul": {"wind": 1.099, "hit": 0.99}, "lizardman": {"wind": 1.155, "hit": 0.917}, "pilgrim": {"wind": 0.977, "hit": 0.886}, "boghound": {"wind": 0.786, "hit": 0.876}, "warden": {"wind": 0.968, "hit": 0.86}, "crow": {"wind": 0.807, "hit": 0.8}, "deserter": {"wind": 0.907, "hit": 0.869}, "ringer": {"wind": 1.014, "hit": 0.941}, "revenant": {"wind": 0.95, "hit": 0.922}, "abbess": {"wind": 0.846, "hit": 0.789}, "leech": {"wind": 1.009, "hit": [1.0, 0.603, 0.643]}, "ribcrawler": {"wind": [1.012, 0.598, 0.588], "hit": [0.941, 0.748, 0.588]}, "penitent": {"wind": [0.85, 0.516, 0.564], "hit": [0.875, 0.749, 0.564]}, "thrall": {"wind": [0.968, 0.56, 0.533], "hit": [0.875, 0.425, 0.533]}, "king": {"wind": [0.868, 0.67, 0.613], "hit": [0.887, 0.749, 0.613]}, "ashwitch": {"wind": [0.83, 0.407, 0.455], "hit": [0.832, 0.732, 0.455]}, "pyrewight": {"wind": [1.001, 0.677, 0.726], "hit": [0.758, 0.58, 0.726]}, "marshal": {"wind": [0.91, 0.535, 0.495], "hit": [0.852, 0.453, 0.495]}, "wraith": {"wind": [0.863, 0.601, 0.524], "hit": [0.751, 0.65, 0.524]}, "squire": {"wind": [0.8, 0.68, 0.643], "hit": [0.831, 0.716, 0.643]}, "ghast": {"wind": [0.755, 0.724, 0.701], "hit": [0.756, 0.499, 0.701]}, "forsworn": {"wind": [0.854, 0.421, 0.616], "hit": [0.77, 0.561, 0.616]}, "firstoath": {"wind": [0.983, 0.598, 0.494], "hit": [0.791, 0.443, 0.494]}};
+function foeFrame(kind){
+  const f = $('foe'), a = $('foeAtk'), id = F && F.e && F.e.id, m = id && FOE_ATK[id];
+  a.classList.remove('wind', 'hit');
+  if (!kind || !m || !m[kind] || f.hidden || !f.naturalWidth){ a.hidden = true; document.body.classList.remove('foeposed'); return false; }
+  const pr = f.parentElement.getBoundingClientRect(), r = f.getBoundingClientRect(), nat = f.naturalWidth / f.naturalHeight;
+  const dh = (r.width / r.height > nat) ? r.height : r.width / nat, cx = r.left + r.width / 2 - pr.left, by = r.bottom - pr.top;
+  const img = new Image(); img.src = `${ART}enemy-${id}-${kind}.webp`;
+  const v = m[kind], sc = Array.isArray(v) ? v[0] : v, ax = Array.isArray(v) ? v[1] : .5, ix = Array.isArray(v) && v[2] != null ? v[2] : .5;
+  const place = () => { const h = dh * sc, w = h * img.naturalWidth / img.naturalHeight;
+    Object.assign(a.style, { height:h + 'px', width:w + 'px', left:(cx + (ix - .5) * dh * nat - w * ax) + 'px', top:(by - h) + 'px' });
+    a.src = img.src; a.hidden = false; void a.offsetWidth; a.classList.add(kind); document.body.classList.add('foeposed'); };
+  if (img.complete && img.naturalWidth) place(); else img.onload = place;
+  return true;
+}
+function preloadFoeAtk(id){ Object.keys(FOE_ATK[id] || {}).forEach(k => { const i = new Image(); i.src = `${ART}enemy-${id}-${k}.webp`; }); }
 async function enemyTurn(){
   const e = F.e, w = weapon();
   if (F.burn > 0){ const b = 4 * REGIONS.find(r => r.id === e.region).tier; F.burn--; F.ehp -= b; popOn('foe', b, 'burn'); hitFx(false); say('fLog', `${e.name} burns.`); renderFight(); await wait(650); if (F.ehp <= 0) return fightEnd(true); }
   const a = e.attacks[Math.floor(Math.random() * e.attacks.length)], enraged = F.ehp < e.hp * .4 && oilEl() !== 'void';
-  say('fLog', a.tell + (enraged ? ' <em>It is enraged.</em>' : '')); $('foe').classList.add('wind'); sfx('foe_wind'); await wait(900);
+  say('fLog', a.tell + (enraged ? ' <em>It is enraged.</em>' : '')); $('foe').classList.add('wind'); foeFrame('wind'); sfx('foe_wind'); await wait(900);
   say('fLog', 'Block!'); $('fHint').className = 'hint live block';
-  const B0 = WTYPES[w.wtype].block, k = fScale(), bare = (w.wtype === 'sword' || w.wtype === 'mace') && !shieldOn();
+  const B0 = WTYPES[w.wtype].block, k = fScale(), bare = w.wtype === 'sword' && !shieldOn();
   const B = bare ? { good:B0.good * .6, perf:B0.perf * .6, take:Math.max(B0.take, .6) } : B0;
   let r;
   if (F.freeParry){ F.freeParry = false; r = 'good'; await wait(300); }
   else r = await ring({ pt:foePt(.2 + Math.random() * .15, .35 + Math.random() * .2), dur:1200 / a.speed, goodTol:Math.min(.6, B.good * 1.4 * k), perfTol:Math.min(.25, B.perf * 1.6 * k), tone:'var(--moon)', ringColor:'var(--moon)', autoGood:S.assist });
   if (r === 'perfect') r = 'good'; // parrying is gone: a clean block is a block
-  $('foe').classList.remove('wind'); $('fHint').className = 'hint';
+  $('foe').classList.remove('wind'); if (foeFrame('hit')) setTimeout(() => foeFrame(null), 650); else foeFrame(null); $('fHint').className = 'hint';
   if (SPR_OK && r !== 'miss'){ setFrame(4); sprAnim('brace'); idleIn(r === 'perfect' ? 1500 : 900); }
   sfx(r === 'good' ? 'block' : 'hurt');
   const base = a.dmg * (enraged ? 1.2 : 1);
@@ -3353,7 +3452,7 @@ async function enemyTurn(){
   F.busy = false; fMenu(true); say('fLog', 'Your move.');
 }
 async function fightEnd(won){
-  F.busy = true; fMenu(false);
+  F.busy = true; fMenu(false); foeFrame(null);
   const e = F.e, rg = e.region, m = runMult();
   let lines = [], loot = [], xpGain = 0, title, sub = '';
   if (won){
@@ -3610,7 +3709,7 @@ function renderFacePick(){
   $('faceGrid').hidden = pickHero !== 'm';
   dressDoll($('faceDoll'), pickHero, { rid:'ls1', wtype:'sword' }, true, { face:pickFace });
 }
-document.querySelectorAll('.pickc').forEach(b => b.onclick = () => {
+document.querySelectorAll('.pickc').forEach(b => b.onclick = () => { if (b.disabled) return;
   pickHero = b.dataset.hero; pickFace = S.face || 'knight'; $('nameIn').value = S.name || '';
   document.querySelector('#knightPick .pickrow').hidden = true; $('facePick').hidden = false;
   document.querySelector('#knightPick h2').textContent = pickHero === 'm' ? 'Name your knight, choose a face' : 'Name your knight';
