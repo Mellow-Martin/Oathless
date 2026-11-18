@@ -58,7 +58,7 @@ button:focus-visible{outline:.3cqh solid var(--gold);outline-offset:.4cqh}
 #pops{position:absolute;inset:0;z-index:7;pointer-events:none}
 .pop{position:absolute;font-family:var(--display);font-size:5cqh;pointer-events:none;text-shadow:0 .3cqh 0 #000,0 0 1.6cqh #000;animation:pop 1.15s forwards;white-space:nowrap;transform:translateX(-50%);color:var(--bone)}
 .pop.xp{font-family:var(--fellsc);font-size:3cqh;color:var(--gold)}
-.pop.big{font-size:8cqh;color:var(--gold)} .pop.hurt{color:#ff6b6b} .pop.heal{color:var(--heal)} .pop.rare{color:var(--shade)} .pop.burn{color:var(--ember);font-size:4cqh}
+.pop.big{font-size:8cqh;color:var(--gold)} .pop.hurt{color:#e04646} .pop.heal{color:var(--heal)} .pop.rare{color:var(--shade)} .pop.burn{color:var(--ember);font-size:4cqh}
 @keyframes pop{0%{opacity:0;margin-top:1.4cqh}12%{opacity:1;margin-top:0}100%{opacity:0;margin-top:-8cqh}}
 
 /* ---------- parchment ---------- */
@@ -103,7 +103,7 @@ button.paper:disabled{filter:drop-shadow(0 .5cqh .5cqh #000a) saturate(.4) brigh
 .bar.hp i{background:linear-gradient(#b0242a,#6d0d12)} .bar.you i{background:linear-gradient(#4f3a22,#2a1a0e)}
 .num{font-family:var(--fellsc);font-size:2cqh;color:var(--ink-soft);white-space:nowrap;font-variant-numeric:tabular-nums}
 .hint{position:absolute;top:13.5%;left:50%;transform:translateX(-50%);z-index:5;font-style:italic;font-size:2.3cqh;color:var(--bone);text-shadow:0 .2cqh .6cqh #000,0 0 1.2cqh #000;white-space:nowrap;pointer-events:none;opacity:.85}
-.hint.live{color:var(--gold);opacity:1} .hint.live.block{color:#ff8a8f}
+.hint.live{color:var(--gold);opacity:1} .hint.live.block{color:#d63c3c}
 
 /* ---------- chrome ---------- */
 .brand{position:absolute;top:2.4%;left:2%;z-index:5;font-family:var(--display);font-size:5cqh;line-height:1;color:var(--bone);text-shadow:0 .3cqh 1cqh #000;pointer-events:none}
@@ -278,12 +278,12 @@ button.paper:disabled{filter:drop-shadow(0 .5cqh .5cqh #000a) saturate(.4) brigh
 @keyframes slideout{to{transform:translateX(-104%)}}
 .panel::after{content:"";position:absolute;top:1.4cqh;bottom:1.4cqh;right:3.4cqh;border-right:.2cqh dashed #c9b08533;pointer-events:none}
 .panel h2{color:var(--bone);font-size:5cqh;padding-bottom:1cqh;border-bottom:.22cqh solid #c9a86a40}
-.panel .inkbtn{color:#e98a8f;border-bottom-color:#e98a8f88;font-size:2.1cqh}
+.panel .inkbtn{color:#d63c3c;border-bottom-color:#d63c3c88;font-size:2.1cqh}
 .panel section{gap:1cqh;padding-right:1cqh;scrollbar-width:thin;scrollbar-color:#5a4128 transparent}
 .panel .entry{color:var(--bone);border-bottom:.15cqh dotted #c9a86a33}
 .panel .entry .s{color:var(--ash)}
 .panel .entry:hover:not(:disabled){background:#c9a86a12}
-.panel .entry.boss .t{color:#ff6b70}
+.panel .entry.boss .t{color:#e04646}
 .panel .g{color:var(--bone);border-bottom-color:#c9a86a55}
 .panel .g[aria-pressed="true"]{color:var(--gold);border-bottom:.3cqh solid var(--gold)}
 .panel .sk{border-bottom-color:#c9a86a33;color:var(--ash)} .panel .sk b{color:var(--bone);font-weight:400}
@@ -331,8 +331,8 @@ button.paper:disabled{filter:drop-shadow(0 .5cqh .5cqh #000a) saturate(.4) brigh
 .mapcard dl{margin:0 0 1.6cqh;display:grid;grid-template-columns:auto 1fr;gap:.5cqh 1.4cqh;font-size:2.05cqh;line-height:1.3}
 .mapcard dt{font-family:var(--fellsc);color:#d9b36a;letter-spacing:.05em}
 .mapcard dd{margin:0;color:var(--bone)}
-.mapcard dd .boss{color:#ff6b70}
-.mapcard .sealed{font-style:italic;color:#e98a8f;font-size:2.1cqh;margin-bottom:.4cqh}
+.mapcard dd .boss{color:#e04646}
+.mapcard .sealed{font-style:italic;color:#d63c3c;font-size:2.1cqh;margin-bottom:.4cqh}
 .mapcard .acts{display:flex;justify-content:flex-end;gap:2.4cqh}
 .mapcard .acts .seal{--size:10.5cqh}
 .mapcard .acts svg,#hubMap svg{width:4.4cqh;height:4.4cqh;fill:none;stroke:var(--wax-text);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
@@ -393,13 +393,13 @@ body[data-view="craft"] #hud{left:50%;right:auto;width:40%;transform:translateX(
 @keyframes slideU{from{transform:translateY(104%)}} @keyframes slideUout{to{transform:translateY(104%)}}
 body.drawer-open #hud{opacity:0;pointer-events:none}
 .drawer h2{margin:0;font-family:var(--display);font-weight:400;font-size:4.6cqh;line-height:1;display:flex;justify-content:space-between;align-items:baseline;padding-bottom:1cqh;border-bottom:.22cqh solid #c9a86a40}
-.drawer .inkbtn{color:#e98a8f;border-bottom-color:#e98a8f88;font-size:2.1cqh}
+.drawer .inkbtn{color:#d63c3c;border-bottom-color:#d63c3c88;font-size:2.1cqh}
 .drawer .dsub{font-size:1.95cqh;color:var(--ash);line-height:1.35}
 .drawer .dsub b{color:var(--bone);font-weight:400}
 .drawer .recipes{border-top:none;scrollbar-width:thin;scrollbar-color:#5a4128 transparent}
 .drawer .recipe{width:100%;color:var(--bone);border-bottom:.15cqh dotted #c9a86a33;text-align:left}
 .drawer .recipe .lv,.drawer .recipe .req{color:var(--ash)}
-.drawer .recipe .req .short{color:#e98a8f}
+.drawer .recipe .req .short{color:#d63c3c}
 .drawer .recipe.rare strong{color:#c9a6ff}
 .drawer .recipe[aria-pressed="true"]{background:linear-gradient(90deg,#c8323a30,transparent);box-shadow:inset .45cqh 0 0 var(--moon)}
 .drawer .recipe:hover:not(:disabled){background:#c9a86a12}
@@ -452,7 +452,7 @@ body.drawer-open #hud{opacity:0;pointer-events:none}
 .rscroll h2{margin:0;font-family:var(--display);font-weight:400;font-size:5.4cqh;line-height:1}
 .rsub{font-family:var(--fellsc);letter-spacing:.06em;color:var(--gold);font-size:2.1cqh;margin:.8cqh 0 1.4cqh}
 .rloot{display:flex;flex-wrap:wrap;justify-content:center;gap:.6cqh 1.6cqh;font-size:2.2cqh;margin-bottom:1.6cqh}
-.rloot em{font-style:normal;color:#ff8a8f;font-family:var(--display)}
+.rloot em{font-style:normal;color:#d63c3c;font-family:var(--display)}
 .rhp{display:grid;grid-template-columns:auto 1fr auto;gap:1.2cqh;align-items:center;font-size:2cqh;color:var(--ash);margin:0 2cqh}
 .rhp b{color:var(--bone);font-weight:400}
 .rhp .inkbar i{display:block;height:100%;background:linear-gradient(90deg,#7d1418,#c8323a)}
@@ -464,7 +464,7 @@ body.drawer-open #hud{opacity:0;pointer-events:none}
 .bpin{position:absolute;z-index:1;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:.4cqh;font-family:var(--fellsc);font-size:2cqh;white-space:nowrap;color:var(--ash);text-shadow:0 .2cqh .4cqh #000}
 .bpin .seal{--size:7.4cqh;font-size:3cqh;pointer-events:none}
 .bpin::before{content:"";position:absolute;top:-.5cqh;left:50%;width:9.2cqh;height:9.2cqh;transform:translateX(-50%);border-radius:50%;background:conic-gradient(#ff5a5f calc(var(--p) * 360deg),#ffffff26 0);-webkit-mask:radial-gradient(closest-side,transparent 80%,#000 83%);mask:radial-gradient(closest-side,transparent 80%,#000 83%);filter:drop-shadow(0 0 .4cqh #000)}
-.bpin.ready{color:#ff8a8f}
+.bpin.ready{color:#d63c3c}
 .bpin.ready .seal{animation:pinPulse 1.8s ease-in-out infinite}
 .bpin.slain::before{display:none}
 .bpin[aria-disabled="true"]{cursor:help}
@@ -693,7 +693,7 @@ body.canGather #node:hover{filter:drop-shadow(0 0 1.6cqh #f1c75b88) drop-shadow(
 .idimg{width:10cqh;height:10cqh;object-fit:contain;filter:drop-shadow(0 .4cqh .6cqh #000)}
 .invdetail h4{margin:0;font-family:var(--display);font-weight:400;font-size:3.2cqh;color:var(--bone)} .invdetail h4 small{font-size:.7em;color:var(--ash)}
 .invdetail h4.fine{color:#9fbaff} .invdetail h4.master{color:var(--gold)}
-.idsub{font-size:1.95cqh;color:var(--ash);line-height:1.35;margin-top:.3cqh} .idsub .short{color:#e98a8f} .idsub .rare{color:#c9a6ff}
+.idsub{font-size:1.95cqh;color:var(--ash);line-height:1.35;margin-top:.3cqh} .idsub .short{color:#d63c3c} .idsub .rare{color:#c9a6ff}
 .idacts{display:flex;flex-wrap:wrap;gap:1.4cqh;margin-top:1.2cqh;align-items:center}
 .idacts .detail{font-size:1.9cqh}
 .idhint{font-size:2cqh;color:var(--ash);font-style:italic} .idhint b{color:var(--bone);font-style:normal;font-weight:400}
@@ -811,13 +811,13 @@ body[data-view="hub"] #hero:hover{filter:drop-shadow(0 0 1.4cqh #c9b08566) drop-
 .mboss{display:flex;align-items:center;gap:1.4cqh;padding:1.2cqh 0;margin-bottom:1.4cqh;border-top:.15cqh solid #c9a86a26;border-bottom:.15cqh solid #c9a86a26}
 .mboss .seal{--size:5.4cqh;font-size:2.2cqh;flex:none}
 .mboss div{flex:1;display:flex;flex-direction:column;gap:.3cqh}
-.mboss b{font-weight:400;font-family:var(--display);font-size:2.6cqh;color:#ff8a8f}
+.mboss b{font-weight:400;font-family:var(--display);font-size:2.6cqh;color:#d63c3c}
 .mboss small{font-size:1.8cqh;color:var(--ash);font-style:italic}
 .mboss i{height:.8cqh;border-radius:1cqh;background:#2a1612;overflow:hidden;margin-top:.3cqh} .mboss u{display:block;height:100%;background:linear-gradient(90deg,#8e1f26,#d8484f)}
-.mboss.ready small{color:#ff8a8f;font-style:normal}
+.mboss.ready small{color:#d63c3c;font-style:normal}
 .mapcard .acts{align-items:flex-end}
 .mapcard .acts .seal{--size:9cqh} .mapcard .acts .seal.small{--size:6.6cqh}
-.pin{position:absolute} .pboss{position:absolute;top:-.6cqh;right:-1.2cqh;font-style:normal;font-size:2.4cqh;color:#ff6b70;text-shadow:0 0 .8cqh #000,0 0 1.2cqh #ff3b4a;animation:pinPulse 1.8s ease-in-out infinite;pointer-events:none}
+.pin{position:absolute} .pboss{position:absolute;top:-.6cqh;right:-1.2cqh;font-style:normal;font-size:2.4cqh;color:#e04646;text-shadow:0 0 .8cqh #000,0 0 1.2cqh #ff3b4a;animation:pinPulse 1.8s ease-in-out infinite;pointer-events:none}
 .pin[aria-pressed="true"] .seal{filter:drop-shadow(0 0 1.4cqh #f1c75b99)}
 .bpin{display:none}
 /* region: gather on the left above its xp bar, fight on the right */
@@ -836,7 +836,7 @@ body[data-view="gather"] #gLog{bottom:28%}
 #v-gather .rfight{flex-direction:column;align-items:center;gap:1.6cqh;margin:0}
 #v-gather .rfight .seal:not(.small){--size:12cqh}
 #v-gather .rfight .seal.small{--size:8cqh;font-size:3cqh}
-#gBoss{color:#ff9a9e} #gBoss .seal{animation:pinPulse 1.8s ease-in-out infinite}
+#gBoss{color:#d63c3c} #gBoss .seal{animation:pinPulse 1.8s ease-in-out infinite}
 /* encounter preview */
 .encwrap{position:absolute;inset:0;z-index:16;display:grid;place-items:center;background:radial-gradient(ellipse at 50% 50%,#000a,#000d);animation:fadein .2s}
 .enc{position:relative;width:min(78%,118cqh);display:grid;grid-template-columns:42% 1fr;gap:3cqh;align-items:center;padding:3cqh 4cqh 3cqh 2cqh;color:var(--bone);
@@ -846,11 +846,11 @@ body[data-view="gather"] #gLog{bottom:28%}
 .encart img{max-width:100%;max-height:52cqh;object-fit:contain;filter:drop-shadow(0 1cqh 1.6cqh #000)}
 .encbody{display:flex;flex-direction:column;gap:.6cqh}
 .encbody small{font-family:var(--fellsc);font-size:1.9cqh;letter-spacing:.08em;color:var(--ash)}
-.encbody h3{margin:0;font-family:var(--display);font-weight:400;font-size:6cqh;line-height:1;color:var(--bone)} .encbody h3.boss{color:#ff6b70}
+.encbody h3{margin:0;font-family:var(--display);font-weight:400;font-size:6cqh;line-height:1;color:var(--bone)} .encbody h3.boss{color:#e04646}
 .encsub{font-style:italic;font-size:2.3cqh;color:#cbbfa6;margin-bottom:1.4cqh}
 .enc dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:.8cqh 2cqh;font-size:2.15cqh;padding:1.6cqh 0;border-top:.15cqh solid #c9a86a26;border-bottom:.15cqh solid #c9a86a26}
 .enc dt{font-family:var(--fellsc);color:#d9b36a;letter-spacing:.05em} .enc dd{margin:0}
-.enc .good{color:#a7e08a} .enc .bad{color:#ff8a8f}
+.enc .good{color:#a7e08a} .enc .bad{color:#d63c3c}
 .encnote{min-height:2.6cqh;font-size:2cqh;font-style:italic;color:var(--ash);margin-top:.6cqh}
 .encacts{display:flex;justify-content:flex-end;align-items:center;gap:4cqh;margin-top:1cqh}
 .encacts .seal{--size:11cqh} .encacts svg{width:4.6cqh;height:4.6cqh;fill:none;stroke:var(--wax-text);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
@@ -887,7 +887,7 @@ body[data-view="gather"] #gLog{bottom:28%}
 .ri.gear .uii{width:6.8cqh;height:6.8cqh}
 .sealbtn.ib .uicon::before{inset:0;opacity:1;background:radial-gradient(circle at 50% 38%,#33261a,#120d0a 72%);border:.22cqh solid #c9a86a66;box-shadow:inset 0 0 1.4cqh #000,0 .5cqh 1cqh #000a}
 .sealbtn.ib.main .uicon::before{border-color:#d9b36acc;box-shadow:inset 0 0 1.4cqh #000,0 0 1.4cqh #f1c75b33,0 .5cqh 1cqh #000a}
-.sealbtn.ib .uicon.sm::before{border-color:#ff6b7099;background:radial-gradient(circle at 50% 38%,#3a1a1a,#140808 72%)}
+.sealbtn.ib .uicon.sm::before{border-color:#e0464699;background:radial-gradient(circle at 50% 38%,#3a1a1a,#140808 72%)}
 .sealbtn.ib .uicon .uii{width:80%;height:80%}
 .sealbtn.ib:hover .uicon::before{border-color:var(--gold);box-shadow:inset 0 0 1.4cqh #000,0 0 1.8cqh #f1c75b66}
 #v-gather .gwork .inkico:not([aria-pressed="true"]) .uii{filter:grayscale(.4) brightness(.95) drop-shadow(0 .3cqh .4cqh #000c)}
@@ -950,7 +950,7 @@ body[data-view="hub"] #townGlows{display:block}
 body.fighting .dock,body.chopen .dock,body.drawer-open .dock{opacity:0;pointer-events:none}
 .smed{position:relative;flex:none;width:7cqh;height:7cqh;border-radius:50%;padding:0;border:.3cqh solid var(--gold);background:#120d0a;box-shadow:0 0 1.2cqh #f1c75b44;cursor:pointer;transition:transform .15s,box-shadow .15s}
 .smed:hover,.smed.on,.smed:focus-visible{transform:scale(1.06);box-shadow:0 0 2cqh #f1c75b88;outline:none}
-.smed #stripFace{width:100%;height:100%;object-fit:cover;object-position:50% 12%;border-radius:50%}
+.smed #stripFace{display:block;width:7.4cqh;height:7.4cqh;object-fit:cover;object-position:50% 12%;border-radius:50%}
 .smed b{position:absolute;right:-.5cqh;bottom:-.3cqh;background:#5c1210;color:#f3e3c0;font:400 1.5cqh var(--display);border-radius:1cqh;padding:.05cqh .65cqh;border:.15cqh solid #c9a86a88}
 .swho{font-family:var(--display);color:var(--bone);line-height:1.05;min-width:12cqh}
 .swho b{font-weight:400;font-size:2.2cqh;display:block;white-space:nowrap}
@@ -1022,7 +1022,7 @@ body.fighting .dock,body.chopen .dock,body.drawer-open .dock{opacity:0;pointer-e
 .cmodal{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:20;width:56cqh;padding:3cqh 3.4cqh;text-align:center;background:linear-gradient(#1a1410f8,#0d0a08fa);border:.25cqh solid #c9a86a77;border-radius:1.4cqh;box-shadow:0 0 0 100vmax #0009,0 2cqh 5cqh #000;color:var(--bone)}
 .cmodal.amb{border-color:#a32a2299;background:linear-gradient(#1d0f0ef8,#0b0707fa)}
 .cmodal img{height:20cqh;filter:drop-shadow(0 1cqh 1.4cqh #000)}
-.cmodal h3{margin:.6cqh 0;font:400 4cqh var(--display)} .cmodal.amb h3{color:#ff6b5e}
+.cmodal h3{margin:.6cqh 0;font:400 4cqh var(--display)} .cmodal.amb h3{color:#e04646}
 .cmodal p{margin:0 0 2cqh;font-size:2cqh;color:#d9cfb8}
 .cmodal small{display:block;font-family:var(--fellsc);color:#a99c80;font-size:1.6cqh}
 .cmodal ul{list-style:none;padding:0;margin:2cqh 0;display:grid;gap:1cqh}
@@ -1041,7 +1041,7 @@ body[data-view="gather"] #gLog{top:4%;bottom:auto;width:44%}
 .lgtabs button{background:none;border:0;padding:.5cqh 0;font-family:var(--fellsc);font-size:2.1cqh;letter-spacing:.14em;text-transform:uppercase;color:#958a74;cursor:pointer;border-bottom:.25cqh solid transparent}
 .lgtabs button:hover{color:var(--bone)}
 .lgtabs button[aria-pressed="true"]{color:var(--bone);border-bottom-color:var(--gold)}
-.lgtabs .lgx{margin-left:auto;color:#e98a8f;letter-spacing:.08em}
+.lgtabs .lgx{margin-left:auto;color:#d63c3c;letter-spacing:.08em}
 .lglist{grid-row:2;grid-column:1;min-height:0;display:flex;flex-direction:column;padding:1.2cqh 2.2cqh 1cqh 3.6cqh;border-right:.15cqh solid #c9a86a33}
 .lghead,.lgrow{display:grid;grid-template-columns:4.6cqh 1fr 8cqh 6cqh;gap:1.2cqh;align-items:center}
 .lghead{padding:0 .8cqh .8cqh;font-family:var(--fellsc);font-size:1.35cqh;letter-spacing:.16em;text-transform:uppercase;color:#7d7360;border-bottom:.15cqh solid #c9a86a26}
@@ -1078,7 +1078,7 @@ body[data-view="gather"] #gLog{top:4%;bottom:auto;width:44%}
 .lgstats small{font-family:var(--fellsc);font-size:1.45cqh;letter-spacing:.14em;text-transform:uppercase;color:#a99c80}
 .lgstats b{font:400 3.4cqh var(--display);color:var(--bone)}
 .lgdesc{font-size:1.95cqh;color:#cbbfa6;line-height:1.4}
-.lgdesc .short,.lgmats .short{color:#e98a8f} .lgdesc .rare{color:#c9a6ff}
+.lgdesc .short,.lgmats .short{color:#d63c3c} .lgdesc .rare{color:#c9a6ff}
 .lgmats{margin-top:1cqh;font-size:1.8cqh;color:#a99c80} .lgmats small{color:#7d7360}
 .lglog{margin-top:.6cqh;font-size:1.8cqh;color:#d9b36a;min-height:2.4cqh}
 .lgacts{display:flex;justify-content:center;gap:1.4cqh;margin-top:1.6cqh;flex-wrap:wrap}
@@ -1102,7 +1102,7 @@ body[data-view="gather"] #gLog{top:4%;bottom:auto;width:44%}
 .ledger .recipe.hasw .req{grid-column:auto}
 .ledger .lghead{grid-template-columns:4.6cqh 1fr 5cqh 27cqh}
 .ledger .foldh{font-size:1.7cqh;letter-spacing:.16em;text-transform:uppercase;padding:1.1cqh .4cqh .6cqh;color:#c9a86a}
-.ledger .foldh small{font-size:1.5cqh}
+.ledger .foldh small{font-size:1.7cqh;text-transform:none;letter-spacing:0}
 .ledger .fold{border-bottom:.15cqh solid #c9a86a1a}
 .ledger .wprev[hidden]{display:grid}
 /* inventory: the panel becomes the whole screen */
@@ -1118,7 +1118,7 @@ body[data-view="gather"] #gLog{top:4%;bottom:auto;width:44%}
 .lgchar .gslot.sm{width:7cqh}
 .ring.big{display:grid;place-items:center} .ring.big svg{width:24cqh;height:24cqh;grid-area:1/1} .ring.big b{grid-area:1/1;position:relative;z-index:1;top:auto;transform:none;font:400 8cqh var(--display);color:var(--bone)}
 body.drawer-open .brand,body.drawer-open .navback,body.chopen .brand,body.chopen .navback,body.chopen #townSpots,body.chopen #townGlows{opacity:0;pointer-events:none}
-.ledger .recipe.locked .lv{color:#e98a8f}
+.ledger .recipe.locked .lv{color:#d63c3c}
 body.drawer-open #cHint,body.drawer-open #cTabs .stag{opacity:0}
 
 /* ===== v50: inn, inventory doll, craft notice ===== */
@@ -1246,7 +1246,7 @@ body.fighting #foe:hover{filter:none}
 .fbtn.bot{left:-8cqh;top:6cqh;width:16cqh;height:5.6cqh;font-size:2.6cqh;color:#cfc6b6}
 .fbtn:hover:not(:disabled),.fbtn:focus-visible,.fbtn.on{color:#fff;outline:none;transform:translateY(-.3cqh)}
 .fbtn:hover:not(:disabled)::before,.fbtn.on::before{background:linear-gradient(180deg,#fff,#9da6b8 45%,#c9cfdb 60%,#4d525c)}
-.fbtn.top:hover:not(:disabled){color:#ffd9d9;text-shadow:0 0 1.4cqh #c8323a,0 .2cqh .4cqh #000}
+.fbtn.top:hover:not(:disabled){color:#e04646;text-shadow:0 0 1.2cqh #8a1218,0 .2cqh .4cqh #000}
 .fbtn:active:not(:disabled){transform:translateY(0) scale(.97)}
 .fbtn:disabled{color:#7c756b;cursor:default}
 .fbtn:disabled::before{background:linear-gradient(180deg,#77726b,#34312d)}
@@ -1262,7 +1262,7 @@ body.fighting #foe:hover{filter:none}
 .fpop .it:disabled{opacity:.45;cursor:default}
 .fpop .it .iticon{width:4.4cqh;height:4.4cqh;object-fit:contain}
 .fpop .it i{font-size:1.5cqh;color:var(--gold);margin-left:.6cqh;font-family:var(--fellsc);font-style:normal;letter-spacing:.1em;text-transform:uppercase}
-.fpop .it b{font-weight:400} .fpop .it .up{color:#a7e08a} .fpop .it .dn{color:#ff8a8f}
+.fpop .it b{font-weight:400} .fpop .it .up{color:#a7e08a} .fpop .it .dn{color:#d63c3c}
 .fpop .detail{font-style:italic;color:#a99c80;text-align:center;font-size:2cqh}
 /* portraits + bars */
 .who{bottom:2.6%!important;width:36%!important;align-items:center!important;gap:2cqh!important}
@@ -1314,7 +1314,7 @@ body.fighting #foe:hover{filter:none}
 .rpanel.lost .rstar{filter:drop-shadow(0 0 1cqh #000) drop-shadow(0 0 2.6cqh #c8323a88) grayscale(.4)}
 .rkick{font:400 1.9cqh var(--fellsc);letter-spacing:.32em;text-transform:uppercase;color:var(--silver)}
 .rpanel h2{margin:.4cqh 0 2.4cqh;font:400 6cqh var(--display);color:#f1ebdf;text-shadow:0 .3cqh .8cqh #000}
-.rpanel.lost h2{color:#e5b3b3}
+.rpanel.lost h2{color:#d63c3c}
 .rsec{margin:0 auto 2.2cqh;max-width:80cqh}
 .rlbl{display:flex;align-items:center;gap:1.6cqh;font:400 1.6cqh var(--fellsc);letter-spacing:.24em;text-transform:uppercase;color:#a99c80;margin-bottom:1.2cqh}
 .rlbl::before,.rlbl::after{content:"";flex:1;height:.14cqh;background:linear-gradient(90deg,transparent,#8e887f88,transparent)}
@@ -1336,7 +1336,7 @@ body.fighting #foe:hover{filter:none}
 .racts2{display:flex;justify-content:center;align-items:center;gap:2cqh;margin-top:3cqh;flex-wrap:wrap}
 .racts2 .fbtn{position:relative;left:auto;top:auto;width:26cqh;height:6.8cqh;--cap:4.2cqh;font-size:2.7cqh}
 .racts2 .fbtn.main{width:28cqh;height:7.6cqh;--cap:4.7cqh;font-size:3.3cqh}
-.racts2 .fbtn.boss{color:#ffcfcf} .racts2 .fbtn.boss:hover{text-shadow:0 0 1.4cqh #c8323a,0 .2cqh .4cqh #000}
+.racts2 .fbtn.boss{color:#e04646} .racts2 .fbtn.boss:hover{text-shadow:0 0 1.2cqh #8a1218,0 .2cqh .4cqh #000}
 /* satchel rows were inheriting the old parchment ink colour */
 #fItems.fpop .it,#fWeaps.fpop .it{color:var(--bone)!important;opacity:1;display:grid!important;border-bottom:.12cqh solid #8e887f26!important}
 #fItems.fpop .it:hover{color:#fff!important}
@@ -1376,7 +1376,7 @@ button.medal:hover,button.medal:focus-visible{filter:brightness(1.18);outline:no
 .fccmp small{font:400 1.4cqh var(--fellsc);letter-spacing:.14em;text-transform:uppercase;color:#a99c80}
 .fccmp b{font:400 4.6cqh var(--display);font-weight:400;line-height:1.1}
 .fccmp .vs{font-style:italic;color:#7d7360;padding-bottom:1cqh}
-.fccmp .delta{font:400 2.6cqh var(--display);padding-bottom:.8cqh;color:#a99c80} .fccmp .delta.up{color:#a7e08a} .fccmp .delta.dn{color:#ff8a8f}
+.fccmp .delta{font:400 2.6cqh var(--display);padding-bottom:.8cqh;color:#a99c80} .fccmp .delta.up{color:#a7e08a} .fccmp .delta.dn{color:#d63c3c}
 
 .fcimg{height:auto!important;margin:0 0 2cqh!important;overflow:hidden}
 .fcimg img{height:24cqh!important;width:auto!important;max-width:100%!important;position:static!important;transform:none!important;margin:0!important;animation:none!important}
@@ -1450,8 +1450,8 @@ button.medal:hover,button.medal:focus-visible{filter:brightness(1.18);outline:no
 .mcsub{font:400 1.7cqh var(--fellsc);letter-spacing:.14em;text-transform:uppercase;color:var(--silver);margin-top:.4cqh}
 .mcchips{display:flex;gap:.8cqh;margin-top:.9cqh;flex-wrap:wrap}
 .mcchips span{font:400 1.5cqh var(--fellsc);letter-spacing:.12em;text-transform:uppercase;padding:.3cqh 1cqh;border:.14cqh solid #8e887f66;color:#cbbfa6}
-.mcchips .here{color:var(--gold);border-color:#f1c75b77} .mcchips .lock{color:#e98a8f;border-color:#e98a8f66}
-.mcseal{margin:1cqh 0 .4cqh;font-style:italic;color:#e98a8f;font-size:2.1cqh}
+.mcchips .here{color:var(--gold);border-color:#f1c75b77} .mcchips .lock{color:#d63c3c;border-color:#d63c3c66}
+.mcseal{margin:1cqh 0 .4cqh;font-style:italic;color:#d63c3c;font-size:2.1cqh}
 .mcsec{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:1.6cqh;padding:1.3cqh 0;border-bottom:.12cqh solid #8e887f2e}
 .mcsec:last-child{border-bottom:0}
 .mcsec.off{opacity:.45}
@@ -1461,13 +1461,13 @@ button.medal:hover,button.medal:focus-visible{filter:brightness(1.18);outline:no
 .mcmat{width:3.8cqh;height:3.8cqh;object-fit:contain;filter:drop-shadow(0 .2cqh .3cqh #000)}
 .mctxt{min-width:0}
 .mclbl{font:400 1.5cqh var(--fellsc);letter-spacing:.2em;text-transform:uppercase;color:#a99c80}
-.mctxt p{margin:.1cqh 0 .2cqh;font-size:2.1cqh;color:var(--bone)} .mctxt p.bn{font:400 2.8cqh var(--display);color:#ff9a9e}
+.mctxt p{margin:.1cqh 0 .2cqh;font-size:2.1cqh;color:var(--bone)} .mctxt p.bn{font:400 2.8cqh var(--display);color:#d63c3c}
 .mctxt small{display:block;font-size:1.6cqh;font-style:italic;color:#a99c80;line-height:1.3}
 .mcprog{display:block;height:.8cqh;margin-top:.7cqh;background:#0b0908;box-shadow:0 0 0 .14cqh #0d0a08,0 0 0 .28cqh var(--silver-lo);overflow:hidden}
 .mcprog u{display:block;height:100%;transform-origin:left;background:linear-gradient(#c8323a,#7d1418)}
 .mcbtn{position:relative!important;left:auto!important;top:auto!important;width:16cqh;height:5.4cqh;--cap:3.4cqh;font-size:2.3cqh}
 .mcbtn.main{color:#fff}
-.mcbtn.boss:not(:disabled){color:#ffcfcf} .mcbtn.boss:hover:not(:disabled){text-shadow:0 0 1.2cqh #c8323a,0 .2cqh .4cqh #000}
+.mcbtn.boss:not(:disabled){color:#e04646} .mcbtn.boss:hover:not(:disabled){text-shadow:0 0 1.2cqh #8a1218,0 .2cqh .4cqh #000}
 .mcsec.boss.ready .mcfoe{box-shadow:0 0 0 .2cqh #0c0908,0 0 0 .38cqh #c8323a,0 0 1.4cqh #c8323a88}
 
 /* v72: encounter preview in the same iron and silver */
@@ -1479,7 +1479,7 @@ button.medal:hover,button.medal:focus-visible{filter:brightness(1.18);outline:no
 .encacts{display:flex!important;justify-content:flex-end;align-items:center;gap:2cqh}
 .encacts .fbtn{position:relative;left:auto;top:auto;width:20cqh;height:6cqh;--cap:3.8cqh;font-size:2.6cqh}
 .encacts .fbtn.main{width:24cqh;height:7cqh;--cap:4.3cqh;font-size:3.2cqh}
-.encacts .fbtn.main:hover{text-shadow:0 0 1.4cqh #c8323a,0 .2cqh .4cqh #000}
+.encacts .fbtn.main:hover{text-shadow:0 0 1.2cqh #8a1218,0 .2cqh .4cqh #000}
 
 /* v73: region card sits centre screen; arrows step between regions */
 #mapCard.mapcard{left:50%!important;right:auto!important;top:47%!important;transform:translate(-50%,-50%);animation:mcin .22s ease-out!important;z-index:40!important}
@@ -1511,13 +1511,13 @@ button.medal:hover,button.medal:focus-visible{filter:brightness(1.18);outline:no
 .pname small{font:400 1.7cqh var(--fellsc);letter-spacing:.14em;text-transform:uppercase;color:#cbbfa6}
 .pin.poi:hover .pname{transform:scale(1.06);color:#fff}
 .pin.poi.here .pname small{color:var(--gold)}
-.pin.poi.locked .pname{color:#b5aa9b} .pin.poi.locked .pname small{color:#e98a8f}
+.pin.poi.locked .pname{color:#b5aa9b} .pin.poi.locked .pname small{color:#d63c3c}
 .pin.poi[aria-pressed="true"] .pname{color:var(--gold)}
 .pin.poi .pboss{position:static;margin-bottom:.2cqh}
 /* click: a ring of light ripples out from the place and the name presses in */
 .pin.poi.hit::before{content:"";position:absolute;left:50%;top:50%;width:40%;aspect-ratio:1;border-radius:50%;transform:translate(-50%,-50%);pointer-events:none;
   border:.3cqh solid #f1e6cf;box-shadow:0 0 1.6cqh #f1e6cf88,inset 0 0 1.2cqh #f1e6cf55;animation:poiRing .55s ease-out forwards}
-.pin.poi.locked.hit::before{border-color:#e98a8f;box-shadow:0 0 1.6cqh #e98a8f88}
+.pin.poi.locked.hit::before{border-color:#d63c3c;box-shadow:0 0 1.6cqh #d63c3c88}
 .pin.poi.hit .pname{animation:poiPress .3s ease-out}
 @keyframes poiRing{from{opacity:1;width:20%}to{opacity:0;width:130%}}
 @keyframes poiPress{40%{transform:scale(.92)}100%{transform:scale(1)}}
@@ -1533,7 +1533,7 @@ button.medal:hover,button.medal:focus-visible{filter:brightness(1.18);outline:no
 
 /* v80: required materials link to where they are found */
 .matlink{background:none;border:0;padding:0 .2cqh;font:inherit;color:inherit;cursor:pointer;border-bottom:.14cqh dashed currentColor;transition:color .15s}
-.matlink.short{color:#e98a8f}
+.matlink.short{color:#d63c3c}
 .matlink:hover:not(:disabled){color:#fff3d6}
 .matlink i{font-style:normal;font-size:.8em;margin-left:.3cqh;opacity:.7}
 .matlink:disabled{border-bottom:0;cursor:default}
@@ -1577,7 +1577,7 @@ body.fighting #foe[data-id="golem"]{height:80%!important}
 .encoils .it{display:grid;grid-template-columns:3.4cqh 1fr auto;align-items:center;gap:1cqh;padding:.4cqh .6cqh;background:none;border:.12cqh solid transparent;color:var(--bone);font:inherit;font-size:1.9cqh;text-align:left;cursor:pointer}
 .encoils .it:disabled{opacity:.4;cursor:default} .encoils .it:hover:not(:disabled){background:#ffffff0d}
 .encoils .it.eq{border-color:var(--gold);background:#f1c75b14}
-.encoils .it i{font-style:normal} .encoils b{font-weight:400} .encoils .up{color:#a7e08a} .encoils .dn{color:#ff8a8f}
+.encoils .it i{font-style:normal} .encoils b{font-weight:400} .encoils .up{color:#a7e08a} .encoils .dn{color:#d63c3c}
 .oilchip{font:400 1.4cqh var(--fellsc);letter-spacing:.1em;text-transform:uppercase;border:.14cqh solid;padding:.1cqh .7cqh;margin-left:.6cqh;vertical-align:middle}
 body[data-oil="ash"] #hero .dglow{--oc:#ff8a3d}
 body[data-oil="blight"] #hero .dglow{--oc:#8fd14f}
@@ -1601,9 +1601,9 @@ body[data-oil]:not([data-oil=""]) #hero .dglow{display:block;opacity:.9;mix-blen
 @keyframes fintOut{from{opacity:1;filter:blur(0)}to{opacity:0;filter:blur(1.2cqh)}}
 .fintx{position:relative;text-align:center;color:#f1ebdf;animation:fintTx 1.25s ease-out both}
 .fintx small{display:block;font:400 1.9cqh var(--fellsc);letter-spacing:.34em;text-transform:uppercase;color:var(--silver)}
-.fint.boss .fintx small{color:#e98a8f}
+.fint.boss .fintx small{color:#d63c3c}
 .fintx b{display:block;margin-top:.6cqh;font:400 7cqh var(--display);font-weight:400;text-shadow:0 0 2.4cqh #000}
-.fint.boss .fintx b{color:#ffd9d9;text-shadow:0 0 3cqh #c8323a99,0 0 1cqh #000}
+.fint.boss .fintx b{color:#e04646;text-shadow:0 0 3cqh #8a121899,0 .2cqh .6cqh #000}
 .fintx i{display:block;height:.18cqh;margin:1.6cqh auto 0;width:0;background:linear-gradient(90deg,transparent,var(--silver),transparent);animation:fintLine .8s .25s ease-out forwards}
 .fint.boss .fintx i{background:linear-gradient(90deg,transparent,#c8323a,transparent)}
 @keyframes fintTx{0%{opacity:0;transform:translateY(1cqh);letter-spacing:.2em}35%{opacity:1;transform:none;letter-spacing:0}100%{opacity:1}}
@@ -1613,15 +1613,15 @@ body.fighting #foe.enter{animation:foeIn .9s .35s cubic-bezier(.2,.8,.2,1) both,
 @keyframes foeIn{from{opacity:0;transform:translateX(6cqh);filter:brightness(0)}60%{filter:brightness(.6)}to{opacity:1;transform:none;filter:none}}
 @media (prefers-reduced-motion:reduce){.fint,.fint.out,.fintx,body.fighting #foe.enter{animation-duration:.01s!important}}
 .fintx em{display:inline;font:inherit;font-style:normal;color:#cbbfa6}
-.fint.boss .fintx em{color:#e9a9a9}
+.fint.boss .fintx em{color:#c94a4a}
 
 /* v98: dock portrait in the thorned iron ring */
 .dock{overflow:visible;border-color:#8e887f66!important}
-.smed{width:7.4cqh;height:7.4cqh;margin:-.4cqh 1.8cqh -.4cqh 1.8cqh;border:0;background:radial-gradient(circle at 50% 35%,#3a2a1e,#0e0907);box-shadow:none;transition:filter .15s}
+.smed{display:block;flex:0 0 7.4cqh;width:7.4cqh;min-width:7.4cqh;max-width:7.4cqh;height:7.4cqh;aspect-ratio:1/1;box-sizing:border-box;margin:-.4cqh 1.8cqh -.4cqh 1.8cqh;border:0;background:radial-gradient(circle at 50% 35%,#3a2a1e,#0e0907);box-shadow:none;transition:filter .15s}
 .smed:hover,.smed.on,.smed:focus-visible{transform:none;box-shadow:none;filter:brightness(1.15)}
-.smed .sring{position:absolute;left:50%;top:50%;width:178%;height:178%;transform:translate(-50%,-50%);pointer-events:none;filter:drop-shadow(0 .4cqh .7cqh #000c)}
+.smed .sring{position:absolute;left:50%;top:50%;width:13.2cqh;height:13.2cqh;max-width:none;max-height:none;transform:translate(-50%,-50%);pointer-events:none;filter:drop-shadow(0 .4cqh .7cqh #000c)}
 .smed b{right:-1.3cqh;bottom:-1.1cqh;z-index:2;min-width:2.6cqh;height:2.6cqh;padding:0 .4cqh;display:grid;place-items:center;border-radius:50%;background:radial-gradient(circle at 50% 35%,#2a2420,#0b0807);color:var(--bone);font:400 1.5cqh var(--display);border:.18cqh solid var(--silver-lo);box-shadow:0 0 0 .15cqh #000,0 .3cqh .5cqh #000c}
-.smed .sclip{position:absolute;inset:0;border-radius:50%;overflow:hidden}
+.smed .sclip{position:absolute;left:0;top:0;display:block;width:7.4cqh;height:7.4cqh;border-radius:50%;overflow:hidden}
 body:not(.portraitIcon) .smed #stripFace{position:absolute;width:260%;height:auto;max-width:none;left:52%;top:-6%;transform:translateX(-50%);border-radius:0;object-fit:initial}
 /* v98: faces centred in every enemy portrait */
 .fcrop{position:relative;overflow:hidden;display:block}
@@ -1644,6 +1644,23 @@ body:not(.portraitIcon) .smed #stripFace{position:absolute;width:260%;height:aut
 @keyframes ffFlash{0%{opacity:1}100%{opacity:0}}
 @keyframes ffSpark{0%{opacity:1;transform:translate(0,0) scale(1.2)}70%{opacity:.9}100%{opacity:0;transform:translate(var(--x),var(--y)) scale(.3)}}
 
+.req .rhave{font-size:.85em;opacity:.7}
+.csub{text-align:center}.csub .chave{display:block;font:400 1.7cqh var(--fellsc);color:var(--bone);letter-spacing:.04em;margin-bottom:.1cqh}
+#invHead{grid-template-columns:4.6cqh 1fr 8cqh 6cqh}
+
+/* v105: Lectern combat menu — Attack, Items, Flee on an iron chain; oils live inside Items */
+.fstar{display:none!important}
+#fAttack{left:-14cqh!important;top:-17cqh!important;width:28cqh!important;height:8.2cqh!important;--cap:4.9cqh}
+#fItem{left:-10.5cqh!important;top:-7.2cqh!important;width:21cqh!important;height:6.4cqh!important;--cap:4.1cqh}
+#fFlee{left:-9cqh!important;top:.6cqh!important;width:18cqh!important;height:5.8cqh!important;--cap:3.8cqh}
+#fMenu::before,#fMenu::after{content:'';position:absolute;pointer-events:none;z-index:-1}
+#fMenu::before{width:.22cqh;height:26cqh;left:-.11cqh;top:-19cqh;background:linear-gradient(180deg,transparent,#8e887f 15%,#e6e2da 50%,#8e887f 85%,transparent);box-shadow:0 0 .8cqh #000}
+#fMenu::after{width:46cqh;height:.22cqh;left:-23cqh;top:-8.6cqh;background:linear-gradient(90deg,transparent,#8e887f 18%,#e6e2da 50%,#8e887f 82%,transparent);box-shadow:0 0 .8cqh #000}
+#fMenu:has(.fbtn:disabled)::before,#fMenu:has(.fbtn:disabled)::after{opacity:.5}
+#fItems.fpop{max-height:56%!important;overflow:auto;width:34%!important;bottom:42.5%!important}
+#fItems .fpsec{margin:1.4cqh 0 .4cqh;padding-top:1cqh;border-top:.15cqh solid #8e887f40;font:400 1.6cqh var(--fellsc);letter-spacing:.18em;text-transform:uppercase;color:#a49d92;text-align:left}
+#fItems h4:first-child + .fpsec{border-top:0;margin-top:.2cqh;padding-top:0}
+#fItems .fpcur{margin:.2cqh 0 .6cqh;font-size:1.9cqh;color:var(--bone)} #fItems .fpcur b{font-weight:400;color:var(--oc)}
 </style>
 
 <div id="ambient" aria-hidden="true"></div>
@@ -1759,14 +1776,11 @@ body:not(.portraitIcon) .smed #stripFace{position:absolute;width:260%;height:aut
       </div>
     </div>
     <div class="fcross" id="fMenu">
-      <img class="fstar" src="art/final/ui-star.webp" alt="">
       <button class="fbtn top" id="fAttack"><span>Attack</span></button>
-      <button class="fbtn left" id="fWeap"><span>Oils</span></button>
       <button class="fbtn right" id="fItem"><span>Items</span></button>
       <button class="fbtn bot" id="fFlee"><span>Flee</span></button>
     </div>
     <div class="fpop" id="fItems" hidden></div>
-    <div class="fpop" id="fWeaps" hidden></div>
     <div class="who foe">
       <img class="mring" src="art/final/ui-ring.webp" alt=""><button class="medal" id="foeMedal" title="Enemy stats"><img id="foePortrait" alt=""></button>
       <div class="info">
@@ -2037,7 +2051,8 @@ const EL = {
 };
 const INK = { ash:'#a24a12', blight:'#45701a', blood:'#8a161b', void:'#55287e', bone:'#6b5634' };
 const elTag = e => e ? `<span class="el" style="color:${INK[e]}">${EL[e].name}</span>` : '';
-function elMult(we, ee){ if (!we || !ee) return 1; if (EL[we].beats === ee) return 1.5; if (we === ee) return .25; return 1; }
+function elMult(we, ee){ if (!we || !ee) return 1; if (we === ee) return .25; return 1.5; }
+const OIL_HITS = 3;
 const OIL_NAME = { ash:'Ember Oil', blight:'Rot Resin', blood:'Bloodblack Oil', void:'Hollow Pitch', bone:'Marrow Wax' };
 const oilEl = () => (typeof F !== 'undefined' && F && F.oil) || null;
 const oilTag = el => el ? `<b style="color:${EL[el].color}">${EL[el].name}</b>` : '';
@@ -2226,7 +2241,7 @@ function recipeText(r){
   if (r.kind === 'helm') return `Helm · blocks ${r.armor} damage per hit`;
   if (r.kind === 'armor') return `Armour · blocks ${r.armor} damage per hit · helm included`;
   if (r.kind === 'tool') return toolTier() >= r.tier ? 'Crafted. Tools are kept for good and used at every camp, so each is forged only once' : `Gathering tools · ${TOOL_POW[r.tier]} work per click (now ${TOOL_POW[toolTier()]})`;
-  const b = []; if (r.oil) b.push(`Blade oil · ×1.5 damage to ${EL[EL[r.oil].beats].name} foes for one fight, ×0.25 to ${EL[r.oil].name} foes`); if (r.heal) b.push(`Heals ${r.heal}`); if (r.ward) b.push(`Take 30% less ${EL[r.ward].name} damage this fight`); if (r.windowUp) b.push(`Better crit odds this fight`); if (r.freeParry) b.push('your next block is certain');
+  const b = []; if (r.oil) b.push(`Blade oil · ×1.5 damage for ${OIL_HITS} attacks, ×0.25 against ${EL[r.oil].name} foes`); if (r.heal) b.push(`Heals ${r.heal}`); if (r.ward) b.push(`Take 30% less ${EL[r.ward].name} damage this fight`); if (r.windowUp) b.push(`Better crit odds this fight`); if (r.freeParry) b.push('your next block is certain');
   return b.join(', ');
 }
 const GATHER_UI = {
@@ -2393,7 +2408,7 @@ function autoRing(opts){
       }
       const svg = $('rings'), tx = document.createElementNS(NS, 'text');
       tx.setAttribute('x', P.px); tx.setAttribute('y', P.py); tx.setAttribute('text-anchor', 'middle'); tx.setAttribute('class', 'ringtext');
-      tx.setAttribute('fill', res === 'perfect' ? 'var(--gold)' : res === 'good' ? 'var(--bone)' : 'var(--ash)'); tx.textContent = LABELS[block ? 'block' : 'hit'][res];
+      tx.setAttribute('fill', res === 'perfect' ? 'var(--gold)' : res === 'good' ? 'var(--bone)' : 'var(--ash)'); tx.textContent = (opts.labels || LABELS[block ? 'block' : 'hit'])[res] || '';
       svg.innerHTML = ''; if (view !== 'fight'){ svg.appendChild(tx); setTimeout(() => { if (svg.contains(tx)) svg.innerHTML = ''; }, 520); }   // in fights the labels ride over the characters instead
       resolve(res);
     };
@@ -2549,7 +2564,7 @@ function statPop(who, where){
   let html = '';
   if (who === 'you'){
     const w = weapon(), ar = armorItem(), hp = inFight ? Math.max(0, Math.round(F.php)) : curHp(), mh = inFight ? F.max : maxHp(), T = WTYPES[w.wtype];
-    const fx = inFight ? [F.oil ? OIL_NAME[F.oil] + ' on the blade' : '', F.burn ? 'Foe burning' : '', F.decay ? 'Foe armour broken' : '', F.ward ? EL[F.ward].name + ' ward' : '', F.windowUp ? 'Elixir' : '', F.freeParry ? 'Guard ready' : ''].filter(Boolean) : [];
+    const fx = inFight ? [F.oil ? OIL_NAME[F.oil] + ` on the blade · ${F.oilN} attack${F.oilN > 1 ? 's' : ''} left` : '', F.burn ? 'Foe burning' : '', F.decay ? 'Foe armour broken' : '', F.ward ? EL[F.ward].name + ' ward' : '', F.windowUp ? 'Elixir' : '', F.freeParry ? 'Guard ready' : ''].filter(Boolean) : [];
     html = `<div class="sphead"><b>${heroName()}</b><small>Level ${lv('combat')}</small></div>
       <div class="spgrid">${statRow('Health', `${hp} / ${mh}`)}${statRow('Damage', w.dmg + (T.strikes > 1 ? ' ×' + T.strikes : ''))}${statRow('Armour', ar ? ar.armor : 0)}${statRow('Block', shieldOn() ? 'Shield' : 'Weapon')}${statRow('Battles won', battlesWon())}${statRow('Great enemies slain', greatSlain())}</div>
       <div class="splist"><p><small>Weapon</small>${itemLabel(w)} · ${T.label}${T.pierce ? ' · ignores armour' : ''}</p>
@@ -2559,9 +2574,8 @@ function statPop(who, where){
   } else {
     if (!inFight) return; const e = F.e, wk = Object.keys(EL).find(k => EL[k].beats === e.el), strong = EL[e.el].beats;
     html = `<div class="sphead"><b>${e.name}</b><small>Level ${enemyLv(e)}${e.boss ? ' · Boss' : ''}</small></div>
-      <div class="spgrid">${statRow('Health', `${Math.max(0, Math.round(F.ehp))} / ${e.hp}`)}${statRow('Armour', armorNow())}${statRow('Element', `<i style="color:${EL[e.el].color}">${EL[e.el].name}</i>`)}${statRow('Weak to', `<i style="color:${EL[wk].color}">${EL[wk].name}</i>`)}</div>
+      <div class="spgrid">${statRow('Health', `${Math.max(0, Math.round(F.ehp))} / ${e.hp}`)}${statRow('Armour', armorNow())}${statRow('Element', `<i style="color:${EL[e.el].color}">${EL[e.el].name}</i>`)}${statRow('Resists', `<i style="color:${EL[e.el].color}">${EL[e.el].name} oil</i>`)}</div>
       <div class="splist"><p><small>Attacks</small>${e.attacks.map(a => `${a.name} ${a.dmg}`).join(' · ')}</p>
-      <p><small>Resists</small>${EL[strong] ? `${EL[strong].name} weapons deal less` : 'Nothing'}</p>
       ${e.drain ? `<p><small>Trait</small>Drinks part of the damage it deals</p>` : ''}</div>`;
   }
   box.innerHTML = html; box.dataset.who = who + where; box.className = 'statpop ' + (where === 'dock' ? 'atdock' : who === 'you' ? 'atyou' : 'atfoe'); box.hidden = false; sfx('click');
@@ -2597,13 +2611,13 @@ function renderDetail(){
     desc = 'The blackened heater. Blocks far better than an empty hand, held by the inside straps.';
     acts = btn('toggle', st.equipped ? 'Unequip' : 'Equip');
   } else if (st.kind === 'use'){ const it = st.top;
-    stats = [[it.heal ? 'Heals' : 'Effect', it.heal || (it.ward ? 'Ward' : it.windowUp ? 'Focus' : '—')], ['Quantity', st.count]];
+    stats = [[it.heal ? 'Heals' : it.oil ? 'Damage' : 'Effect', it.heal || (it.oil ? '×1.5' : it.ward ? 'Ward' : it.windowUp ? 'Focus' : '—')], ['Have', st.count]];
     desc = recipeText(recipeOf(it.rid) || it) + '.' + (it.heal ? '' : ' Use it in a fight from the Items satchel.');
     acts = it.heal ? btn('use', `Drink / eat · ${curHp()} / ${maxHp()} HP`, curHp() >= maxHp()) : '';
   } else {
     const uses = Object.values(RECIPES).flat().filter(r => r.cost[st.name]).map(r => r.name);
     const from = REGIONS.find(r => Object.values(r.gather).flat().includes(st.name));
-    stats = [['Quantity', st.count], ['From', from ? from.name.replace('The ', '') : 'Boss trophy'], ['Kind', RARE_MATS.has(st.name) ? 'Rare' : MAT_KIND(st.name)]];
+    stats = [['Have', st.count], ['From', from ? from.name.replace('The ', '') : 'Boss trophy'], ['Kind', RARE_MATS.has(st.name) ? 'Rare' : MAT_KIND(st.name)]];
     desc = uses.length ? `Used in ${uses.slice(0, 4).join(', ')}${uses.length > 4 ? '…' : ''}.` : 'Kept for later.';
   }
   d.innerHTML = `<div class="lgbig ${st.kind}">${iconImg(st, 'lgimg')}</div>
@@ -2635,7 +2649,7 @@ function renderHub(){
     if (!(key in FOLD)) FOLD[key] = rg.id === S.region;
     const list = open ? rg.enemies.map(id => {
       const e = ENEMIES[id], w = weapon(), m = 1;
-      const hint = m > 1 ? ' · <span style="color:#a7e08a">your weapon bites here</span>' : m < 1 ? ' · <span style="color:#e98a8f">it resists your weapon</span>' : '';
+      const hint = m > 1 ? ' · <span style="color:#a7e08a">your weapon bites here</span>' : m < 1 ? ' · <span style="color:#d63c3c">it resists your weapon</span>' : '';
       return `<button class="entry dest${e.boss ? ' boss' : ''}" data-hunt="${id}" data-rg="${rg.id}">${e.boss ? '<span class="seal bossseal"><span>✠</span></span>' : ''}<span class="t">${e.name.replace('The ', '')}</span><span class="s">${elTag(e.el)} · ${e.hp} hp · weak to ${elTag(Object.keys(EL).find(k => EL[k].beats === e.el))}${hint}${S.kills[id] ? ` · slain ${S.kills[id]}×` : ''}</span></button>`;
     }).join('') : `<span class="detail">Sealed. Needs ${reqText(rg)}.</span>`;
     return `<div class="fold${FOLD[key] ? ' open' : ''}${open ? '' : ' locked'}" data-fold="${key}"><button class="foldh"><i></i>${rg.name.replace('The ', '')}<small>${open ? rg.mood : 'sealed'}</small></button><div class="foldb"><div>${list}</div></div></div>`;
@@ -2770,7 +2784,7 @@ function renderCamp(){
     const need = haulNeed(r, s), p = Math.min(1, (c.prog[s.k] || 0) / need);
     b.style.setProperty('--p', (p * 100).toFixed(1));
     const n = c.hire[s.k] || 0, rate = spotRate(c, s);
-    b.querySelector('.csub').textContent = open ? `${Math.floor(c.prog[s.k] || 0)} / ${need}` + (rate ? ` · +${(rate / need * 60).toFixed(1)}/min` : '') : '';
+    b.querySelector('.csub').innerHTML = open ? `<b class="chave">Have: ${S.mats[spotMat(r, s)] || 0}</b>${Math.floor(c.prog[s.k] || 0)} / ${need}` + (rate ? ` · +${(rate / need * 60).toFixed(1)}/min` : '') : '';
     b.querySelector('.ccrew').innerHTML = n ? `<i>${n}</i> ${s.hire.split(' ').pop().toLowerCase()}${n > 1 ? 's' : ''}` : '';
   });
   const cap = campCap(c), tot = stockTotal(c);
@@ -2789,7 +2803,7 @@ function renderCamp(){
   h += '<h5>Camp</h5>';
   UPGRADES.forEach(u => { const lvl = c[u.k], maxed = lvl >= u.max, [m, n] = u.cost(r, c); h += row(`${ART}item-${slug(m)}.webp`, `${u.name}${lvl ? ' ' + 'I'.repeat(Math.min(lvl, 3)) + (lvl > 3 ? '+' : '') : ''}`, maxed ? 'Fully upgraded' : u.desc(c), maxed ? '—' : `${n} ${m}`, !maxed && have(m) >= n, `data-up="${u.k}"`, maxed ? 'no' : ''); });
   if (view === 'gather'){ c.gain = {}; c.seen = Date.now(); }
-  { const id = bossOf(r.id), ready = bossReady(r.id); $('gBoss').hidden = !ready; $('gBossLbl').textContent = 'Face ' + ENEMIES[id].name.replace('The ', ''); }
+  { const id = bossOf(r.id), ready = bossReady(r.id); $('gBoss').hidden = !ready; $('gBossLbl').textContent = 'Challenge ' + ENEMIES[id].name.replace('The ', ''); }
   // only rebuild what changed, so a click is never lost to the 1 s refresh
   if ($('campStock') && $('campStock').dataset.h === sh && $('campPanel').dataset.h === h) return;
   if ($('campPanel').dataset.h !== h){ $('campPanel').innerHTML = h; $('campPanel').dataset.h = h; $('campPanel').querySelectorAll('img').forEach(i => i.onerror = () => { i.onerror = null; i.src = fbIcon('ore'); }); }
@@ -2852,7 +2866,7 @@ function enterCamp(){
 }
 function campCampSeen(){ const c = S.camp && S.camp[region().id]; if (c){ c.seen = Date.now(); save(); } }
 window.__camp = { showAmbush, spawnGlint };   // test hook
-window.__dbg = { ENEMIES, go: (...a) => go(...a), forgeStrike: p => forgeStrike(p), fight: id => { S.region = ENEMIES[id].region || S.region; go("fight", id); } };
+window.__dbg = { get S(){ return S; }, ENEMIES, go: (...a) => go(...a), forgeStrike: p => forgeStrike(p), fight: id => { S.region = ENEMIES[id].region || S.region; go("fight", id); } };
 // legacy entry points used elsewhere
 function renderGather(){ renderCamp(); }
 function stopGather(){ clearTimeout(glintT); clearTimeout(ambushT); document.querySelectorAll('.cglint').forEach(g => g.remove()); }
@@ -2876,17 +2890,17 @@ function renderCraft(){
   ['smithing','alchemy','cooking'].forEach(k => { $('cl-' + k).textContent = lv(k); $('st-' + k).toggleAttribute('hidden', k !== cSkill); });
   $('cTabs').querySelectorAll('.station').forEach(b => b.classList.toggle('on', drawerOpen && b.dataset.s === cSkill)); $('cTabs').classList.toggle('intro', !drawerOpen);
   const l = lv(cSkill);
-  // one fold per tier; the tier of the picked recipe opens by default
+  // one fold per region; the region of the picked recipe opens by default
   { const pr = RECIPES[cSkill].find(x => x.id === picked); if (pr) cTier = pr.tier; }
   $('recipes').innerHTML = REGIONS.map(rg => {
     const key = `c-${cSkill}-${rg.tier}`, open = regionOpen(rg) || rg.tier === 1;
     if (!(key in FOLD)) FOLD[key] = rg.tier === cTier;
     const list = RECIPES[cSkill].filter(r => r.tier === rg.tier).map(r => {
       const done = r.kind === 'tool' && toolTier() >= r.tier;
-      const cost = done ? '<span class="crafted">✓ Crafted</span>' : Object.entries(r.cost).map(([m, n]) => `<span class="${(S.mats[m] || 0) < n ? 'short' : ''}">${n} ${m}</span>`).join(' + ');
+      const cost = done ? '<span class="crafted">✓ Crafted</span>' : Object.entries(r.cost).map(([m, n]) => `<span class="${(S.mats[m] || 0) < n ? 'short' : ''}">${n} ${m} <small class="rhave">(${S.mats[m] || 0})</small></span>`).join(' + ');
       return `<button class="recipe${r.rare ? ' rare' : ''}${l < reqLv(r) ? ' locked' : ''}${done ? ' done' : ''} hasw" data-id="${r.id}" aria-pressed="${r.id === picked}">${recipeImg(r)}<strong>${r.name}</strong><span class="lv" title="${l < reqLv(r) ? 'Requires level ' + r.lv : ''}">${r.lv}</span><span class="req">${cost}</span></button>`;
     }).join('');
-    return `<div class="fold${FOLD[key] ? ' open' : ''}${open ? '' : ' locked'}" data-fold="${key}"><button class="foldh"><i></i>Tier ${['I','II','III','IV','V'][rg.tier - 1]}<small>${open ? rg.name.replace('The ', '') + ' materials' : 'sealed'}</small></button><div class="foldb"><div>${list}</div></div></div>`;
+    return `<div class="fold${FOLD[key] ? ' open' : ''}${open ? '' : ' locked'}" data-fold="${key}"><button class="foldh"><i></i>${rg.name.replace('The ', '')}<small>${open ? 'materials found here' : 'sealed'}</small></button><div class="foldb"><div>${list}</div></div></div>`;
   }).join('');
   if (cSkill === 'smithing'){
     if (!('temper' in FOLD)) FOLD.temper = false;
@@ -2913,15 +2927,15 @@ function renderCraft(){
   say('cHint', drawerOpen ? '' : 'Choose a station: the forge, the cauldron or the hearth.');
   b.disabled = cBusy || locked || !canAfford(r) || (r.kind === 'tool' && toolTier() >= r.tier);
   if (r.kind === 'tool' && toolTier() >= r.tier) $('cMats').innerHTML = '';
-  if (!$('cLog').textContent) say('cLog', cTier > 1 ? `Tier ${cTier} materials come from ${REGIONS[cTier - 1].name}.` : 'Gather in the Grey Fen to fill your pack.');
+  if (!$('cLog').textContent) say('cLog', cTier > 1 ? `These materials come from ${REGIONS[cTier - 1].name}.` : 'Gather in the Grey Fen to fill your pack.');
 }
 function craftStats(r){
-  const t = ['Tier', ['I','II','III','IV','V'][r.tier - 1]], lvl = ['Level', r.lv], xp = ['XP', r.xp];
+  const t = ['Have', S.items.filter(i => i.rid === r.id).length], lvl = ['Level', r.lv], xp = ['XP', r.xp];
   if (r.kind === 'weapon') return [['Damage', r.dmg], t, lvl, xp];
   if (r.kind === 'armor') return [['Armour', r.armor], t, lvl, xp];
   if (r.kind === 'tool') return [['Per click', TOOL_POW[r.tier]], t, lvl, xp];
   if (r.heal) return [['Heals', r.heal], t, lvl, xp];
-  return [['Effect', r.ward ? 'Ward' : r.windowUp ? 'Focus' : '—'], t, lvl, xp];
+  return [[r.oil ? 'Damage' : 'Effect', r.oil ? '×1.5' : r.ward ? 'Ward' : r.windowUp ? 'Focus' : '—'], t, lvl, xp];
 }
 /* stations: glowing hotspots in the workshop art */
 let drawerOpen = false, drawerT = 0;
@@ -3020,7 +3034,7 @@ function matSource(m){
 function matLink(m, n){
   const src = matSource(m), have = S.mats[m] || 0, short = have < n;
   const tip = !src ? '' : src.how === 'gather' ? `Gather in ${src.r.name.replace('The ', '')}` : src.how === 'boss' ? `Dropped by ${ENEMIES[src.id].name} in ${src.r.name.replace('The ', '')}` : `Dropped by foes in ${src.r.name.replace('The ', '')}`;
-  return `<button class="matlink${short ? ' short' : ''}" data-mat="${m}" title="${tip}"${src ? '' : ' disabled'}>${n} ${m} <small>(${have})</small>${src ? '<i>↗</i>' : ''}</button>`;
+  return `<button class="matlink${short ? ' short' : ''}" data-mat="${m}" title="${tip}"${src ? '' : ' disabled'}>${n} ${m} <small>· Have: ${have}</small>${src ? '<i>↗</i>' : ''}</button>`;
 }
 function goToSource(m){
   const src = matSource(m); if (!src) return;
@@ -3045,8 +3059,8 @@ async function temperGo(uid){
   const sc = scaleFor(lv('smithing'));
   for (const [i, at] of [[.84,.56],[.9,.6],[.86,.66]].entries()){
     say('cLog', `Tempering · ring ${i + 1} of 3`);
-    const x = await ring({ pt:bgPt(at[0], at[1]), dur:1100, goodTol:Math.min(.6, .3 * sc), perfTol:Math.min(.25, .11 * sc), ringColor:'var(--shade)', autoGood:S.assist });
-    if (x !== 'miss'){ forgeStrike(x === 'perfect'); spark(); stationBurst(); sfx('anvil'); } await wait(x === 'miss' ? 340 : 900);
+    const x = await ring({ pt:bgPt(at[0], at[1]), dur:1100, goodTol:Math.min(.6, .3 * sc), perfTol:Math.min(.25, .11 * sc), ringColor:'var(--shade)', autoGood:S.assist, labels:{ perfect:'Perfect', good:'Solid', miss:'' } });
+    forgeStrike(x === 'perfect'); spark(); stationBurst(); sfx('anvil'); await wait(900);
   }
   const q = QUALITY.find(x => x.name === (it.q === 'Fine' ? 'Masterwork' : 'Fine'));
   it.q = q.name; it.cls = q.cls; it.dmg = Math.round(baseDmg(it) * q.mult);
@@ -3092,7 +3106,7 @@ function encounter(id, rg){
   $('encKicker').textContent = e.boss ? 'Boss · ' + regionById(rg).name.replace('The ', '') : regionById(rg).name.replace('The ', '') + ' · an encounter';
   $('encName').textContent = e.name.replace('The ', ''); $('encName').classList.toggle('boss', !!e.boss);
   $('encSub').innerHTML = e.boss ? 'It will not let you leave twice.' : ['Something moves in the mist.', 'It has your scent.', 'It blocks the path ahead.'][Math.floor(Math.random() * 3)];
-  $('encStats').innerHTML = `<dt>Health</dt><dd>${e.hp}${e.armor ? ` · armour ${e.armor}` : ''}</dd><dt>Nature</dt><dd>${elTag(e.el)} · weak to ${elTag(weak)}</dd>` +
+  $('encStats').innerHTML = `<dt>Health</dt><dd>${e.hp}${e.armor ? ` · armour ${e.armor}` : ''}</dd><dt>Nature</dt><dd>${elTag(e.el)} · resists ${elTag(e.el)} oil</dd>` +
     `<dt>Blade oil</dt><dd><div class="encoils">${oilRows(e, null)}</div></dd>` +
     `<dt>You</dt><dd><span class="${hp < mh * .4 ? 'bad' : ''}">${hp} / ${mh} health</span></dd>`;
   $('encNote').innerHTML = hp < mh * .4 ? 'You are badly hurt. Rest at the Inn first.' : '';
@@ -3135,7 +3149,7 @@ function startFight(id){
   F = { e, ehp:e.hp, php:curHp(), max:maxHp(), burn:0, decay:false, streak:0, perfs:0, parries:0, ward:null, windowUp:0, freeParry:false, busy:false };
   paintEnemy(e); $('foe').dataset.id = id; $('foe').src = ART + 'enemy-' + id + '.webp'; $('foe').alt = e.name; $('foePortrait').src = $('foe').src; fitFace($('foePortrait'), id);
   refreshHero(); $('fItems').hidden = true; renderFight();
-  F.oil = PEND_OIL || null; PEND_OIL = null; document.body.dataset.oil = F.oil || '';
+  F.oil = PEND_OIL || null; F.oilN = F.oil ? OIL_HITS : 0; PEND_OIL = null; document.body.dataset.oil = F.oil || '';
   const m = elMult(F.oil, e.el);
   renderFight();
   say('fLog', `${e.name} blocks the path.` + (F.oil ? ` ${OIL_NAME[F.oil]} ${m > 1 ? '<em>cuts deep here.</em>' : m < 1 ? 'barely bites.' : 'coats your blade.'}` : ' <em>Strike it.</em>'));
@@ -3216,8 +3230,8 @@ function renderPlates(){
   $('eName').innerHTML = `<small>Lv ${enemyLv(e)}</small>${e.name.replace('The ', '')}`;
   $('eFill').style.transform = `scaleX(${Math.max(0, F.ehp / e.hp)})`; $('eNum').textContent = Math.max(0, Math.round(F.ehp));
   { const wk = Object.keys(EL).find(k => EL[k].beats === e.el), m = elMult(oilEl(), e.el);
-    $('eSub').innerHTML = `weak to <b style="color:${EL[wk].color}">${EL[wk].name}</b>${e.boss ? ' · <b>boss</b>' : ''}${m > 1 ? ' · <b style="color:#a7e08a">your blade bites</b>' : m < 1 ? ' · <b style="color:#ff8a8f">it resists you</b>' : ''}`; }
-  $('youLv').innerHTML = 'Lv ' + lv('combat') + (F && F.oil ? ` <span class="oilchip" style="color:${EL[F.oil].color};border-color:${EL[F.oil].color}88">${OIL_NAME[F.oil]}</span>` : '');
+    $('eSub').innerHTML = `resists <b style="color:${EL[e.el].color}">${EL[e.el].name} oil</b>${e.boss ? ' · <b>boss</b>' : ''}${m > 1 ? ' · <b style="color:#a7e08a">your blade bites</b>' : m < 1 ? ' · <b style="color:#d63c3c">it resists you</b>' : ''}`; }
+  $('youLv').innerHTML = 'Lv ' + lv('combat') + (F && F.oil ? ` <span class="oilchip" style="color:${EL[F.oil].color};border-color:${EL[F.oil].color}88">${OIL_NAME[F.oil]} · ${F.oilN}</span>` : '');
 }
 function renderFight(){
   const e = F.e;
@@ -3229,8 +3243,8 @@ function renderFight(){
   renderPlates();
   $('fStatus').textContent = [F.burn ? 'Burning ' + F.burn : '', F.decay ? 'Decayed' : '', F.ward ? EL[F.ward].name + 'ward' : '', F.windowUp ? 'Elixir' : '', F.freeParry ? 'Guard ready' : ''].filter(Boolean).join(' · ');
 }
-function fMenu(on){ ['fAttack','fWeap','fItem','fFlee'].forEach(id => $(id).disabled = !on); if (!on) closeFPops(); }
-function closeFPops(){ $('fItems').hidden = $('fWeaps').hidden = true; $('fItem').classList.remove('on'); $('fWeap').classList.remove('on'); }
+function fMenu(on){ ['fAttack','fItem','fFlee'].forEach(id => $(id).disabled = !on); if (!on) closeFPops(); }
+function closeFPops(){ $('fItems').hidden = true; $('fItem').classList.remove('on'); }
 const fScale = () => scaleFor(lv('combat')) + F.windowUp;
 function hitFx(big){ const e = $('foe'); e.classList.remove('hit'); void e.offsetWidth; e.classList.add('hit'); if (big && !reduce){ const s = $('stage'); s.classList.remove('shake'); void s.offsetWidth; s.classList.add('shake'); } }
 function hurtFx(){ if (SPR_OK) sprAnim('hurt'); { const h = $('hero'); h.classList.remove('hurt'); void h.offsetWidth; h.classList.add('hurt'); } const f = $('flash'); f.classList.remove('on'); void f.offsetWidth; f.classList.add('on'); if (!reduce){ const s = $('stage'); s.classList.remove('shake'); void s.offsetWidth; s.classList.add('shake'); } }
@@ -3260,7 +3274,8 @@ $('fAttack').onclick = async () => {
     if (T.strikes > 1 && r === 'miss'){ say('fLog', 'The chain breaks.'); await wait(450); break; }
     await wait(T.strikes > 1 ? 280 : 350);
   }
-  $('fHint').className = 'hint'; say('fLog', `You deal <em>${total}</em>.`); await wait(600);
+  let worn = false; if (F.oil && --F.oilN <= 0){ worn = true; F.oil = null; F.oilN = 0; document.body.dataset.oil = ''; renderFight(); }
+  $('fHint').className = 'hint'; say('fLog', `You deal <em>${total}</em>.` + (worn ? ' The oil burns off your blade.' : '')); await wait(600);
   if (F.ehp <= 0) return fightEnd(true);
   enemyTurn();
 };
@@ -3271,9 +3286,9 @@ $('fItem').onclick = () => {
   const groups = {}; uses.forEach(i => { const key = itemLabel(i); (groups[key] = groups[key] || []).push(i); });
   const keys = Object.keys(groups);
   const wasOpen = !$('fItems').hidden; closeFPops(); if (wasOpen) return;
-  $('fItems').innerHTML = '<h4>Satchel</h4>' + (keys.length ? keys.map(key => `<button class="it ${groups[key][0].cls}" data-use="${groups[key][0].uid}">${iconImg({ kind:'use', rid:groups[key][0].rid, name:key }, 'iticon')}<span>${key}</span><span>×${groups[key].length}</span></button>`).join('') : '<span class="detail">No potions or food yet. Make some in the Workshop.</span>');
+  $('fItems').innerHTML = '<h4>Satchel</h4><h4 class="fpsec">Supplies</h4>' + (keys.length ? keys.map(key => `<button class="it ${groups[key][0].cls}" data-use="${groups[key][0].uid}">${iconImg({ kind:'use', rid:groups[key][0].rid, name:key }, 'iticon')}<span>${key}</span><span>Have: ${groups[key].length}</span></button>`).join('') : '<span class="detail">No potions or food yet. Make some in the Workshop.</span>') + oilSection();
   $('fItems').hidden = false; $('fItem').classList.add('on');
-  $('fItems').querySelectorAll('[data-use]').forEach(b => b.onclick = () => useItem(+b.dataset.use));
+  $('fItems').querySelectorAll('[data-use]').forEach(b => b.onclick = () => useItem(+b.dataset.use)); wireOils();
 };
 async function useItem(uid){
   if (F.busy) return; const it = S.items.find(i => i.uid === uid); if (!it) return;
@@ -3289,16 +3304,17 @@ async function useItem(uid){
 // oils: coat the blade for this fight (free action); shows which one bites this foe
 function ownedOils(){ const g = {}; S.items.filter(i => i.oil).forEach(i => (g[i.oil] = g[i.oil] || []).push(i)); return g; }
 function oilRows(e, cur){ const g = ownedOils(); return Object.keys(OIL_NAME).map(el => { const n = (g[el] || []).length, m = elMult(el, e.el);
-  return `<button class="it oilrow${cur === el ? ' eq' : ''}" data-oil="${el}"${n && cur !== el ? '' : ' disabled'}><span class="oilswatch" style="background:${EL[el].color}"></span><span>${OIL_NAME[el]}${cur === el ? ' <i>on blade</i>' : ''}<small>${EL[el].name}</small></span><span>${m > 1 ? '<b class="up">×1.5</b>' : m < 1 ? '<b class="dn">×0.25</b>' : '<b>×1</b>'} · ${n}</span></button>`; }).join(''); }
-$('fWeap').onclick = () => {
-  if (F.busy) return; const wasOpen = !$('fWeaps').hidden; closeFPops(); if (wasOpen) return;
-  const e = F.e, wk = Object.keys(EL).find(k => EL[k].beats === e.el);
-  $('fWeaps').innerHTML = `<h4>Blade oils</h4><p class="fpnote">${e.name} is ${oilTag(e.el)}, weak to ${oilTag(wk)}. One oil lasts this fight.</p>` + oilRows(e, F.oil) + (Object.keys(ownedOils()).length ? '' : '<span class="detail">No oils yet. Brew them at the Apothecary.</span>');
-  $('fWeaps').hidden = false; $('fWeap').classList.add('on');
-  $('fWeaps').querySelectorAll('[data-oil]').forEach(b => b.onclick = () => { const el = b.dataset.oil, it = ownedOils()[el][0]; S.items = S.items.filter(x => x !== it); F.oil = el; document.body.dataset.oil = el; save(); renderFight(); closeFPops(); sfx('brew');
-    const m = elMult(el, e.el); say('fLog', `You coat your blade in ${OIL_NAME[el]}.` + (m > 1 ? ' <em>It will bite deep.</em>' : m < 1 ? ' It barely bites this foe.' : '')); });
-};
-document.addEventListener('pointerdown', e => { if (view === 'fight' && !e.target.closest('.fpop,#fItem,#fWeap')) closeFPops(); });
+  return `<button class="it oilrow${cur === el ? ' eq' : ''}" data-oil="${el}"${n && cur !== el ? '' : ' disabled'}><img class="iticon" src="${ART}item-${slug(OIL_NAME[el])}.webp" alt=""><span>${OIL_NAME[el]}${cur === el ? ' <i>on blade</i>' : ''}<small>${EL[el].name}</small></span><span>${m > 1 ? '<b class="up">×1.5</b>' : m < 1 ? '<b class="dn">×0.25</b>' : '<b>×1</b>'} · Have: ${n}</span></button>`; }).join(''); }
+function oilSection(){
+  const e = F.e, has = Object.keys(ownedOils()).length;
+  const cur = F.oil ? `<p class="fpcur" style="--oc:${EL[F.oil].color}">On your blade · <b>${OIL_NAME[F.oil]}</b> · ${F.oilN} attack${F.oilN > 1 ? 's' : ''} left</p>` : '';
+  return `<h4 class="fpsec">Blade oils</h4>${cur}<p class="fpnote">${oilTag(e.el)} oil barely bites ${e.name}. Any other oil: ×1.5 damage for ${OIL_HITS} attacks. Coating your blade is free.</p>` + (has ? oilRows(e, F.oil) : '<span class="detail">No oils yet. Brew them at the Apothecary.</span>');
+}
+function wireOils(){
+  $('fItems').querySelectorAll('[data-oil]').forEach(b => b.onclick = () => { const el = b.dataset.oil, it = ownedOils()[el][0]; S.items = S.items.filter(x => x !== it); F.oil = el; F.oilN = OIL_HITS; document.body.dataset.oil = el; save(); renderFight(); closeFPops(); sfx('brew');
+    const m = elMult(el, F.e.el); say('fLog', `You coat your blade in ${OIL_NAME[el]}.` + (m > 1 ? ' <em>It will bite deep.</em>' : m < 1 ? ' It barely bites this foe.' : '')); });
+}
+document.addEventListener('pointerdown', e => { if (view === 'fight' && !e.target.closest('.fpop,#fItem')) closeFPops(); });
 $('youMedal').onclick = e => { e.stopPropagation(); statPop('you', 'fight'); };
 $('foeMedal').onclick = e => { e.stopPropagation(); statPop('foe', 'fight'); };
 $('fFlee').onclick = () => { if (F.busy) return; S.hp = Math.max(1, F.php); RUN.streak = 0; const a = ambushOutcome(false); save(); go('gather'); if (a) say('gLog', `You flee. ${a}.`); };
