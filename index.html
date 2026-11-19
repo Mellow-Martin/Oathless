@@ -1671,6 +1671,45 @@ body:not(.portraitIcon) .smed #stripFace{position:absolute;width:260%;height:aut
 @keyframes atkWind{0%{transform:translateX(0)}100%{transform:translateX(1.2cqh)}}
 body.foeposed #foe{visibility:hidden!important}
 
+/* v151: title screen */
+.title{position:absolute;inset:0;z-index:40;overflow:hidden;background:#05070a;animation:fadein .6s}
+.title.out{animation:ttout .5s forwards}
+@keyframes ttout{to{opacity:0}}
+.ttbg{position:absolute;inset:-2%;background:url(art/final/title-bg.webp) 70% 40%/cover no-repeat;animation:ttdrift 40s ease-in-out infinite alternate}
+@keyframes ttdrift{to{transform:scale(1.04) translateX(-1%)}}
+.ttfog{position:absolute;inset:0;background:linear-gradient(90deg,#05070ad9 0%,#05070a99 34%,transparent 62%),linear-gradient(0deg,#05070acc,transparent 40%)}
+.ttcol{position:absolute;left:5%;top:0;bottom:0;width:52%;display:flex;flex-direction:column;justify-content:center;gap:2.4cqh}
+.ttlogo{margin:0;width:100%;max-width:92cqh;filter:drop-shadow(0 .6cqh 1.6cqh #000) drop-shadow(0 0 3cqh #0008)}
+.ttlogo svg{display:block;width:100%;height:auto;margin:-6cqh 0 -3cqh}
+.ttlbl{font:400 1.7cqh var(--fellsc);letter-spacing:.24em;text-transform:uppercase;color:#a99c80;text-shadow:0 .1cqh .4cqh #000}
+.ttchars{display:grid;grid-template-columns:repeat(2,minmax(0,34cqh));gap:1.4cqh}
+.ttc{position:relative}
+.ttpick{width:100%;display:flex;align-items:center;gap:1.6cqh;padding:1.1cqh 1.6cqh;border:.18cqh solid #c9a86a44;border-radius:1cqh;background:linear-gradient(#14100ccc,#0a0807e6);color:var(--bone);cursor:pointer;text-align:left;transition:border-color .2s,background .2s,transform .2s}
+.ttpick:hover,.ttpick:focus-visible{border-color:var(--gold);background:linear-gradient(#241a12e6,#110c09f0);transform:translateX(.4cqh);outline:none}
+.ttface{flex:none;width:6.4cqh;height:6.4cqh;border-radius:50%;overflow:hidden;background:#0b0908;box-shadow:0 0 0 .18cqh #0d0a08,0 0 0 .4cqh var(--silver-lo);display:grid;place-items:center}
+.ttface img{width:100%;height:100%;object-fit:cover}
+.ttface i{font:400 4.4cqh var(--display);color:var(--gold);font-style:normal;line-height:1}
+.tttxt{display:flex;flex-direction:column;min-width:0}
+.tttxt b{font:400 2.6cqh var(--display);font-weight:400;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tttxt small{font:1.5cqh var(--fellsc);color:#a99c80;letter-spacing:.04em}
+.ttnew{border-style:dashed}
+.ttnew .tttxt b{color:var(--gold)}
+.ttdel{position:absolute;top:.6cqh;right:.8cqh;padding:.2cqh .6cqh;border:0;background:none;color:#7d7064;font:1.4cqh var(--fellsc);cursor:pointer;opacity:0;transition:opacity .2s}
+.ttc:hover .ttdel,.ttdel:focus-visible,.ttdel.armed{opacity:1}
+.ttdel:hover,.ttdel.armed{color:#d63c3c}
+
+/* v149/150: hireling stockpile, free floating above the camp panel, styled like the crafting level bar */
+.campstock{position:absolute;right:2.2%;top:11%;width:calc(34cqh + 3.8cqh);z-index:6;display:flex;flex-direction:column;gap:.9cqh;box-sizing:border-box;padding:0}
+.cslbl{font:400 1.6cqh var(--fellsc);letter-spacing:.14em;text-transform:uppercase;color:#cbbfa6;text-shadow:0 0 .5cqh #000,0 .1cqh .3cqh #000,0 0 1.2cqh #000c}
+.csrow{display:flex;align-items:center;gap:1.6cqh}
+.campstock .csbar{flex:1;width:auto}
+.campstock.full .csbar i{animation:csfull 1.4s ease-in-out infinite}
+@keyframes csfull{50%{filter:brightness(1.35)}}
+.ccollect{flex:none;padding:0;border:0;background:none;color:var(--gold);font:400 2.4cqh var(--display);letter-spacing:.04em;cursor:pointer;text-shadow:0 0 .6cqh #000,0 .1cqh .3cqh #000,0 0 1.4cqh #000c}
+.ccollect:hover:not(:disabled){color:#fff;text-shadow:0 0 1.2cqh #f1c75b99,0 .1cqh .3cqh #000}
+.ccollect:disabled{color:#7d7064;cursor:default}
+#v-gather .camppanel{top:calc(11% + 7.4cqh)}
+
 /* v148: female knight greyed out until her art set is made */
 .pickc.soon{cursor:default;pointer-events:none}
 .pickc.soon .pdoll,.pickc.soon img{filter:grayscale(1) brightness(.45) drop-shadow(0 1.4cqh 2cqh #000)!important}
@@ -1742,6 +1781,7 @@ body.foeposed #foe{visibility:hidden!important}
   <div class="view" id="v-gather" hidden>
     <div class="band"></div>
     <div id="campSpots"></div>
+    <div class="campstock" id="campBar"><span class="cslbl"></span><div class="csrow"><span class="lmbar csbar"><i></i></span><button class="ccollect" id="campCollect">Collect</button></div></div>
     <div class="camppanel" id="campPanel"></div>
     <div class="gseals">
       <div class="rfight"><button class="sealbtn ib" id="gBoss" hidden><span class="uicon sm"><img class="uii" src="art/final/ui-boss.webp" alt=""></span><span id="gBossLbl">Boss</span></button><button class="sealbtn main ib" id="gFight"><span class="uicon"><img class="uii" src="art/final/ui-seek.webp" alt=""></span>Seek a foe</button></div>
@@ -1858,7 +1898,7 @@ body.foeposed #foe{visibility:hidden!important}
   <div class="optpop" id="optPop" hidden>
     <div class="og"><h5>Play</h5><button class="g toggle" id="testMode" aria-pressed="false">Test mode off</button></div>
     <div class="og"><h5>Sound</h5><button class="g toggle" id="sfxBtn" aria-pressed="true">Sound on</button><button class="g toggle" id="musBtn" aria-pressed="true">Music on</button></div>
-    <div class="og"><h5>Game</h5><button class="g" id="fsBtn">Fullscreen</button><button class="g" id="pickBtn">Change knight</button><button class="g" id="resetAll">New game</button></div>
+    <div class="og"><h5>Game</h5><button class="g" id="fsBtn">Fullscreen</button><button class="g" id="titleBtn">Title screen</button><button class="g" id="pickBtn">Change knight</button><button class="g" id="resetAll">New game</button></div>
   </div>
   <div class="invpop" id="invDetail" hidden></div>
   <div class="encwrap" id="encounter" hidden><div class="enc" role="dialog" aria-modal="true" aria-labelledby="encName">
@@ -1868,12 +1908,21 @@ body.foeposed #foe{visibility:hidden!important}
       <div class="encacts"><button class="fbtn" id="encBack"><span>Withdraw</span></button><button class="fbtn main" id="encGo"><span>Fight</span></button></div>
     </div></div></div>
   <div class="result" id="result" hidden></div>
+  <div class="title" id="titleScr" hidden>
+    <div class="ttbg"></div><div class="ttfog"></div>
+    <div class="ttcol">
+      <h1 class="ttlogo" aria-label="Oathless"><svg viewBox="0 0 2688 1520" aria-hidden="true"><defs><linearGradient id="ttlg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f4f1ea"/><stop offset=".55" stop-color="#c9c3b8"/><stop offset="1" stop-color="#7b766e"/></linearGradient></defs><g fill="url(#ttlg)"><path d="M47.71,986.45c23.26,3.66,46.15,5.08,69.69,4.42,29.94-.84,57.61-7.78,85.57-18.13l67.99-25.17c19.15-7.08,38.06-10.46,58.99-12.79-48.12-15.94-85.7-54.6-105.17-101.32-9.6-23.22-15.58-46.78-19.27-71.65-1.01-6.82-3.77-12.12-10.86-14.72-6.05-2.22-13.97-3.09-20.52-1.07l-24.02,7.38c8.17-10.97,17.14-19.18,26.03-28.26,13.45-13.74,22.75-29.1,29.42-47.11,14.54-39.26,39.98-72.19,73.82-96.77,19.08-13.86,39.36-24.06,60.03-35.22l28.52-15.41c21.26-11.48,32.42-32.77,34.58-56.96,8.57,24.54,11.37,45.96-1.07,69.51,7.43-2.69,13.98-6.14,20.6-11.77,42.93,9.56,84.46,29.7,113.85,63.23,22.38,25.53,37.13,56.31,44.25,89.49,3.46,16.11,9.65,29.64,18.67,43.41l18.83,28.74-25.27-10.78c-6.83-2.91-14.64-.5-18.31,5.8l-13.69,47.15c-20.03,58.04-50.34,105.68-102.26,139.35-3.77,2.45-6.65,7.49-7.42,11.05-1.01,4.65,1.14,9.78,4.3,13.51,18.11,21.36,33.4,43.28,36.64,72.22-20.42-57.11-78.55-80.3-136.98-80.3-21.5,0-42.11,2.26-62.72,8.08l-57.92,16.34c-56.8,16.02-114.6,27.82-172.87,14.23l-29.44-8.95-2.39-.95C40.7,985.39,47.71,986.45,47.71,986.45ZM467.41,892.8c31-40.65,42.15-111.51,36.84-162.01-4.94-46.93-24.55-91.29-55-126.77-14.77-17.21-32.52-30.39-52.76-39.33-19.1-8.44-39.2-6.38-56.32,5.26-32.92,22.39-56.17,62.53-66.27,101.07-17.64,67.37-2.94,151.12,43.9,203.4,20.82,23.25,47.35,39.86,77.62,46.84C425.37,928.16,449.29,916.56,467.41,892.8Z"/><path d="M1168.1,577.9c-7.89-7.99-16.78-13.09-27.54-16.43-32.56-10.11-82.11-13.79-113.96-3.53-31.67,10.19-43.75,46.09-39.5,76.73,9.12-9.69,13.78-20.07,18.9-32.59,1.66,15.56,5.15,29.03,15.33,40.76-8.31-.16-13.89,2.46-17.64,8.6-10.9,17.87-14.87,44.31-14.96,65.86l-.36,89.93-3.26,71.27-8.72,145.54-11.59,217.67-9.59,196.61-1.25,21.24-1.74-33.84-10.39-210.19-10.71-222.86-3.3-75.51c.23-32.3.56-63.03-2.28-95.27l-4.67-97.26c-1.17-24.29-2.69-55.26-16.43-74.47-3.83-5.36-9.25-7.45-16.5-7.32,10.41-12.02,15.32-25.98,15.68-41.12,5.12,12.43,9.63,23.42,19.05,33.15,3.44-26.9-6.07-60.91-31.12-73.44-8.66-4.33-18.09-6.71-27.97-7.84-32.22-3.71-64.54-1.4-95.7,7.3-11.52,3.21-21.56,8.18-30.41,15.7l-1.44,1.22c-.29.25-.56-1.35-.64-1.9,1.99-22.81-7.33-44.17-25.08-58.46-26.14,2.28-55.11,20.79-73.15,39.41-7.82,8.07-13.16,16.98-18.84,26.44,12.73-41.86,52.99-71.07,89.4-92.98,4.94-2.98,8.41-8.71,13.09-11.84l14.59-9.74c-6.85,14.26-2.45,29.35,11.22,37.87,10.66,6.64,22.93,9.99,36.25,10.94,36.53,2.62,73.48-3.87,106.87-18.67,12.1-5.36,21.73-13.27,28.28-24.41,12.38-1.92,24.01-2.64,36.33-2.44-1.72,14.99-3.51,28.59-9.59,42.1-4.25,9.43-34.82,13.83-50.47,13.9-.23-.54.34.79.74,1.74,14.32-.09,28.28,1.96,41.63,7.39,4.29,1.74,7.95,5.39,9.12,9.78,2.6,9.74,4.09,18.8,4.17,29.15l1.43,182.99,1.05,153.84.71,92.21.3,111.48.8.56.82-20.52.54-92.71,1.49-214.46,1.78-201.86c.13-15.4.59-29.18,5.8-43.58,3.67-10.15,34.3-13.56,49.35-15.22-15.25-2.64-44.89-4.21-49.64-14.99-5.91-13.41-7.83-26.96-9.14-41.88,12.7-.01,24.49.61,36.69,2.72,7.45,13.77,22.42,23.16,37.42,28.57,28.68,10.34,58.72,15.75,89.36,15.09,19.41-.42,43.11-6.08,54.01-21.3,5.98-8.33,5.81-17.54,1.22-27.74,8.79,5.02,16.12,11.55,22.48,19.62,32.08,19.64,56.89,40.93,72.74,76.15.7,1.78.4,3.03-.9,1.2-15.81-23.3-42.84-45.56-71.3-48.45C1178.7,532.2,1167.98,553.1,1168.1,577.9ZM848.55,532.54c-4.86-.95-9.32.04-14.43.33l-57.56,3.28c-11.27-.3-21.35-2.34-31.74-7.64l9.05,16.69,40.84-5.64L848.55,532.54ZM1060.12,532.42l30.52,3.79,62.35,8.57,10.52-15.94-22.02,7.21-54.11-2.12-12.54-1.21C1069.86,532.23,1065.29,531.73,1060.12,532.42Z"/><path d="M1040.51,1017.67c7.55-21.39,19.42-40.47,34.37-57.51l23.5-26.8c24.31-27.72,29.05-60.53,29-96.8l-.07-58.53c-6.49-3.91-13.51-4.41-21.11-2.96-34.02,6.48-62.36,28-80.31,57.7,9.14-33.99,47.35-67.67,77.45-82.83l23.95-12.06-.07-66.64-2.64-29.96c-3.82-25.69-19.65-45.39-42.73-57.01l35.13,9.2c22.99,6.02,45.32,12.52,69.58,5.07l22.69-6.96c-11.44,10.45-19.28,22.11-23.28,36.86-4.06,15.34-6.11,30.81-6.11,46.92v54.93s60.41,5.44,60.41,5.44l55.4.65c10.4-1.04,19.85-2.58,29.46-6.57v-63.83c-.7-11.96-1.72-23.42-5.3-34.49-5.72-16.39-18.46-26.19-36.11-30.18,34.28-3.27,66.61-12.37,97.14-28.06l27.01-13.88,21.51-9.66c-36.74,27.32-53.08,64.64-53.18,109.98l-.17,72.38c11.88,8.49,26.54.13,40.83-5.71-7.17,9.24-15.33,16.11-23.61,23.49l-17.23,15.37.21,89.1c.03,16.14,2.82,31.23,6.86,46.54,4.09,10.5,9.06,19.62,14.99,29.2,12.46,20.12,22.96,41.03,27.41,64.91-11.46-26.19-29.67-47.8-55.81-59.49-30.56-13.66-54.04-6.11-82.82,9.33l15.44-17.94c9.85-11.46,15.6-24.88,19.19-39.6,1.98-11.31,3.58-22.27,3.59-34.02l.03-87.6c-40.19-14.1-87.66-19.02-128.2-8.25-6.31,2.39-12.09,4.91-17.05,9.26l-.22,73.04c-.07,21.39.18,42.97,8.81,62.18,3.75,8.34,9.83,13.59,17.99,18.37-49.21.91-96.14,24.12-131.65,55.36C1061.02,988.01,1050.7,1001.64,1040.51,1017.67Z"/><path d="M2658,983.37c-44.59,16.37-86.97,19.04-133.79,11.76-26.97-4.2-52.53-10.76-79.03-17.32l-62.87-15.54c-68.9-12.93-149.48-1.95-200.93,48.01l-14,14.7c16.57-31.08,42.44-55.54,73.6-71.02,14.48-7.2,29.14-10.92,44.39-14.33-42.81-9.78-73.34,1.67-105.76,30.38,21.9-42.25,48.04-80.12,78.73-114.95,15.95-18.11,33.41-33.29,51.9-48.98-13.51,21.32-30.64,49.47-22.19,73.57,9.02,25.71,40.66,44.24,66.75,50.31,33.29,7.73,67.24-8.29,81.84-38.97,6.35-13.32,5.56-27.9-.77-41.1-18.69-38.92-63.56-72-100.87-93.63-26.77-15.52-56.16-31.4-63.93-62.69-6.53-26.31,6.85-53.44,25.43-72.77,17.49-18.19,38.2-32.64,61.05-43.31,10.33-4.82,21.13-5.09,31.94-2.46l36.97,9c13.45,3.27,27.61,3.39,40.72-.79,17.52-5.59,30.15-17.26,44-30.43l-21.05,39.67c-15.03,38.05-5.61,76.89,16.47,110.88.49,1.37-.29,1.39-1.57.37-11.47-10.18-21.07-20.8-30.81-32.32l-29.73-35.14-18.68-18.02c-22.31-18.5-62.62-32.4-84.45-14.11-12.2,10.23-19.17,25.78-18.62,41.92.56,16.84,17.5,36.28,31.15,45.29l59.82,39.49,42.56,27.58c9.72,6.3,17.56,14.45,24.69,23.45,22.45,28.35,17.82,63.6.26,93.96-14.68,25.37-35.96,45.84-62.19,59.1l-23.53,8.75,59.48,19.07,48.92,17.11c36.91,12.91,80.41,12.63,119.3,8.85C2623.2,988.71,2641.36,986.39,2658,983.37Z"/><path d="M1887.89,892.81c38.9-16.82,67.37-47.4,90.45-82.95-2.25,10.73-6.28,19.56-10.15,29.26l-25.39,62.47c-11.07,27.25-13.71,55.21-10.74,85.1-9.33-21.02-20.74-41.43-42.94-49.56-67.68-22.76-132.09-24.6-196.81,9.73l19.01-21.32c8.93-10,15.32-21.24,19.22-34.18,4.26-14.11,7.05-28.28,7.12-43.33l.37-73.42c.02-4.81-1.94-8.76-6.63-10.56-17.06-6.58-38.74,8.27-53.98,20.45,6.25-11.49,14.28-20.94,24.16-28.92l36.53-29.5-.46-62.18c-.12-16.83-3.77-33.02-10.78-48.07-9.22-19.83-25.92-32.42-46.15-41.72l35.97,7.03c52.65,10.3,105.76,13.96,158.9,6.43,29.44-4.48,54.43-11.97,74.74-35.05-10.27,26.42-12.9,52.77-6.3,79.66l15.7,48.72-20.84-26.9c-12.09-14.04-25.77-25.97-43.08-33.25-22.63-9.5-53.88-13.69-76.59-5.12-12.15,4.59-19.77,13.74-23.42,26.18-3.31,12.88-5.03,26.21-5.07,39.82l-.09,40.58c15.5,1.01,29.66.59,44.52-1.36,26.44-4.83,51.76-15.38,52.42-44.79l23.27,66.63c4.22,12.08,7.59,23.52,8.67,36.6-13.57-28.82-41.83-39.98-73.12-40.84-18.56-.51-43.91,2.85-55.84,16.48l.29,79.49c.05,13.67,2.06,26.79,5.33,39.62,2.45,9.63,7.85,16.84,16.75,21.22C1835.89,906.54,1864.51,902.92,1887.89,892.81Z"/><path d="M2019.67,918.67c-29.72-.7-53.79,16.07-67.57,41.05.96-12.6,5.25-22.97,9.48-34.14,9.56-20.76,20.31-40.06,32.65-59.43l41.56-58.54-8.43,27.86c-2.65,16.78.88,32.68,12.27,45.72,17.08,19.55,39.16,35.02,63.64,43.56,17.12,5.98,34.39,1.76,46.15-11.2,7.96-8.77,13.81-18.5,17.3-29.84,9.4-30.56-12.04-56.25-34.34-76.76-21.06-19.35-44.59-34.3-69.12-49.01l-35.37-21.21c-10.83-6.5-19.28-15.67-25.85-26.45-19.13-31.38-6.07-68.8,18.03-94.74,14.47-15.56,31.62-27.7,50.54-37.21,11.91-5.99,24.1-6.03,36.9-2.89l36.92,9.07c12.74,3.13,26.12,2.44,38.48-1.92,17.39-6.15,30.56-17.83,43.74-30.87l-20.91,38.07c-10.91,26.22-14.5,66.29,10.14,80.9-8.27,3.31-14.51,9.66-17.02,18.07l-9.58,32.13c-.27-20.97-3.96-41.29-14.33-60.04-20.09-36.29-50.91-65.5-93.96-65.17-16.87.12-31.19,9.48-37.12,24.81-11.08,28.62,8.4,53.56,31.64,70.77,21.32,15.78,43.38,29,66.34,42.41,26.33,15.38,60.54,35.05,75.8,60.26,28.09,46.42-14.14,103.18-54.27,131.5-14.25,9.81-29.07,17.39-44.16,25.89l-31.54,17.76c5.17-11,3.01-21.58-6.25-28.72C2064.15,927.03,2042.66,919.21,2019.67,918.67Z"/><path d="M665.78,808.01c-10.54,8.45-20.16,17.95-26.35,29.5-9.96,18.59-12.49,40.87-10.11,61.21,1.66,14.16,10.02,23.47,22.43,29.92-35.41,2.03-67.55,10.86-96.61,28.81-19.22,11.96-34.25,27.82-44.51,47.79,12.23-50.47,56.8-70.34,79.45-118.53l22.11-47.03c-19.08-5.69-39.84,5.99-55.13,20.15,8.16-13.8,20.28-24.78,34.19-33.7l35.74-20.03,15.63-34.48,46.76-108.87c3.8-8.86,6.12-17.44,8.01-26.71,3.97-19.44-7.1-32.04-21.54-44.64l37.2,10.09c25.09,4.6,49.02.66,72.45-11.42-18.07,28.13-6.69,59.62,2.24,89.72l27.16,75.36c28.47,3.38,53.75-1.79,76.08-20.13-12.96,23.29-40.79,37.98-67.05,45.15l28.28,70.68c8.36,20.91,19.57,39.33,32.14,57.92l20.17,33.19c3.99,6.56,6.11,13.82,8.23,21.77-9.08-10.96-17.6-20.56-29.39-27.67-41.63-25.09-82.29-8.27-118.74,19.75l24.37-31.34c6.85-8.81,10.61-18.87,10.3-30.07l-7.28-33.6-23.56-79.41C732.34,776.06,694.96,784.64,665.78,808.01ZM760.35,755.36l-38.59-103.66-63.99,139.06C689.86,770.93,723.37,758.49,760.35,755.36Z"/><path d="M1679.07,881.7c-13.08,35.11-16.55,64.49-7.52,101.74-10.08-13.59-19.86-27.33-34.85-35.46-15.34-8.32-32.25-11.61-49.09-16.05-56.31-11.88-107.82-13.15-157.35,21.51,9.38-16.25,19.22-29.76,24.28-47,4.89-16.68,7.59-33.31,7.61-51.17l.23-178.69-3.17-27.56c-4.3-20.66-19.98-33.56-41.57-36.93,29.82-3.93,57.93-10.64,86.06-20.73l38.64-13.86,29.12-6.95c-20.3,9.96-35.31,25.81-43.65,47.05q-11,27.98-11.1,58.94l-.19,154.68c-.02,14.63,1.51,28.17,4.11,42.19,3.28,17.62,13.88,26.67,31.65,30.15,39.43,7.72,74.56-8.33,104.61-33.52,18.47-15.48,32.47-33.67,46.53-53.69L1679.07,881.7Z"/><path d="M935.36,216.42c-1.29-14.07-4.22-27.71-12.33-39.2-6.64-9.96-16.3-16.3-28.21-18.2-7.48-.39-13.97,1.69-21.4,4.71,7.19-11.68,17.52-19.68,29.33-25.85,31.24-16.33,46.06-42.18,52.11-77.44,5.9,35.47,20.9,60.94,53.11,77.81,11.69,6.12,21.73,14.19,29.42,26.06-14.74-8.07-31.18-6.84-43.94,4.93-12.55,11.91-18.1,28.89-18.75,47.3C962.09,215,949.92,214.52,935.36,216.42ZM954.84,198c1.2-13.41,2.88-25.74,7.18-38.41,8.37-8.63,24.49-9.05,36.61-10.27l-28.55-5.29c-4.63-2.13-8.22-4.75-9.65-9.69-3.01-10.36-4.43-20.62-5.43-31.71l-5.7,30.4c-.95,5.08-4.46,9.49-9.62,10.53l-28.29,5.75c10.97.72,32.87,3.67,35.41,10.33C951.52,171.98,952.64,184.9,954.84,198Z"/><path d="M921.43,441.44c-7.55-20.81-4.8-40.33,12.99-52.15l30.86-15.02c7.28-3.55,13.85-7.27,20.02-12.83,8.61,15.5,7.73,38.94-6.71,46.07l-22.37,11.03C943.37,424.87,931.14,431.18,921.43,441.44Z"/><path d="M922.93,390.01c-5.55-11.55-5.94-25.47.33-37,3.47-6.37,9.89-10.52,15.75-14.52l21.42-9.94c7.8-3.62,15.01-7.31,22.04-13.34,8.78,14.76,10.02,34.58-5.46,44.75l-24.93,11.52C941.61,376.15,932.55,381.63,922.93,390.01Z"/><path d="M925.57,340.42c-5.38-10.43-5.45-23.92.04-35.25,2.61-5.39,7.85-9.14,12.67-12.39l20.75-9.62c7.43-3.44,14.13-7.18,20.21-12.18,5.78,10.66,8.66,23.84,2.96,34.34-4.28,7.9-13.3,11.09-21.04,14.53C948.22,324.51,936.83,330.17,925.57,340.42Z"/><path d="M999.77,469.76c-30.41-5.93-60.4-5.87-90.1-.15-4.2-1.07-6.52-6.26-5.83-10.4.56-3.37,3.8-7.62,8.48-8.58,28.09-5.74,57.21-5.72,85.28.19,4.01.85,7.2,5.03,7.79,7.78C1006.31,462.92,1004.8,467.09,999.77,469.76Z"/><path d="M971.71,268.71c-11.8,8.36-29.59,10.57-43.21,23.48-5.39-13.82-4.13-31.48,8.09-38.84,16.37-9.86,19.69-8.68,40.39-6.51C980.85,254.42,978.96,263.59,971.71,268.71Z"/><path d="M981.98,241.59c-18.44-1.85-35.5-2.47-53.28-.08-4.47.6-6.99-6.28-6.68-9.34.37-3.75,2.97-8.1,7.57-8.78,17-2.52,33.69-2.35,50.7.07,4.26.61,7.04,4.49,7.93,7.72C989.03,234.16,986.69,242.06,981.98,241.59Z"/><path d="M932.35,440.91c8.98-7.97,20.02-12.57,31.18-17.11,8.21-3.77,15.72-7.58,22.49-14.05,5.89,10.25,6.47,22.04,2.52,33.11C970.19,439.92,952.61,439.8,932.35,440.91Z"/><path d="M382.82,768.56l-5.14-14.61c-6.38-4.56-12.78-8.85-20.54-9.99l-28.78-4.22,29.44-4.79c6.94-1.13,14.72-4.32,19.46-9.81,3.6-4.17,5.41-11.16,6.33-16.66l7.08-42.76c1.82,17.41,4.04,34.56,8.77,51.57,5.21,18.73,32.79,19.59,52.68,22.48-14,1.18-28.11,2.56-41.06,8.57-5.69,2.64-9.12,6.49-10.96,12.5-5.41,18.43-7.35,37.11-9.52,56.21C388.03,800.18,386.64,784.59,382.82,768.56Z"/></g></svg></h1>
+      <div class="ttlbl" id="ttLbl">Choose your knight</div>
+      <div class="ttchars" id="ttChars"></div>
+    </div>
+  </div>
   <div class="pick" id="knightPick" hidden>
     <h2>Choose your knight</h2>
     <div class="pickrow">
       <button class="pickc" data-hero="m"><div class="doll pdoll" data-g="m"><div class="dstage"><img class="dl dface" alt="" hidden><img class="dl dbody" alt=""><img class="dl dshield" alt="" hidden><img class="dl dweap" alt="" hidden><img class="dl dhands" alt="" hidden><img class="dl dhelm" alt="" hidden></div></div><small>Stoic. Unbending.</small></button>
       <button class="pickc soon" data-hero="f" disabled aria-disabled="true" title="Coming later"><div class="doll pdoll" data-g="f"><div class="dstage"><img class="dl dface" alt="" hidden><img class="dl dbody" alt=""><img class="dl dshield" alt="" hidden><img class="dl dweap" alt="" hidden><img class="dl dhands" alt="" hidden><img class="dl dhelm" alt="" hidden></div></div><small>Coming later</small></button>
     </div>
+    <button class="inkbtn pickback" id="pickBack">Back</button>
     <div class="facepick" id="facePick" hidden>
       <div class="fpdoll"><div class="doll pdoll2" id="faceDoll"><div class="dstage"><img class="dl dface" alt="" hidden><img class="dl dbody" alt=""><img class="dl dshield" alt="" hidden><img class="dl dweap" alt="" hidden><img class="dl dhands" alt="" hidden><img class="dl dhelm" alt="" hidden></div></div></div>
       <div class="fpside"><label class="fpname"><small>Name</small><input id="nameIn" maxlength="18" autocomplete="off" spellcheck="false" placeholder="Nameless"></label><div class="fpgrid" id="faceGrid"></div>
@@ -2313,7 +2362,11 @@ function load(){
   try { const s = JSON.parse(localStorage.getItem('oathless-loop') || 'null'); if (s && s.xp && s.items){ s.kills = s.kills || { warden:(typeof s.wins === 'number' ? s.wins : 0) }; s.region = s.region || 'fen'; migrateWeapons(s); migrateLongsword(s); migrateNames(s); migrateHunt(s); migrateShield(s); return s; } } catch(e){ console.error('save load failed', e); }
   return freshState();
 }
-function save(){ try { localStorage.setItem('oathless-loop', JSON.stringify(S)); } catch(e){} }
+function save(){ try { if (S.hero && !S.cid) S.cid = 'c' + Date.now().toString(36); const j = JSON.stringify(S); localStorage.setItem('oathless-loop', j); if (S.hero){ localStorage.setItem('oathless-char-' + S.cid, j); const ids = rosterIds(); if (!ids.includes(S.cid)){ ids.push(S.cid); localStorage.setItem('oathless-chars', JSON.stringify(ids)); } } } catch(e){} }
+// v151: saved characters — the active one lives in 'oathless-loop', every knight is also kept under 'oathless-char-<id>'
+function rosterIds(){ try { return JSON.parse(localStorage.getItem('oathless-chars') || '[]'); } catch(e){ return []; } }
+function rosterGet(id){ try { return JSON.parse(localStorage.getItem('oathless-char-' + id) || 'null'); } catch(e){ return null; } }
+function rosterDel(id){ try { localStorage.removeItem('oathless-char-' + id); localStorage.setItem('oathless-chars', JSON.stringify(rosterIds().filter(x => x !== id))); } catch(e){} }
 const lv = k => levelOf(S.xp[k]);
 const FISTS = { uid:0, rid:'fists', name:'Bare fists', kind:'weapon', wtype:'fist', dmg:4 };
 const weapon = () => S.equip.weapon === 0 ? FISTS : (S.items.find(i => i.uid === S.equip.weapon) || S.items.find(i => i.kind === 'weapon') || FISTS);
@@ -2699,7 +2752,7 @@ $('testMode').onclick = () => { S.test = !S.test; if (!S.test && !regionOpen(reg
 let resetArmed = false;
 $('resetAll').onclick = () => {
   if (!resetArmed){ resetArmed = true; $('resetAll').textContent = 'Tap again to wipe'; setTimeout(() => { resetArmed = false; $('resetAll').textContent = 'New game'; }, 2500); return; }
-  S = freshState(); save(); resetArmed = false; $('resetAll').textContent = 'New game'; refreshHero(); renderHub(); openPick();
+  const cid = S.cid; S = freshState(); S.cid = cid; save(); resetArmed = false; $('resetAll').textContent = 'New game'; refreshHero(); renderHub(); openPick();
 };
 
 /* ================= GATHER ================= */
@@ -2751,9 +2804,10 @@ function accrue(){
       if (c.hprog && c.hprog[s.k]){ c.prog[s.k] = (c.prog[s.k] || 0) + c.hprog[s.k]; c.hprog[s.k] = 0; }
       const work = (c.prog[s.k] || 0) + rate * dt, need = haulNeed(r, s), n = Math.floor(work / need); c.prog[s.k] = work - n * need; return n;
     });
-    // hirelings bring their haul straight to your pack
-    const want = got.reduce((a, b) => a + b, 0), room = Math.max(0, awayCap(r) - Object.values(c.gain).reduce((a, b) => a + b, 0)), k = want > room ? room / want : 1;
-    SPOTS.forEach((s, i) => { const n = Math.floor(got[i] * k); if (!n) return; const m = spotMat(r, s); addMat(m, n); c.gain[m] = (c.gain[m] || 0) + n; S.xp[s.skill] = (S.xp[s.skill] || 0) + Math.round(n * 2 * r.xpMult); });
+    // v149: hirelings pile their haul at camp (up to the stockpile cap) until you press Collect
+    c.stock = c.stock || {};
+    const want = got.reduce((a, b) => a + b, 0), room = Math.max(0, awayCap(r) - stockTotal(c)), k = want > room ? room / want : 1;
+    SPOTS.forEach((s, i) => { const n = Math.floor(got[i] * k); if (!n) return; const m = spotMat(r, s); c.stock[m] = (c.stock[m] || 0) + n; c.gain[m] = (c.gain[m] || 0) + n; });
   });
 }
 function bankCamp(c, r){
@@ -2826,12 +2880,16 @@ function renderCamp(){
     b.querySelector('.csub').innerHTML = open ? `<b class="chave">Have: ${S.mats[spotMat(r, s)] || 0}</b>${Math.floor(c.prog[s.k] || 0)} / ${need}` + (rate ? ` · +${(rate / need * 60).toFixed(1)}/min` : '') : '';
     b.querySelector('.ccrew').innerHTML = n ? `<i>${n}</i> ${s.hire.split(' ').pop().toLowerCase()}${n > 1 ? 's' : ''}` : '';
   });
-  const cap = campCap(c), tot = stockTotal(c);
+  const tot = stockTotal(c), cap = awayCap(r), live = SPOTS.some(s => spotRate(c, s) && spotOpen(r, s));
+  $('campBar').querySelector('i').style.transform = `scaleX(${Math.min(1, tot / cap).toFixed(3)})`;
+  $('campBar').querySelector('.cslbl').textContent = tot ? `${tot} / ${cap} in the stockpile` : live ? 'Hirelings at work…' : 'Hire workers to fill the stockpile';
+  $('campBar').classList.toggle('full', tot >= cap); $('campCollect').disabled = !tot;
+  $('campCollect').onclick = () => { const n = bankCamp(campOf(r.id), r); if (!n) return; sfx('pickup'); say('gLog', `${n} gathered by your hirelings, carried to your pack.`); SPOTS.forEach(s => skillHud(s.skill)); save(); renderCamp(); };
   const rateTxt = SPOTS.filter(s => spotRate(c, s) && spotOpen(r, s)).map(s => `${(spotRate(c, s) / haulNeed(r, s) * 60).toFixed(1)} ${spotMat(r, s)}/min`).join(' · ') || 'No hirelings yet. Your clicks are the camp.';
   const have = m => S.mats[m] || 0;
   const row = (img, name, sub, cost, can, attr, cls = '') => `<button class="cup${can ? ' hot' : ''} ${cls}" ${attr} ${can ? '' : 'aria-disabled="true"'}><img src="${img}" alt=""><span><b>${name}</b><small>${sub}</small></span><span class="cost">${cost}</span></button>`;
   const tierNext = toolTier() + 1, toolR = RECIPES.smithing.find(x => x.kind === 'tool' && x.tier === tierNext);
-  const sh = `<div class="cnote">Hirelings bring what they gather straight to your pack. While you are away they carry up to ${awayCap(r)} before they wait for you to return.</div>`;
+  const sh = `<div class="cnote">Hirelings pile what they gather in the camp stockpile above. Press Collect to carry it to your pack. They stop when it holds ${awayCap(r)}.</div>`;
   let h = `<div class="chead"><h4>${r.name.replace('The ', '')} camp</h4><div class="crate">${rateTxt}</div></div><div class="cstock" id="campStock"></div>
     ` + (true ? '' : '<h5>Tools</h5>' + row(`${ART}ui-mine.webp`, toolTier() ? RECIPES.smithing.find(x => x.kind === 'tool' && x.tier === toolTier()).name : 'Bare hands', `${TOOL_POW[toolTier()]} work per click` + (toolR ? ` · next: ${toolR.name} (${TOOL_POW[tierNext]})` : ' · finest made'), toolR ? 'Forge at the<br>Workshop' : '—', !!toolR && canAfford(toolR) && lv('smithing') >= reqLv(toolR), 'data-cg="tool"', 'ui')) + `<h5>Hirelings</h5>`;
   SPOTS.forEach(s => {
@@ -2891,15 +2949,15 @@ function welcomeBack(){
   const g = Object.entries(c.gain).filter(e => e[1]);
   if (away > 60000 && g.length){
     const h = Math.floor(away / 3.6e6), mn = Math.floor(away / 6e4) % 60;
-    $('campAway').innerHTML = `<h3>While you were gone</h3><small>${h ? h + ' h ' : ''}${mn} m · your hirelings worked ${r.name.replace('The ', 'the ')}</small><ul>${g.map(([m, n]) => `<li><img src="${ART}item-${slug(m)}.webp" alt="" onerror="this.onerror=null;this.src='${fbIcon(MAT_KIND(m))}'"><b>+${n}</b> ${m}</li>`).join('')}</ul><small>Added to your pack.${g.reduce((a, e) => a + e[1], 0) >= awayCap(r) - 3 ? ` That is all they carry (${awayCap(r)}) until you come back.` : ''}</small><div class="row"><button class="cbtn r" id="awayBank">Good</button></div>`;
+    $('campAway').innerHTML = `<h3>While you were gone</h3><small>${h ? h + ' h ' : ''}${mn} m · your hirelings worked ${r.name.replace('The ', 'the ')}</small><ul>${g.map(([m, n]) => `<li><img src="${ART}item-${slug(m)}.webp" alt="" onerror="this.onerror=null;this.src='${fbIcon(MAT_KIND(m))}'"><b>+${n}</b> ${m}</li>`).join('')}</ul><small>Waiting in the stockpile.${g.reduce((a, e) => a + e[1], 0) >= awayCap(r) - 3 ? ` That is all they carry (${awayCap(r)}) until you collect.` : ''}</small><div class="row"><button class="cbtn r" id="awayBank">Collect</button></div>`;
     $('campAway').hidden = false;
     c.gain = {}; save(); sfx('pickup');
-    $('awayBank').onclick = () => { $('campAway').hidden = true; renderCamp(); };
+    $('awayBank').onclick = () => { $('campAway').hidden = true; bankCamp(c, r); SPOTS.forEach(s => skillHud(s.skill)); save(); renderCamp(); };
   }
 }
 function enterCamp(){
   say('gLog', 'Click a spot to work it. Hirelings keep working while you are away.');
-  campBuilt = ''; skillHud('mining'); settleOldStock(); welcomeBack(); renderCamp(); scheduleGlint(); scheduleAmbush();
+  campBuilt = ''; skillHud('mining'); welcomeBack(); renderCamp(); scheduleGlint(); scheduleAmbush();
   clearInterval(campTick); campTick = setInterval(() => { if (view === 'gather') renderCamp(); else { clearInterval(campTick); campCampSeen(); } }, 1000); campRingLoop();
   requestAnimationFrame(placeCamp);
 }
@@ -3700,7 +3758,7 @@ document.addEventListener('fullscreenchange', () => $('fsBtn').textContent = doc
 if (!document.documentElement.requestFullscreen) $('fsBtn').hidden = true;
 
 ['hub','workshop','fen-gather','fen-fight'].forEach(n => { const i = new Image(); i.src = ART + n + '.webp'; });
-function openPick(){ closePanel(); $('knightPick').hidden = false; $('facePick').hidden = true; document.querySelector('#knightPick .pickrow').hidden = false; document.querySelectorAll('.pickc').forEach(b => b.setAttribute('aria-pressed', b.dataset.hero === S.hero)); }
+function openPick(){ closePanel(); $('knightPick').hidden = false; $('facePick').hidden = true; $('pickBack').hidden = false; document.querySelector('#knightPick .pickrow').hidden = false; document.querySelectorAll('.pickc').forEach(b => b.setAttribute('aria-pressed', b.dataset.hero === S.hero)); }
 let pickFace = 'knight', pickHero = 'm';
 const heroName = () => (S.name || '').trim() || 'Nameless';
 function renderFacePick(){
@@ -3711,15 +3769,38 @@ function renderFacePick(){
 }
 document.querySelectorAll('.pickc').forEach(b => b.onclick = () => { if (b.disabled) return;
   pickHero = b.dataset.hero; pickFace = S.face || 'knight'; $('nameIn').value = S.name || '';
-  document.querySelector('#knightPick .pickrow').hidden = true; $('facePick').hidden = false;
+  document.querySelector('#knightPick .pickrow').hidden = true; $('pickBack').hidden = true; $('facePick').hidden = false;
   document.querySelector('#knightPick h2').textContent = pickHero === 'm' ? 'Name your knight, choose a face' : 'Name your knight';
   renderFacePick(); setTimeout(() => $('nameIn').focus(), 50); });
 $('nameIn').addEventListener('keydown', e => { e.stopPropagation(); if (e.key === 'Enter') $('faceGo').click(); });
-$('faceBack').onclick = () => { $('facePick').hidden = true; document.querySelector('#knightPick .pickrow').hidden = false; document.querySelector('#knightPick h2').textContent = 'Choose your knight'; };
+$('pickBack').onclick = () => { sfx('click'); $('knightPick').hidden = true; openTitle(); };
+$('faceBack').onclick = () => { $('facePick').hidden = true; $('pickBack').hidden = false; document.querySelector('#knightPick .pickrow').hidden = false; document.querySelector('#knightPick h2').textContent = 'Choose your knight'; };
 $('faceGo').onclick = () => { S.hero = pickHero; if (pickHero === 'm') S.face = pickFace; S.name = $('nameIn').value.trim().slice(0, 18); save(); renderStrip(); $('knightPick').hidden = true; $('faceBack').onclick(); refreshHero(); };
+// v151: title screen — pick a saved knight or start a new one
+const MAX_CHARS = 6;
+function openTitle(){
+  if (S.hero) save();  // make sure the current knight is in the roster
+  const ids = rosterIds(), chars = ids.map(id => [id, rosterGet(id)]).filter(([, c]) => c && c.hero);
+  const card = ([id, c]) => { const r = regionById(c.region) || REGIONS[0], a = (c.items || []).find(i => i.uid === (c.equip || {}).armor && i.kind === 'armor');
+    return `<div class="ttc" data-id="${id}"><button class="ttpick" data-id="${id}"><span class="ttface"><img src="${ART}face-m-${c.face || 'knight'}-icon.webp" alt=""></span><span class="tttxt"><b>${(c.name || '').trim() || 'Nameless'}</b><small>Level ${levelOf((c.xp || {}).combat || 0)} · ${r.name}</small></span></button><button class="ttdel" data-id="${id}" title="Delete knight" aria-label="Delete knight">✕</button></div>`; };
+  $('ttChars').innerHTML = chars.map(card).join('') + (chars.length < MAX_CHARS ? `<div class="ttc"><button class="ttpick ttnew" id="ttNew"><span class="ttface"><i>+</i></span><span class="tttxt"><b>New knight</b><small>Rise unsworn</small></span></button></div>` : '');
+  $('ttLbl').textContent = chars.length ? 'Choose your knight' : 'Begin';
+  $('ttChars').querySelectorAll('.ttpick[data-id]').forEach(b => b.onclick = () => { sfx('click'); playChar(b.dataset.id); });
+  $('ttChars').querySelectorAll('.ttdel').forEach(b => b.onclick = e => { e.stopPropagation();
+    if (b.dataset.armed){ rosterDel(b.dataset.id); if (S.cid === b.dataset.id){ try { localStorage.removeItem('oathless-loop'); } catch(_){} } openTitle(); return; }
+    b.dataset.armed = '1'; b.textContent = 'Delete?'; b.classList.add('armed'); setTimeout(() => { if (b.isConnected){ delete b.dataset.armed; b.textContent = '✕'; b.classList.remove('armed'); } }, 2500); });
+  const nb = $('ttNew'); if (nb) nb.onclick = () => { sfx('click'); newChar(); };
+  $('titleScr').hidden = false;
+}
+function closeTitle(){ $('titleScr').classList.add('out'); setTimeout(() => { $('titleScr').hidden = true; $('titleScr').classList.remove('out'); }, 500); }
+function switchTo(state){ try { localStorage.setItem('oathless-loop', JSON.stringify(state)); sessionStorage.setItem('oathless-skiptitle', '1'); } catch(e){} location.reload(); }
+function playChar(id){ if (S.cid === id && S.hero){ closeTitle(); return; } const c = rosterGet(id); if (c) switchTo(c); }
+function newChar(){ if (!S.hero){ closeTitle(); openPick(); return; } const f = freshState(); f.cid = 'c' + Date.now().toString(36); switchTo(f); }
 $('pickBtn').onclick = openPick;
+$('titleBtn').onclick = () => { $('optPop').hidden = true; save(); openTitle(); };
 go('hub');
-if (!S.hero) openPick();
+(() => { let skip = false; try { skip = sessionStorage.getItem('oathless-skiptitle') === '1'; sessionStorage.removeItem('oathless-skiptitle'); } catch(e){}
+  if (skip){ if (!S.hero) openPick(); } else openTitle(); })();
 })();
 </script>
 
